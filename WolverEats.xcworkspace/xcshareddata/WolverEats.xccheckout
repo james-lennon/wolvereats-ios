@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>96672A01-2484-490F-BA17-97A003DCE5B9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>WolverEats</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FAC1F44B4378288E8A693DF40301B43E389F4D1F</key>
+		<string>https://github.com/jameslennon321/wolvereats-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>WolverEats.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FAC1F44B4378288E8A693DF40301B43E389F4D1F</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jameslennon321/wolvereats-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FAC1F44B4378288E8A693DF40301B43E389F4D1F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FAC1F44B4378288E8A693DF40301B43E389F4D1F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>wolvereats-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>
