@@ -17,6 +17,9 @@
 		9D43B3AF1A81D9A8006B418C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D43B3AD1A81D9A8006B418C /* LaunchScreen.xib */; };
 		9D43B3BB1A81D9A8006B418C /* WolverEatsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B3BA1A81D9A8006B418C /* WolverEatsTests.m */; };
 		9D581EC51A81DFB20013038E /* Backend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581EC41A81DFB20013038E /* Backend.m */; };
+		9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ECA1A81EC020013038E /* LoadingViewController.m */; };
+		9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ECD1A81ECE10013038E /* LoginViewController.m */; };
+		9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ED01A81ECFA0013038E /* SignUpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,12 @@
 		9D43B3BA1A81D9A8006B418C /* WolverEatsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WolverEatsTests.m; sourceTree = "<group>"; };
 		9D581EC31A81DFB20013038E /* Backend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Backend.h; path = Classes/Backend.h; sourceTree = "<group>"; };
 		9D581EC41A81DFB20013038E /* Backend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Backend.m; path = Classes/Backend.m; sourceTree = "<group>"; };
+		9D581EC91A81EC020013038E /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingViewController.h; path = Classes/LoadingViewController.h; sourceTree = "<group>"; };
+		9D581ECA1A81EC020013038E /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingViewController.m; path = Classes/LoadingViewController.m; sourceTree = "<group>"; };
+		9D581ECC1A81ECE10013038E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Classes/LoginViewController.h; sourceTree = "<group>"; };
+		9D581ECD1A81ECE10013038E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Classes/LoginViewController.m; sourceTree = "<group>"; };
+		9D581ECF1A81ECFA0013038E /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = Classes/SignUpViewController.h; sourceTree = "<group>"; };
+		9D581ED01A81ECFA0013038E /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = Classes/SignUpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +112,7 @@
 		9D43B39A1A81D9A8006B418C /* WolverEats */ = {
 			isa = PBXGroup;
 			children = (
+				9D581EC61A81EBB00013038E /* ViewControllers */,
 				9D43B3C41A81DCFD006B418C /* Networking */,
 				9D43B39F1A81D9A8006B418C /* AppDelegate.h */,
 				9D43B3A01A81D9A8006B418C /* AppDelegate.m */,
@@ -151,6 +161,19 @@
 				9D581EC41A81DFB20013038E /* Backend.m */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		9D581EC61A81EBB00013038E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9D581EC91A81EC020013038E /* LoadingViewController.h */,
+				9D581ECA1A81EC020013038E /* LoadingViewController.m */,
+				9D581ECC1A81ECE10013038E /* LoginViewController.h */,
+				9D581ECD1A81ECE10013038E /* LoginViewController.m */,
+				9D581ECF1A81ECFA0013038E /* SignUpViewController.h */,
+				9D581ED01A81ECFA0013038E /* SignUpViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		B1FABF83039DC021316811A2 /* Frameworks */ = {
@@ -297,9 +320,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D581EC51A81DFB20013038E /* Backend.m in Sources */,
+				9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */,
 				9D43B3A71A81D9A8006B418C /* SecondViewController.m in Sources */,
 				9D43B3A11A81D9A8006B418C /* AppDelegate.m in Sources */,
+				9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */,
 				9D43B3A41A81D9A8006B418C /* FirstViewController.m in Sources */,
+				9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */,
 				9D43B39E1A81D9A8006B418C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

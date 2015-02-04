@@ -12,6 +12,7 @@ extern NSString *const BASE_URL;
 
 @interface Backend : NSObject
 
++(void)sendRequestWithURL:(NSString*)url Parameters:(NSDictionary*)params Callback:(void (^)(NSDictionary*))callback Failure:(void (^)(void))failure;
 +(void)sendRequestWithURL:(NSString*)url Parameters:(NSDictionary*)params Callback:(void (^)(NSDictionary*))callback;
 +(void)setCredentialsToEmail:(NSString*)email Password:(NSString*)password;
 +(BOOL)loadCredentials;

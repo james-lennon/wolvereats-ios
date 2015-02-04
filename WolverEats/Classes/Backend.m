@@ -15,25 +15,32 @@ NSString *const BASE_URL = @"http://localhost:8888/hwgrub/";
 
 static NSDictionary* credentials;
 
-+(void)sendRequestWithURL:(NSString *)url Parameters:(NSDictionary *)params Callback:(void (^)(NSDictionary *))callback{
++(void)sendRequestWithURL:(NSString *)url Parameters:(NSDictionary *)params Callback:(void (^)(NSDictionary *))callback Failure:(void (^)(void))failure{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     
-    if(credentials == nil){
-        NSLog(@"Credentials are nil in request to %@", url);
-        return;
-    }
     
     NSMutableDictionary* dataToSend = [NSMutableDictionary dictionary];
     [dataToSend addEntriesFromDictionary:params];
-    [dataToSend addEntriesFromDictionary:credentials];
+    
+    if(credentials == nil){
+        NSLog(@"Credentials are nil in request to %@", url);
+    }else{
+        [dataToSend addEntriesFromDictionary:credentials];
+    }
     
     [manager POST:[NSString stringWithFormat:@"%@%@", BASE_URL, url] parameters:dataToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         callback(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
+        failure();
+        //Show offline
     }];
+}
+
++(void)sendRequestWithURL:(NSString *)url Parameters:(NSDictionary *)params Callback:(void (^)(NSDictionary *))callback{
+    [self sendRequestWithURL:url Parameters:params Callback:callback Failure:^{}];
 }
 
 +(void)setCredentialsToEmail:(NSString *)email Password:(NSString *)password{
