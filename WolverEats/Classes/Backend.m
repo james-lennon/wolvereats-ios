@@ -33,7 +33,8 @@ static NSDictionary* credentials;
         NSLog(@"JSON: %@", responseObject);
         callback(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
+        NSLog(@"Error: %@", [operation responseString]);
+//        NSLog(@"Error: %@", error);
         failure();
         //Show offline
     }];

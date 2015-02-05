@@ -22,6 +22,7 @@
 		9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ECA1A81EC020013038E /* LoadingViewController.m */; };
 		9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ECD1A81ECE10013038E /* LoginViewController.m */; };
 		9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ED01A81ECFA0013038E /* SignUpViewController.m */; };
+		9D99C4731A840F8F00431941 /* TripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D99C4721A840F8F00431941 /* TripViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		9D581ECD1A81ECE10013038E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Classes/LoginViewController.m; sourceTree = "<group>"; };
 		9D581ECF1A81ECFA0013038E /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = Classes/SignUpViewController.h; sourceTree = "<group>"; };
 		9D581ED01A81ECFA0013038E /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = Classes/SignUpViewController.m; sourceTree = "<group>"; };
+		9D99C4711A840F8F00431941 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripViewController.h; sourceTree = "<group>"; };
+		9D99C4721A840F8F00431941 /* TripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 				9D3495371A8336E2007485BD /* TripsListViewController.m */,
 				9D3495391A833EBD007485BD /* WelcomeViewController.h */,
 				9D34953A1A833EBD007485BD /* WelcomeViewController.m */,
+				9D99C4711A840F8F00431941 /* TripViewController.h */,
+				9D99C4721A840F8F00431941 /* TripViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -332,6 +337,7 @@
 				9D581EC51A81DFB20013038E /* Backend.m in Sources */,
 				9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */,
 				9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */,
+				9D99C4731A840F8F00431941 /* TripViewController.m in Sources */,
 				9D43B3A71A81D9A8006B418C /* SecondViewController.m in Sources */,
 				9D43B3A11A81D9A8006B418C /* AppDelegate.m in Sources */,
 				9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */,
