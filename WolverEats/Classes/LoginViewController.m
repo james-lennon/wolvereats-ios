@@ -7,14 +7,22 @@
 //
 
 #import "LoginViewController.h"
+#import <MBProgressHUD.h>
 #import "Backend.h"
 
 @implementation LoginViewController
 
 - (IBAction)login:(id)sender {
+    [_loginButton setEnabled:NO];
+    
     NSString *email = _emailText.text, *pass = _passwordText.text;
     [Backend setCredentialsToEmail:email Password:pass];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     [Backend sendRequestWithURL:@"users/login" Parameters:@{} Callback:^(NSDictionary * data) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [_loginButton setEnabled:YES];
         if([data objectForKey:@"error"]){
             NSLog(@"invalid login");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid login"
@@ -29,9 +37,6 @@
         }
     }];
     
-}
-- (IBAction)showCreateAccount:(id)sender {
-    [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"signup"] animated:NO completion:nil];
 }
 
 

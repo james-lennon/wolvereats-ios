@@ -20,7 +20,7 @@
             [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"main"] animated:NO completion:nil];
         }];
     }else{
-        [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"login"] animated:NO completion:nil];
+        [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"welcome"] animated:NO completion:nil];
     }
 }
 

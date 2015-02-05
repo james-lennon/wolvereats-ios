@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *fnameText;
 @property (weak, nonatomic) IBOutlet UITextField *lnameText;
 @property (weak, nonatomic) IBOutlet UITextField *phoneText;
+@property (weak, nonatomic) IBOutlet UIButton *signupButton;
 
 @end

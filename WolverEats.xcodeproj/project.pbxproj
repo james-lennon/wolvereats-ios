@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6675CDBB6054EBAA2D3A0F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F536F9F2A527E03A449678 /* libPods.a */; };
+		9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3495371A8336E2007485BD /* TripsListViewController.m */; };
+		9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D34953A1A833EBD007485BD /* WelcomeViewController.m */; };
 		9D43B39E1A81D9A8006B418C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B39D1A81D9A8006B418C /* main.m */; };
 		9D43B3A11A81D9A8006B418C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B3A01A81D9A8006B418C /* AppDelegate.m */; };
 		9D43B3A41A81D9A8006B418C /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B3A31A81D9A8006B418C /* FirstViewController.m */; };
@@ -36,6 +38,10 @@
 		04F536F9F2A527E03A449678 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9D3495361A8336E2007485BD /* TripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripsListViewController.h; path = Classes/TripsListViewController.h; sourceTree = "<group>"; };
+		9D3495371A8336E2007485BD /* TripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripsListViewController.m; path = Classes/TripsListViewController.m; sourceTree = "<group>"; };
+		9D3495391A833EBD007485BD /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		9D34953A1A833EBD007485BD /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		9D43B3981A81D9A8006B418C /* WolverEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WolverEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D43B39C1A81D9A8006B418C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D43B39D1A81D9A8006B418C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -172,6 +178,10 @@
 				9D581ECD1A81ECE10013038E /* LoginViewController.m */,
 				9D581ECF1A81ECFA0013038E /* SignUpViewController.h */,
 				9D581ED01A81ECFA0013038E /* SignUpViewController.m */,
+				9D3495361A8336E2007485BD /* TripsListViewController.h */,
+				9D3495371A8336E2007485BD /* TripsListViewController.m */,
+				9D3495391A833EBD007485BD /* WelcomeViewController.h */,
+				9D34953A1A833EBD007485BD /* WelcomeViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -320,9 +330,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D581EC51A81DFB20013038E /* Backend.m in Sources */,
+				9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */,
 				9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */,
 				9D43B3A71A81D9A8006B418C /* SecondViewController.m in Sources */,
 				9D43B3A11A81D9A8006B418C /* AppDelegate.m in Sources */,
+				9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */,
 				9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */,
 				9D43B3A41A81D9A8006B418C /* FirstViewController.m in Sources */,
 				9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */,

@@ -18,14 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [Backend setCredentialsToEmail:@"aron@aron.com" Password:@"test"];
-    BOOL good = [Backend loadCredentials];
-    NSLog(@"loaded: %d", good);
-    
-    NSDictionary* data = @{};
-    [Backend sendRequestWithURL:@"users/login" Parameters:data Callback:^(NSDictionary * resp) {
-        NSLog(@"working");
-    }];
+//    [Backend setCredentialsToEmail:@"aron@aron.com" Password:@"test"];
+//    BOOL good = [Backend loadCredentials];
+//    NSLog(@"loaded: %d", good);
+//    
+//    NSDictionary* data = @{};
+//    [Backend sendRequestWithURL:@"users/login" Parameters:data Callback:^(NSDictionary * resp) {
+//        NSLog(@"working");
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
