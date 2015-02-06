@@ -64,6 +64,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UILabel* restaurant = (UILabel*)[cell viewWithTag:101];
     restaurant.text = trip[@"restaurant_name"];
+    
+    int eta = [trip[@"eta"] intValue];
+    int hours = (eta % (24*3600))/(3600);
+    int minutes = (eta % (3600))/(60);
+    UILabel* time = (UILabel*)[cell viewWithTag:102];
+    time.text = [NSString stringWithFormat:@"%d:%02d", hours, minutes];
     return cell;
 }
 

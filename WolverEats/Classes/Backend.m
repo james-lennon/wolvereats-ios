@@ -34,9 +34,9 @@ static NSDictionary* credentials;
         callback(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", [operation responseString]);
-//        NSLog(@"Error: %@", error);
         failure();
         //Show offline
+//        [[UIApplication sharedApplication] keyWindow]
     }];
 }
 

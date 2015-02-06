@@ -1,18 +1,18 @@
 //
-//  TripViewController.m
+//  NoConnectionViewController.m
 //  WolverEats
 //
-//  Created by James Lennon on 2/5/15.
+//  Created by James Lennon on 2/6/15.
 //  Copyright (c) 2015 James Lennon. All rights reserved.
 //
 
-#import "TripViewController.h"
+#import "NoConnectionViewController.h"
 
-@interface TripViewController ()
+@interface NoConnectionViewController ()
 
 @end
 
-@implementation TripViewController
+@implementation NoConnectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,9 +22,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)placeOrder:(id)sender {
 }
 
 /*

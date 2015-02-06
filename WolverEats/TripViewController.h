@@ -11,5 +11,8 @@
 @interface TripViewController : UIViewController
 
 @property NSDictionary* tripData;
+@property (weak, nonatomic) IBOutlet UILabel *tripLabel;
+@property (weak, nonatomic) IBOutlet UILabel *expLabel;
+@property (weak, nonatomic) IBOutlet UILabel *etaLabel;
 
 @end

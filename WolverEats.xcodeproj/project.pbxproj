@@ -18,6 +18,7 @@
 		9D43B3AC1A81D9A8006B418C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D43B3AB1A81D9A8006B418C /* Images.xcassets */; };
 		9D43B3AF1A81D9A8006B418C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D43B3AD1A81D9A8006B418C /* LaunchScreen.xib */; };
 		9D43B3BB1A81D9A8006B418C /* WolverEatsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B3BA1A81D9A8006B418C /* WolverEatsTests.m */; };
+		9D4FEABD1A8535DF0071F1BB /* NoConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4FEABC1A8535DF0071F1BB /* NoConnectionViewController.m */; };
 		9D581EC51A81DFB20013038E /* Backend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581EC41A81DFB20013038E /* Backend.m */; };
 		9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ECA1A81EC020013038E /* LoadingViewController.m */; };
 		9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D581ECD1A81ECE10013038E /* LoginViewController.m */; };
@@ -58,6 +59,8 @@
 		9D43B3B41A81D9A8006B418C /* WolverEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WolverEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D43B3B91A81D9A8006B418C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D43B3BA1A81D9A8006B418C /* WolverEatsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WolverEatsTests.m; sourceTree = "<group>"; };
+		9D4FEABB1A8535DF0071F1BB /* NoConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoConnectionViewController.h; path = Classes/NoConnectionViewController.h; sourceTree = "<group>"; };
+		9D4FEABC1A8535DF0071F1BB /* NoConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoConnectionViewController.m; path = Classes/NoConnectionViewController.m; sourceTree = "<group>"; };
 		9D581EC31A81DFB20013038E /* Backend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Backend.h; path = Classes/Backend.h; sourceTree = "<group>"; };
 		9D581EC41A81DFB20013038E /* Backend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Backend.m; path = Classes/Backend.m; sourceTree = "<group>"; };
 		9D581EC91A81EC020013038E /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingViewController.h; path = Classes/LoadingViewController.h; sourceTree = "<group>"; };
@@ -187,6 +190,8 @@
 				9D34953A1A833EBD007485BD /* WelcomeViewController.m */,
 				9D99C4711A840F8F00431941 /* TripViewController.h */,
 				9D99C4721A840F8F00431941 /* TripViewController.m */,
+				9D4FEABB1A8535DF0071F1BB /* NoConnectionViewController.h */,
+				9D4FEABC1A8535DF0071F1BB /* NoConnectionViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				9D43B3A41A81D9A8006B418C /* FirstViewController.m in Sources */,
 				9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */,
 				9D43B39E1A81D9A8006B418C /* main.m in Sources */,
+				9D4FEABD1A8535DF0071F1BB /* NoConnectionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,8 @@
             int user_id = [resp[@"user_id"] intValue];
             NSLog(@"user id = %d", user_id);
             [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"main"] animated:NO completion:nil];
+        } Failure:^{
+            [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"noconnection"] animated:NO completion:nil];
         }];
     }else{
         [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"welcome"] animated:NO completion:nil];
