@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5gJ-da-S5Q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5gJ-da-S5Q">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -27,7 +27,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Restaurant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ekW-ef-h79">
-                                                    <rect key="frame" x="32" y="11" width="291" height="26"/>
+                                                    <rect key="frame" x="130" y="8" width="291" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="291" id="jDi-l9-Fgf"/>
                                                     </constraints>
@@ -44,14 +44,18 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" tag="103" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ahv-u3-cOl">
+                                                    <rect key="frame" x="14" y="8" width="30" height="28"/>
+                                                    <color key="backgroundColor" red="1" green="0.62188126905004137" blue="0.20792670314031081" alpha="1" colorSpace="calibratedRGB"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ekW-ef-h79" firstAttribute="leading" secondItem="7QS-28-ux1" secondAttribute="leadingMargin" constant="24" id="1Qy-xW-xLr"/>
+                                                <constraint firstItem="ekW-ef-h79" firstAttribute="leading" secondItem="7QS-28-ux1" secondAttribute="leadingMargin" constant="122" id="1Qy-xW-xLr"/>
                                                 <constraint firstItem="rIy-t8-aaR" firstAttribute="top" secondItem="7QS-28-ux1" secondAttribute="topMargin" constant="1" id="8nh-Bk-fvg"/>
                                                 <constraint firstItem="rIy-t8-aaR" firstAttribute="centerY" secondItem="7QS-28-ux1" secondAttribute="centerY" id="VVg-Uj-mfi"/>
                                                 <constraint firstItem="rIy-t8-aaR" firstAttribute="trailing" secondItem="7QS-28-ux1" secondAttribute="trailingMargin" id="fKi-gp-yH6"/>
-                                                <constraint firstItem="ekW-ef-h79" firstAttribute="top" secondItem="7QS-28-ux1" secondAttribute="topMargin" constant="2" id="swa-Y5-EpZ"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ekW-ef-h79" secondAttribute="bottom" constant="-1" id="tFi-9e-mPW"/>
+                                                <constraint firstItem="ekW-ef-h79" firstAttribute="top" secondItem="7QS-28-ux1" secondAttribute="topMargin" id="swa-Y5-EpZ"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ekW-ef-h79" secondAttribute="bottom" constant="1.5" id="tFi-9e-mPW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

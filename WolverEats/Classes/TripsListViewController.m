@@ -10,6 +10,7 @@
 #import "TripViewController.h"
 #import "Backend.h"
 #import <UIScrollView+SVPullToRefresh.h>
+#import "NSDate+Helper.h"
 
 
 @interface TripsListViewController ()
@@ -60,16 +61,35 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:@"tripCell"];
+    //if (!cell) {
+      //  cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tripCell"];
+    //}
     NSDictionary* trip = _tripsData[indexPath.row];
     
     UILabel* restaurant = (UILabel*)[cell viewWithTag:101];
     restaurant.text = trip[@"restaurant_name"];
     
     int eta = [trip[@"eta"] intValue];
-    int hours = (eta % (24*3600))/(3600);
-    int minutes = (eta % (3600))/(60);
+    NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
     UILabel* time = (UILabel*)[cell viewWithTag:102];
-    time.text = [NSString stringWithFormat:@"%d:%02d", hours, minutes];
+    NSString *etaString = [NSDate stringFromDate:etaDate withFormat:@"hh:mm"];
+    time.text = [NSString stringWithFormat:@"%@", etaString];
+    
+    //change when James writes prof URL code in server
+    NSURL *profURL = [NSURL URLWithString:@"http://placehold.it/30x30"];
+    UIImageView *profView = (UIImageView*)[cell viewWithTag:103];
+
+    dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(concurrentQueue, ^{
+        NSData *image = [[NSData alloc] initWithContentsOfURL:profURL];
+        
+        
+        //this will set the image when loading is finished
+        dispatch_async(dispatch_get_main_queue(), ^{
+            profView.image = [UIImage imageWithData:image];
+        });
+    });
+    
     return cell;
 }
 

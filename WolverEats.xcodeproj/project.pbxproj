@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6675CDBB6054EBAA2D3A0F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F536F9F2A527E03A449678 /* libPods.a */; };
+		7E513D4E1A8BD46F004D0505 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */; };
 		9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3495371A8336E2007485BD /* TripsListViewController.m */; };
 		9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D34953A1A833EBD007485BD /* WelcomeViewController.m */; };
 		9D43B39E1A81D9A8006B418C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B39D1A81D9A8006B418C /* main.m */; };
@@ -40,6 +41,8 @@
 		04F536F9F2A527E03A449678 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7E513D4C1A8BD46F004D0505 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		9D3495361A8336E2007485BD /* TripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripsListViewController.h; path = Classes/TripsListViewController.h; sourceTree = "<group>"; };
 		9D3495371A8336E2007485BD /* TripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripsListViewController.m; path = Classes/TripsListViewController.m; sourceTree = "<group>"; };
 		9D3495391A833EBD007485BD /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
@@ -101,6 +104,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7E3BC0621A8BD45400F52D75 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				7E513D4C1A8BD46F004D0505 /* NSDate+Helper.h */,
+				7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		9D43B38F1A81D9A8006B418C = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +136,7 @@
 		9D43B39A1A81D9A8006B418C /* WolverEats */ = {
 			isa = PBXGroup;
 			children = (
+				7E3BC0621A8BD45400F52D75 /* Libraries */,
 				9D581EC61A81EBB00013038E /* ViewControllers */,
 				9D43B3C41A81DCFD006B418C /* Networking */,
 				9D43B39F1A81D9A8006B418C /* AppDelegate.h */,
@@ -345,6 +358,7 @@
 				9D99C4731A840F8F00431941 /* TripViewController.m in Sources */,
 				9D43B3A71A81D9A8006B418C /* SecondViewController.m in Sources */,
 				9D43B3A11A81D9A8006B418C /* AppDelegate.m in Sources */,
+				7E513D4E1A8BD46F004D0505 /* NSDate+Helper.m in Sources */,
 				9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */,
 				9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */,
 				9D43B3A41A81D9A8006B418C /* FirstViewController.m in Sources */,
