@@ -7,6 +7,8 @@
 //
 
 #import "TripViewController.h"
+#import "TripsListViewController.h"
+#import "Backend.h"
 
 @interface TripViewController ()
 
@@ -16,6 +18,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _tripLabel.text = _tripData[@"restaurant_name"];
+    
+    int eta = [_tripData[@"eta"] intValue];
+    int hours = (eta % (24*3600))/(3600);
+    int minutes = (eta % (3600))/(60);
+    
+    _etaLabel.text = [NSString stringWithFormat:@"%d:%02d", hours, minutes];
+    int expiration = [_tripData[@"expiration"] intValue];
+    int hours1 = (expiration % (24*3600))/(3600);
+    int minutes1 = (expiration % (3600))/(60);
+    
+    NSString *driverID = _tripData[@"driver_id"];
+    
+    _expLabel.text = [NSString stringWithFormat:@"%d:%02d", hours1, minutes1];
+    
+    NSDictionary *userDic = @{@"user_id" : driverID};
+    [Backend sendRequestWithURL:@"users/get" Parameters:userDic Callback:^(NSDictionary * data) {
+        _userData = data[@"user"];
+    }];
+    
+     NSString* firstName = _userData[@"first_name"];
+     NSString* lastName = _userData[@"last_name"];
+    NSLog(@"%@ %@",firstName, lastName);
+     
+    
     // Do any additional setup after loading the view.
 }
 

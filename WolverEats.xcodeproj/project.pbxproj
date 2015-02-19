@@ -99,6 +99,7 @@
 				652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9D43B38F1A81D9A8006B418C = {
@@ -107,7 +108,6 @@
 				9D43B39A1A81D9A8006B418C /* WolverEats */,
 				9D43B3B71A81D9A8006B418C /* WolverEatsTests */,
 				9D43B3991A81D9A8006B418C /* Products */,
-				594E02BF31F05B483D270E44 /* Pods */,
 				B1FABF83039DC021316811A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +152,7 @@
 		9D43B3B71A81D9A8006B418C /* WolverEatsTests */ = {
 			isa = PBXGroup;
 			children = (
+				594E02BF31F05B483D270E44 /* Pods */,
 				9D43B3BA1A81D9A8006B418C /* WolverEatsTests.m */,
 				9D43B3B81A81D9A8006B418C /* Supporting Files */,
 			);
