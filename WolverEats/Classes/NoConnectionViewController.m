@@ -16,8 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UILabel *noConnection = [[UILabel alloc]initWithFrame:CGRectMake(130, 63, 341, 85)];
+    noConnection.text = @"No Internet Connection";
+    noConnection.font = [UIFont systemFontOfSize:40]; 
+    
     // Do any additional setup after loading the view.
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

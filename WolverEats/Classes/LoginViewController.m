@@ -12,7 +12,7 @@
 
 @implementation LoginViewController
 
-- (IBAction)login:(id)sender {
+- (void)login {
     [_loginButton setEnabled:NO];
     
     NSString *email = _emailText.text, *pass = _passwordText.text;
@@ -38,6 +38,43 @@
     }];
     
 }
+
+-(id)init {
+    if ((self = [super init])){
+      
+        int w = self.view.bounds.size.width;
+        int h = self.view.bounds.size.height;
+        
+        UITextField *emailText = [[UITextField alloc]initWithFrame: CGRectMake(0, h/5, 2w/3, 30)];
+        emailText.placeholder = @"email";
+        emailText.backgroundColor = [UIColor whiteColor];
+        emailText.textColor = [UIColor blackColor];
+        emailText.borderStyle = UITextBorderStyleRoundedRect;
+        emailText.textAlignment = UITextAlignmentLeft;
+        emailText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        emailText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview:emailText];
+        
+        UITextField *passwordText = [[UITextField alloc]initWithFrame: CGRectMake(0, h/5 + 100, 2w/3, 30)];
+        passwordText.placeholder = @"password";
+        passwordText.backgroundColor = [UIColor whiteColor];
+        passwordText.textColor = [UIColor blackColor];
+        passwordText.borderStyle = UITextBorderStyleRoundedRect;
+        passwordText.textAlignment = UITextAlignmentLeft;
+        passwordText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        passwordText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview:passwordText];
+        
+        
+        UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        loginButton.frame = CGRectMake(0, 3*h/5, w, 100);
+        [loginButton setTitle:@"login" forState:UIControlStateNormal];
+        [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:loginButton];
+    }
+    return self;
+}
+
 
 
 @end
