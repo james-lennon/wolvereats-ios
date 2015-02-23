@@ -19,25 +19,33 @@
 
 @implementation TripsListViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    [self.tableView addPullToRefreshWithActionHandler:^{
-        // prepend data to dataSource, insert cells at top of table view
-        // call [tableView.pullToRefreshView stopAnimating] when done
-        [Backend sendRequestWithURL:@"trips/get_all_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-            _tripsData = [data objectForKey:@"trips"];
-            [_tableView.pullToRefreshView stopAnimating];
-            [_tableView reloadData];
-        }];
-    }];
-    [_tableView triggerPullToRefresh];
-}
+- (id) init {
+    if ((self = [super init])) {
+        //also have to create the tripsCEll - dont forget
+        NSLog(@"trips coming");
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
+#warning FIX THIS SO IT MAKES THE TABLE VIEW DISPLAY - ITS COMING UP BLANK
 
--(void)viewDidAppear:(BOOL)animated{
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [self.view addSubview:_tableView];
+        
+        
+        [_tableView addPullToRefreshWithActionHandler:^{
+            
+            // prepend data to dataSource, insert cells at top of table view
+            // call [tableView.pullToRefreshView stopAnimating] when done
+            [Backend sendRequestWithURL:@"trips/get_all_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+                _tripsData = [data objectForKey:@"trips"];
+                [_tableView.pullToRefreshView stopAnimating];
+                [_tableView reloadData];
+            }];
+        }];
+        [_tableView triggerPullToRefresh];
+
+    }
     
+    return self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,8 +74,11 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     //}
     NSDictionary* trip = _tripsData[indexPath.row];
     
-    UILabel* restaurant = (UILabel*)[cell viewWithTag:101];
+    /*UILabel* restaurant = [UILabel alloc] initWithFrame:CGRectMake(10, 10, 291, 26);
     restaurant.text = trip[@"restaurant_name"];
+    restaurant.textAlignment = NSTextAlignmentCenter;
+    restaurant.font = [UIFont systemFontOfSize:10];
+    [cell.l addSubview:welcome];*/
     
     int eta = [trip[@"eta"] intValue];
     NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];

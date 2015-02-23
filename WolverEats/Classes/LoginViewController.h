@@ -14,5 +14,4 @@
 @property (weak, nonatomic)  UITextField *passwordText;
 @property (weak, nonatomic)  UIButton *loginButton;
 
-
 @end

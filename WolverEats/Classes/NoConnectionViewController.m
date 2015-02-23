@@ -14,6 +14,21 @@
 
 @implementation NoConnectionViewController
 
+
+- (id) init {
+    if ((self = [super init])) {
+        
+        UILabel *welcome = [[UILabel alloc] initWithFrame:CGRectMake(50, 77, 200, 72)];
+        welcome.text = @"No connection..chilll";
+        welcome.textAlignment = NSTextAlignmentCenter;
+        welcome.font = [UIFont systemFontOfSize:20];
+        [self.view addSubview:welcome];
+
+        
+    }
+    
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
