@@ -12,11 +12,10 @@
 
 @property NSDictionary* tripData;
 @property NSDictionary* userData;
-@property (weak, nonatomic) IBOutlet UIImageView *driverImageView;
-@property (weak, nonatomic) IBOutlet UILabel *tripLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *expLabel;
-@property (weak, nonatomic) IBOutlet UILabel *etaLabel;
+@property UILabel* nameLabel;
+@property UILabel* expLabel;
+@property UILabel* etaLabel;
+
 
 - (IBAction)placeOrder:(id)sender;
 

@@ -18,32 +18,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tripLabel.text = _tripData[@"restaurant_name"];
     
+    int w = self.view.bounds.size.width;
+    int h = self.view.bounds.size.height;
+    
+    UILabel *tripLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 100, w, 100)];
+    tripLabel.text = _tripData[@"restaurant_name"];
+    tripLabel.textAlignment = NSTextAlignmentCenter;
+    tripLabel.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:tripLabel];
+    
+    
+    UILabel *etaLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, w/2, w, 100)];
     int eta = [_tripData[@"eta"] intValue];
     int hours = (eta % (24*3600))/(3600);
     int minutes = (eta % (3600))/(60);
+    etaLabel.textAlignment = NSTextAlignmentCenter;
+    NSString *etaString = @"Arrive By: ";
+    etaLabel.text = [NSString stringWithFormat:@"%@ %d:%02d",etaString, hours, minutes];
+    [self.view addSubview:etaLabel];
     
-    _etaLabel.text = [NSString stringWithFormat:@"%d:%02d", hours, minutes];
+    
+    UILabel *expLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, w/2 + 100, w, 100)];
     int expiration = [_tripData[@"expiration"] intValue];
     int hours1 = (expiration % (24*3600))/(3600);
     int minutes1 = (expiration % (3600))/(60);
+    expLabel.text = [NSString stringWithFormat:@" %d:%02d", hours1, minutes1];
+    [self.view addSubview:expLabel];
     
+    
+    UILabel *nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, w, 100)];
     NSString *driverID = _tripData[@"driver_id"];
-    
-    _expLabel.text = [NSString stringWithFormat:@"%d:%02d", hours1, minutes1];
-    
+
     NSDictionary *userDic = @{@"user_id" : driverID};
     [Backend sendRequestWithURL:@"users/get" Parameters:userDic Callback:^(NSDictionary * data) {
         _userData = data[@"user"];
+        NSString* firstName = _userData[@"first_name"];
+        NSString* lastName = _userData[@"last_name"];
+        
+        nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     }];
-    
-     NSString* firstName = _userData[@"first_name"];
-     NSString* lastName = _userData[@"last_name"];
-    NSLog(@"%@ %@",firstName, lastName);
-     
-    
-    // Do any additional setup after loading the view.
+    [self.view addSubview:nameLabel];
+
+// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

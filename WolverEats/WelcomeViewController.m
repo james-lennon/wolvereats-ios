@@ -16,10 +16,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    int w = self.view.bounds.size.width;
+    int h = self.view.bounds.size.height;
+    
+    UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5, w, 100)];
+    welcome.text = @"WolverEats";
+    welcome.textAlignment = NSTextAlignmentCenter;
+    welcome.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:welcome];
+    
+    UIButton *login = [[UIButton alloc]initWithFrame:CGRectMake(214, 466, 55, 30)];
+    [login setTitle:@"login" forState:UIControlStateNormal];
+    [self.view addSubview:login];
+    
+    UIButton *signup = [[UIButton alloc]initWithFrame:CGRectMake(346, 466, 43, 30)];
+    [signup setTitle:@"signup" forState:UIControlStateNormal];
+    [self.view addSubview:signup];
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
+-(id)init{
+
+    UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(157, 77, 287, 72)];
+    welcome.text = @"WolverEats";
+    welcome.textAlignment = NSTextAlignmentCenter;
+    welcome.font = [UIFont systemFontOfSize:40];
+    [self.view addSubview:welcome];
+    
+    UIButton *login = [[UIButton alloc]initWithFrame:CGRectMake(214, 466, 55, 30)];
+    [login setTitle:@"login" forState:UIControlStateNormal];
+    
+    UIButton *signup = [[UIButton alloc]initWithFrame:CGRectMake(346, 466, 43, 30)];
+    [signup setTitle:@"signup" forState:UIControlStateNormal];
+
+    
+}- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
