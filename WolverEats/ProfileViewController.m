@@ -1,34 +1,19 @@
 //
-//  NoConnectionViewController.m
+//  ProfileViewController.m
 //  WolverEats
 //
-//  Created by James Lennon on 2/6/15.
+//  Created by Cameron Cohen on 2/20/15.
 //  Copyright (c) 2015 James Lennon. All rights reserved.
 //
 
-#import "NoConnectionViewController.h"
+#import "ProfileViewController.h"
 
-@interface NoConnectionViewController ()
+@interface ProfileViewController ()
 
 @end
 
-@implementation NoConnectionViewController
+@implementation ProfileViewController
 
-
-- (id) init {
-    if ((self = [super init])) {
-        
-        UILabel *welcome = [[UILabel alloc] initWithFrame:CGRectMake(50, 77, 200, 72)];
-        welcome.text = @"No connection..chilll";
-        welcome.textAlignment = NSTextAlignmentCenter;
-        welcome.font = [UIFont systemFontOfSize:20];
-        [self.view addSubview:welcome];
-
-        
-    }
-    
-    return self;
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

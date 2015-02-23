@@ -12,6 +12,14 @@
 
 @implementation SignUpViewController
 
+- (id) init {
+    if ((self = [super init])) {
+        
+    }
+    
+    return self;
+}
+
 - (IBAction)signUp:(id)sender {
     [_signupButton setEnabled:NO];
     

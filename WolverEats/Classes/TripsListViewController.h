@@ -10,7 +10,7 @@
 
 @interface TripsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property NSArray* tripsData;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray* tripsData;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end

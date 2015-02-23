@@ -8,6 +8,10 @@
 
 #import "LoadingViewController.h"
 #import "Backend.h"
+#import "WelcomeViewController.h"
+#import "TripsListViewController.h"
+#import "ProfileViewController.h"
+#import "NoConnectionViewController.h"
 
 @implementation LoadingViewController
 
@@ -17,13 +21,42 @@
         [Backend sendRequestWithURL:@"users/login" Parameters:@{} Callback:^(NSDictionary * resp) {
             int user_id = [resp[@"user_id"] intValue];
             NSLog(@"user id = %d", user_id);
-            [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"main"] animated:NO completion:nil];
+            UITabBarController *myTab = [[UITabBarController alloc] init];
+            
+            UINavigationController *tripsNav = [[UINavigationController alloc] initWithRootViewController:[[TripsListViewController alloc] init]];
+            UINavigationController *profileNav = [[UINavigationController alloc] initWithRootViewController:[[ProfileViewController alloc] init]];
+            
+            myTab.viewControllers = @[tripsNav, profileNav];
+            
+            [self presentViewController:[[UITabBarController alloc] init] animated:NO completion:nil];
+            
         } Failure:^{
-            [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"noconnection"] animated:NO completion:nil];
+            NoConnectionViewController *noConnectionController = [[NoConnectionViewController alloc] init];
+            [self presentViewController:noConnectionController animated:NO completion:nil];
+            
         }];
     }else{
-        [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"welcome"] animated:NO completion:nil];
+        WelcomeViewController *welcomeController = [[WelcomeViewController alloc] init];
+        [self presentViewController:welcomeController animated:NO completion:nil];
     }
 }
+
+- (id) init {
+    if ((self = [super init])) {
+        
+        int w = self.view.bounds.size.width;
+        int h = self.view.bounds.size.height;
+        
+        UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,77,21)];
+        loadingLabel.center = CGPointMake(w/2, h/2);
+        loadingLabel.text = @"Loading...";
+        loadingLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:loadingLabel];
+            
+    }
+    return self;
+}
+
+
 
 @end

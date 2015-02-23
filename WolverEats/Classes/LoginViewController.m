@@ -12,7 +12,7 @@
 
 @implementation LoginViewController
 
-- (IBAction)login:(id)sender {
+- (void)login {
     [_loginButton setEnabled:NO];
     
     NSString *email = _emailText.text, *pass = _passwordText.text;
@@ -38,6 +38,5 @@
     }];
     
 }
-
 
 @end
