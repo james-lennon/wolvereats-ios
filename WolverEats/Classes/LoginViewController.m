@@ -43,37 +43,49 @@
 -(id)init {
     if ((self = [super init])){
       
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(dismissKeyboard)];
+        
+        [self.view addGestureRecognizer:tap];
+        
         int w = self.view.bounds.size.width;
         int h = self.view.bounds.size.height;
         
-        UITextField *emailText = [[UITextField alloc]initWithFrame: CGRectMake(0, h/5, 2w/3, 30)];
-        emailText.placeholder = @"email";
-        emailText.backgroundColor = [UIColor whiteColor];
-        emailText.textColor = [UIColor blackColor];
-        emailText.borderStyle = UITextBorderStyleRoundedRect;
-        emailText.textAlignment = UITextAlignmentLeft;
-        emailText.clearButtonMode = UITextFieldViewModeWhileEditing;
-        emailText.returnKeyType = UIReturnKeyGo;
-        [self.view addSubview:emailText];
+        _emailText = [[UITextField alloc] initWithFrame: CGRectMake(w/5, h/4, 3*w/5, 30)];
+        _emailText.placeholder = @"email";
+        _emailText.backgroundColor = [UIColor whiteColor];
+        _emailText.textColor = [UIColor blackColor];
+        _emailText.borderStyle = UITextBorderStyleRoundedRect;
+        _emailText.textAlignment = NSTextAlignmentLeft;
+        _emailText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _emailText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview:_emailText];
         
-        UITextField *passwordText = [[UITextField alloc]initWithFrame: CGRectMake(0, h/5 + 100, 2w/3, 30)];
-        passwordText.placeholder = @"password";
-        passwordText.backgroundColor = [UIColor whiteColor];
-        passwordText.textColor = [UIColor blackColor];
-        passwordText.borderStyle = UITextBorderStyleRoundedRect;
-        passwordText.textAlignment = UITextAlignmentLeft;
-        passwordText.clearButtonMode = UITextFieldViewModeWhileEditing;
-        passwordText.returnKeyType = UIReturnKeyGo;
-        [self.view addSubview:passwordText];
+        _passwordText = [[UITextField alloc] initWithFrame: CGRectMake(w/5, h/4 + 50, 3*w/5, 30)];
+        _passwordText.placeholder = @"password";
+        _passwordText.backgroundColor = [UIColor whiteColor];
+        _passwordText.textColor = [UIColor blackColor];
+        _passwordText.borderStyle = UITextBorderStyleRoundedRect;
+        _passwordText.textAlignment = NSTextAlignmentLeft;
+        _passwordText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _passwordText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview:_passwordText];
         
         
-        UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        loginButton.frame = CGRectMake(0, 3*h/5, w, 100);
-        [loginButton setTitle:@"login" forState:UIControlStateNormal];
-        [loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:loginButton];
+        _loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _loginButton.frame = CGRectMake(0, 3*h/5, w, 100);
+        [_loginButton setTitle:@"login" forState:UIControlStateNormal];
+        [_loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_loginButton];
     }
     return self;
+}
+
+-(void)dismissKeyboard {
+    [_emailText resignFirstResponder];
+    [_passwordText resignFirstResponder];
+    
 }
 
 

@@ -10,10 +10,12 @@
 
 @interface SignUpViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *emailText;
-@property (weak, nonatomic) IBOutlet UITextField *fnameText;
-@property (weak, nonatomic) IBOutlet UITextField *lnameText;
-@property (weak, nonatomic) IBOutlet UITextField *phoneText;
-@property (weak, nonatomic) IBOutlet UIButton *signupButton;
+@property (strong, nonatomic)  UITextField *emailText;
+@property (strong, nonatomic)  UITextField *fNameText;
+@property (strong, nonatomic)  UITextField *lNameText;
+@property (strong, nonatomic)  UITextField *phoneText;
+@property (strong, nonatomic)  UIButton *signupButton;
+
+-(void)signUp; 
 
 @end
