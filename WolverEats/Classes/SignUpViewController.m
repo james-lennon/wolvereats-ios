@@ -12,18 +12,81 @@
 
 @implementation SignUpViewController
 
-- (id) init {
-    if ((self = [super init])) {
+
+-(id)init {
+    if ((self = [super init])){
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(dismissKeyboard)];
+        
+        [self.view addGestureRecognizer:tap];
+        
+        int w = self.view.bounds.size.width;
+        int h = self.view.bounds.size.height;
+        
+        _fNameText = [[UITextField alloc]initWithFrame: CGRectMake(w/5, h/4, 3*w/5, 30)];
+        _fNameText.placeholder = @"First Name";
+        _fNameText.backgroundColor = [UIColor whiteColor];
+        _fNameText.textColor = [UIColor blackColor];
+        _fNameText.borderStyle = UITextBorderStyleRoundedRect;
+        _fNameText.textAlignment = NSTextAlignmentLeft;
+        _fNameText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _fNameText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview: _fNameText];
+        
+        _lNameText = [[UITextField alloc]initWithFrame: CGRectMake(w/5, h/4 + 50, 3*w/5, 30)];
+        _lNameText.placeholder = @"Last Name";
+        _lNameText.backgroundColor = [UIColor whiteColor];
+        _lNameText.textColor = [UIColor blackColor];
+        _lNameText.borderStyle = UITextBorderStyleRoundedRect;
+        _lNameText.textAlignment = NSTextAlignmentLeft;
+        _lNameText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _lNameText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview:_lNameText];
+        
+        _emailText = [[UITextField alloc]initWithFrame: CGRectMake(w/5, h/4 + 100, 3*w/5, 30)];
+        _emailText.placeholder = @"Email";
+        _emailText.backgroundColor = [UIColor whiteColor];
+        _emailText.textColor = [UIColor blackColor];
+        _emailText.borderStyle = UITextBorderStyleRoundedRect;
+        _emailText.textAlignment = NSTextAlignmentLeft;
+        _emailText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _emailText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview:_emailText];
+        
+        _phoneText = [[UITextField alloc]initWithFrame: CGRectMake(w/5, h/4 + 150, 3*w/5, 30)];
+        _phoneText.placeholder = @"Phone Number";
+        _phoneText.backgroundColor = [UIColor whiteColor];
+        _phoneText.textColor = [UIColor blackColor];
+        _phoneText.borderStyle = UITextBorderStyleRoundedRect;
+        _phoneText.textAlignment = NSTextAlignmentLeft;
+        _phoneText.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _phoneText.returnKeyType = UIReturnKeyGo;
+        [self.view addSubview:_phoneText];
+        
+        _signupButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _signupButton.frame = CGRectMake(0, 3*h/5, w, 100);
+        [_signupButton setTitle:@"Sign Up" forState:UIControlStateNormal];
+        [_signupButton addTarget:self action:@selector(signUp) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_signupButton];
     }
-    
     return self;
 }
 
-- (IBAction)signUp:(id)sender {
+
+-(void)dismissKeyboard {
+    [_fNameText resignFirstResponder];
+    [_lNameText resignFirstResponder];
+    [_emailText resignFirstResponder];
+    [_phoneText resignFirstResponder];
+}
+
+
+- (void)signUp {
     [_signupButton setEnabled:NO];
     
-    NSString* email = _emailText.text, *fname = _fnameText.text, *lname = _lnameText.text, *phone = _phoneText.text;
+    NSString* email = _emailText.text, *fname = _fNameText.text, *lname = _lNameText.text, *phone = _phoneText.text;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
@@ -48,5 +111,7 @@
         }
     }];
 }
+
+
 
 @end

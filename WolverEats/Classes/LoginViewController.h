@@ -10,8 +10,8 @@
 
 @interface LoginViewController : UIViewController
 
-@property (weak, nonatomic)  UITextField *emailText;
-@property (weak, nonatomic)  UITextField *passwordText;
-@property (weak, nonatomic)  UIButton *loginButton;
+@property (strong, nonatomic)  UITextField *emailText;
+@property (strong, nonatomic)  UITextField *passwordText;
+@property (strong, nonatomic)  UIButton *loginButton;
 
 @end
