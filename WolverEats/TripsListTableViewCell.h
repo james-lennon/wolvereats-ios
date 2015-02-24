@@ -14,9 +14,6 @@
 @property (nonatomic, strong) UILabel *etaLabel;
 @property (nonatomic, strong) UIImageView *profView;
 
-@property (nonatomic, strong) UIImage *profImage;
-@property (nonatomic, strong) NSString *restaurantName;
-@property (nonatomic, strong) NSString *eta;
 
 
 

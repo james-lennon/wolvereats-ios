@@ -15,13 +15,19 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // configure control(s)
-//        self.profView = 
-//        
-//        [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 300, 30)];
-//        self.descriptionLabel.textColor = [UIColor blackColor];
-//        self.descriptionLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
-//        
-//        [self addSubview:self.descriptionLabel];
+        _profView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
+        [self.contentView addSubview:_profView];
+        
+        _restaurantLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 100, 30)];
+        _restaurantLabel.textColor = [UIColor blackColor];
+        _restaurantLabel.font = [UIFont fontWithName:@"Calibri" size:12.0f];
+        [self.contentView addSubview:_restaurantLabel];
+        
+        
+        _etaLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 100, 30)];
+        _etaLabel.textColor = [UIColor blackColor];
+        _etaLabel.font = [UIFont fontWithName:@"Calibri" size:12.0f];
+        [self.contentView addSubview:_etaLabel];
     }
     return self;
 }
