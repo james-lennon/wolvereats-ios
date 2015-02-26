@@ -16,8 +16,10 @@
 
 @implementation TripViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (id)initWithData:(NSDictionary *)tripData {
+    if ((self = [super init])) {
+        
+    _tripData = tripData;
     
     int w = self.view.bounds.size.width;
     int h = self.view.bounds.size.height;
@@ -59,8 +61,10 @@
         nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     }];
     [self.view addSubview:nameLabel];
+    }
+    
+    return self;
 
-// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

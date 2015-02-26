@@ -22,33 +22,44 @@
 
 - (id) init {
     if ((self = [super init])) {
-        //also have to create the tripsCEll - dont forget
-        NSLog(@"trips coming");
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
+        
+        self.title = @"Trips";
+
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
 
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        [self.tableView registerClass:[TripsListTableViewCell class] forCellReuseIdentifier:@"TripCell"];
-
+        
+        UIEdgeInsets inset = UIEdgeInsetsMake(60, 0, 0, 0);
+        _tableView.contentInset = inset;
+        _tableView.scrollIndicatorInsets = inset;
+        
+        [_tableView registerClass:[TripsListTableViewCell class] forCellReuseIdentifier:@"TripCell"];
         
         [self.view addSubview:_tableView];
         
         
         [_tableView addPullToRefreshWithActionHandler:^{
-            
+            NSLog(@"refresh");
             // prepend data to dataSource, insert cells at top of table view
             // call [tableView.pullToRefreshView stopAnimating] when done
             [Backend sendRequestWithURL:@"trips/get_all_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+                NSLog(@"Trip response: %@", data);
                 _tripsData = [data objectForKey:@"trips"];
                 [_tableView.pullToRefreshView stopAnimating];
                 [_tableView reloadData];
             }];
         }];
-        [_tableView triggerPullToRefresh];
 
     }
     
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [_tableView triggerPullToRefresh];
+    //[self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
+  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,8 +115,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary* trip = _tripsData[indexPath.row];
-    TripViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"trip"];
-    vc.tripData = trip;
+    TripViewController *vc = [[TripViewController alloc] initWithData:trip];
+    
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 

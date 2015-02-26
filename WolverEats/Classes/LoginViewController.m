@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <MBProgressHUD.h>
 #import "Backend.h"
+#import "MainTabBarViewController.h"
 
 @implementation LoginViewController
 
@@ -33,7 +34,7 @@
             [alert show];
         }else{
             int user_id = [data[@"user_id"] intValue];
-            [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"main"] animated:NO completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
     

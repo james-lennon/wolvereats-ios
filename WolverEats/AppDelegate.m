@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "LoadingViewController.h"
+#import "TripsListViewController.h"
+#import "ProfileViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,10 +22,17 @@
     // Override point for customization after application launch.
     
     /* Create window */
+    LoadingViewController *loadingController = [[LoadingViewController alloc] init];
+    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[LoadingViewController alloc] init];
+    self.window.rootViewController = loadingController;
     [self.window makeKeyAndVisible];
+    
+    UINavigationController *tripsNav = [[UINavigationController alloc] initWithRootViewController:[[TripsListViewController alloc] init]];
+    UINavigationController *profileNav = [[UINavigationController alloc] initWithRootViewController:[[ProfileViewController alloc] init]];
+    loadingController.viewControllers = @[tripsNav, profileNav];
+
 
     return YES;
 }

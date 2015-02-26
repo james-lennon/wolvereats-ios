@@ -9,6 +9,7 @@
 #import "WelcomeViewController.h"
 #import "LoginViewController.h"
 #import "SignUpViewController.h"
+#import "Backend.h"
 
 @interface WelcomeViewController ()
 
@@ -70,6 +71,14 @@
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    BOOL success = [Backend loadCredentials];
+    if(success){
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -77,12 +86,14 @@
 }
 - (void)showLogin {
     LoginViewController *loginController = [[LoginViewController alloc] init];
-    [self presentViewController:loginController animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginController];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)showSignUp {
     SignUpViewController *signUpController = [[SignUpViewController alloc] init];
-    [self presentViewController:signUpController animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:signUpController];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 /*

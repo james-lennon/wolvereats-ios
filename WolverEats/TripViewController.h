@@ -18,5 +18,7 @@
 
 
 - (IBAction)placeOrder:(id)sender;
+- (id)initWithData:(NSDictionary *)tripData;
+
 
 @end
