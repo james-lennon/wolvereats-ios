@@ -16,27 +16,6 @@
 
 @implementation WelcomeViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    int w = self.view.bounds.size.width;
-    int h = self.view.bounds.size.height;
-    
-    UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5, w, 100)];
-    welcome.text = @"WolverEats";
-    welcome.textAlignment = NSTextAlignmentCenter;
-    welcome.font = [UIFont systemFontOfSize:40];
-    [self.view addSubview:welcome];
-    
-    UIButton *login = [[UIButton alloc]initWithFrame:CGRectMake(214, 466, 55, 30)];
-    [login setTitle:@"login" forState:UIControlStateNormal];
-    [self.view addSubview:login];
-    
-    UIButton *signup = [[UIButton alloc]initWithFrame:CGRectMake(346, 466, 43, 30)];
-    [signup setTitle:@"signup" forState:UIControlStateNormal];
-    [self.view addSubview:signup];
-    // Do any additional setup after loading the view.
-}
 
 
 - (id) init {
@@ -44,21 +23,21 @@
         
         int w = self.view.bounds.size.width;
         int h = self.view.bounds.size.height;
-        UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5, w, 100)];
         
+        UILabel *welcome = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5, w, 100)];
         welcome.text = @"WolverEats";
         welcome.textAlignment = NSTextAlignmentCenter;
         welcome.font = [UIFont systemFontOfSize:40];
         [self.view addSubview:welcome];
     
         UIButton *login = [UIButton buttonWithType:UIButtonTypeSystem];
-        login.frame = CGRectMake(30, 30, 55, 30);
-        [login setTitle:@"login" forState:UIControlStateNormal];
+        login.frame = CGRectMake(w/4, 3*h/5, w/4, 30);
+        [login setTitle:@"Login" forState:UIControlStateNormal];
         [login addTarget:self action:@selector(showLogin) forControlEvents:UIControlEventTouchUpInside];
 
         UIButton *signup = [UIButton buttonWithType:UIButtonTypeSystem];
-        signup.frame = CGRectMake(50, 70, 43, 30);
-        [signup setTitle:@"signup" forState:UIControlStateNormal];
+        signup.frame = CGRectMake(w/2, 3*h/5, w/4, 30);
+        [signup setTitle:@"Sign Up" forState:UIControlStateNormal];
         [signup addTarget:self action:@selector(showSignUp) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:login];

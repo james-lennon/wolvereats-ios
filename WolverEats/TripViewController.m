@@ -9,6 +9,7 @@
 #import "TripViewController.h"
 #import "TripsListViewController.h"
 #import "Backend.h"
+#import "OrderViewController.h"
 
 @interface TripViewController ()
 
@@ -59,6 +60,16 @@
         nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     }];
     [self.view addSubview:nameLabel];
+    
+    
+    _orderButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    _orderButton.frame = CGRectMake(0, 3*h/5 + 50, w, 100);
+    [_orderButton setTitle:@"Place Order" forState:UIControlStateNormal];
+    [_orderButton addTarget: self action:@selector(placeOrder) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_orderButton];
+
+    
+   
 
 // Do any additional setup after loading the view.
 }
@@ -68,7 +79,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)placeOrder:(id)sender {
+- (void)placeOrder: {
+    OrderViewController *orderController = [[OrderViewController alloc] init];
+    orderController.tripData = _tripData;
+    orderController.userData = _userData; 
+    [self presentViewController:orderController animated:YES completion:nil];
+   
 }
 
 /*

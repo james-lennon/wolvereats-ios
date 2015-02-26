@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import <MBProgressHUD.h>
 #import "Backend.h"
+#import "WelcomeViewController.h"
 
 @implementation LoginViewController
 
@@ -75,9 +76,15 @@
         
         _loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _loginButton.frame = CGRectMake(0, 3*h/5, w, 100);
-        [_loginButton setTitle:@"login" forState:UIControlStateNormal];
+        [_loginButton setTitle:@"Login" forState:UIControlStateNormal];
         [_loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_loginButton];
+        
+        _backButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _backButton.frame = CGRectMake(0, 3*h/5 + 50, w, 100);
+        [_backButton setTitle:@"Back" forState:UIControlStateNormal];
+        [_backButton addTarget: self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_backButton]; 
     }
     return self;
 }
@@ -86,6 +93,12 @@
     [_emailText resignFirstResponder];
     [_passwordText resignFirstResponder];
     
+}
+
+-(void)back
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 

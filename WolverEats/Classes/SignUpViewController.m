@@ -70,10 +70,20 @@
         [_signupButton setTitle:@"Sign Up" forState:UIControlStateNormal];
         [_signupButton addTarget:self action:@selector(signUp) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_signupButton];
+        
+        _backButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _backButton.frame = CGRectMake(0, 3*h/5 + 50, w, 100);
+        [_backButton setTitle:@"Back" forState:UIControlStateNormal];
+        [_backButton addTarget: self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_backButton];
     }
     return self;
 }
 
+-(void)back
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)dismissKeyboard {
     [_fNameText resignFirstResponder];

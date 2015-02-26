@@ -13,5 +13,7 @@
 @property (strong, nonatomic)  UITextField *emailText;
 @property (strong, nonatomic)  UITextField *passwordText;
 @property (strong, nonatomic)  UIButton *loginButton;
+@property (strong,nonatomic)   UIButton *backButton; 
 
+-(void)back;
 @end

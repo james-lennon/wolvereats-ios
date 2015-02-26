@@ -15,7 +15,9 @@
 @property (strong, nonatomic)  UITextField *lNameText;
 @property (strong, nonatomic)  UITextField *phoneText;
 @property (strong, nonatomic)  UIButton *signupButton;
+@property (strong,nonatomic)   UIButton *backButton;
 
--(void)signUp; 
+-(void)signUp;
+-(void)back; 
 
 @end

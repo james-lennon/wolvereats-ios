@@ -15,7 +15,7 @@
 @property UILabel* nameLabel;
 @property UILabel* expLabel;
 @property UILabel* etaLabel;
-
+@property UIButton *orderButton;
 
 - (IBAction)placeOrder:(id)sender;
 
