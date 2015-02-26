@@ -17,8 +17,10 @@
 
 @implementation TripViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (id)initWithData:(NSDictionary *)tripData {
+    if ((self = [super init])) {
+        
+    _tripData = tripData;
     
     int w = self.view.bounds.size.width;
     int h = self.view.bounds.size.height;
@@ -69,9 +71,9 @@
     [self.view addSubview:_orderButton];
 
     
-   
-
-// Do any additional setup after loading the view.
+    }
+    
+    return self;
 }
 
 - (void)didReceiveMemoryWarning {

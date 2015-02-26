@@ -64,6 +64,7 @@ static NSDictionary* credentials;
         NSDictionary *savedData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
         if([savedData objectForKey:@"email"] && [savedData objectForKey:@"password"]){
             credentials = [NSDictionary dictionaryWithDictionary:savedData];
+            NSLog(@"Credentials loaded!");
             return YES;
         }
     }

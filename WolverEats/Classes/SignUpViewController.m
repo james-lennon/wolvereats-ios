@@ -9,6 +9,7 @@
 #import <MBProgressHUD.h>
 #import "SignUpViewController.h"
 #import "Backend.h"
+#import "LoginViewController.h"
 
 @implementation SignUpViewController
 
@@ -117,7 +118,9 @@
                                                   cancelButtonTitle:@"Okay"
                                                   otherButtonTitles:nil];
             [alert show];
-            [self presentViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"login"] animated:NO completion:nil];
+            
+            LoginViewController *loginController = [[LoginViewController alloc] init];
+            [self.navigationController pushViewController:loginController animated:YES];
         }
     }];
 }

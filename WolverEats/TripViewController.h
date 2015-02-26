@@ -18,5 +18,7 @@
 @property UIButton *orderButton;
 
 - (IBAction)placeOrder:(id)sender;
+- (id)initWithData:(NSDictionary *)tripData;
+
 
 @end
