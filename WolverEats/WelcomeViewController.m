@@ -53,6 +53,7 @@
 -(void)viewDidAppear:(BOOL)animated{
     BOOL success = [Backend loadCredentials];
     if(success){
+        NSLog(@"I got to dismmiss place");
         [self dismissViewControllerAnimated:NO completion:nil];
     }
 }

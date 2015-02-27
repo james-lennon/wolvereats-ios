@@ -34,6 +34,7 @@
                 
             }];
         }else{
+            NSLog(@"not logged in");
             WelcomeViewController *welcomeController = [[WelcomeViewController alloc] init];
             [self presentViewController:welcomeController animated:NO completion:nil];
         }
