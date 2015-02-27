@@ -40,11 +40,9 @@
         
         
         [_tableView addPullToRefreshWithActionHandler:^{
-            NSLog(@"refresh");
             // prepend data to dataSource, insert cells at top of table view
             // call [tableView.pullToRefreshView stopAnimating] when done
             [Backend sendRequestWithURL:@"trips/get_all_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-                NSLog(@"Trip response: %@", data);
                 _tripsData = [data objectForKey:@"trips"];
                 [_tableView.pullToRefreshView stopAnimating];
                 [_tableView reloadData];
