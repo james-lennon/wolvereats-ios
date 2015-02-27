@@ -41,7 +41,7 @@
     loadingLabel.center = CGPointMake(w/2, h/2);
     loadingLabel.text = @"Loading...";
     loadingLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:loadingLabel];
+    //[self.view addSubview:loadingLabel];
 
 }
 
