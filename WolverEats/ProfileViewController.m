@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import "WelcomeViewController.h"
 
 @interface ProfileViewController ()
 
@@ -28,10 +29,23 @@
         loadingLabel.text = @"Loading...";
         loadingLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:loadingLabel];
+        
+        UIButton *test = [UIButton buttonWithType:UIButtonTypeSystem];
+        test.frame = CGRectMake(0, 3*h/5 + 50, w, 100);
+        [test setTitle:@"Back" forState:UIControlStateNormal];
+        [test addTarget: self action:@selector(test) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:test];
     }
     
     return self;
     
+}
+
+-(void)test
+{
+    WelcomeViewController *welcomeController = [[WelcomeViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:welcomeController];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)viewDidLoad {

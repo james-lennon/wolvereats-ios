@@ -9,7 +9,7 @@
 #import "Backend.h"
 #import <AFNetworking.h>
 
-NSString *const BASE_URL = @"http://localhost:8888/hwgrub/";
+NSString *const BASE_URL = @"http://localhost:8888/";
 
 @implementation Backend
 

@@ -12,7 +12,7 @@
 #import "TripsListViewController.h"
 #import "ProfileViewController.h"
 #import "NoConnectionViewController.h"
-#import "MainTabBarViewController.h"
+
 
 @implementation LoadingViewController
 

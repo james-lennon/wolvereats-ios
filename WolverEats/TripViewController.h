@@ -12,6 +12,7 @@
 
 @property NSDictionary* tripData;
 @property NSDictionary* userData;
+@property UILabel* tripLabel; 
 @property UILabel* nameLabel;
 @property UILabel* expLabel;
 @property UILabel* etaLabel;

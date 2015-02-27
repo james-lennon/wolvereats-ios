@@ -7,6 +7,9 @@
 //
 
 #import "OrderViewController.h"
+#import "Backend.h"
+#import <QuartzCore/QuartzCore.h>
+#import "ProfileViewController.h"
 
 @interface OrderViewController ()
 
@@ -32,6 +35,8 @@
         _orderText.textColor = [UIColor blackColor];
         _orderText.textAlignment = NSTextAlignmentLeft;
         _orderText.returnKeyType = UIReturnKeyGo;
+        [_orderText.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+        [_orderText.layer setBorderWidth:2.0];
         [self.view addSubview:_orderText];
     
         _doneButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -60,12 +65,22 @@
 
 - (void)placeOrder {
     NSString* order = _orderText.text;
-    float fee = 3;
-    int driverID = _tripData[@"trip_id"];
-                             
+    NSInteger* fee1 = 3;
+    NSNumber* fee2 = [NSNumber numberWithInteger:fee1];
+    NSString *tripID = _tripData[@"trip_id"];
+    [Backend sendRequestWithURL:@"orders/place_order" Parameters:@{@"order_text":order, @"fee":fee2, @"trip_id":tripID} Callback:^(NSDictionary * data){
     
-
+    }];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Great!"
+                                                    message:@"We've processed your order and will let you know when your driver accepts it!"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Okay"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
 }
+
+
 
 /*
 #pragma mark - Navigation
@@ -78,3 +93,5 @@
 */
 
 @end
+
+
