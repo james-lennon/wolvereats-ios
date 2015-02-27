@@ -25,6 +25,7 @@
     LoadingViewController *loadingController = [[LoadingViewController alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = loadingController;
     [self.window makeKeyAndVisible];
