@@ -12,6 +12,7 @@
 #import <UIScrollView+SVPullToRefresh.h>
 #import "NSDate+Helper.h"
 #import "TripsListTableViewCell.h"
+#import "AddTripViewController.h"
 
 
 @interface TripsListViewController ()
@@ -29,6 +30,19 @@
 
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        
+        
+        //NSMutableArray *navButtons = [[NSMutableArray alloc] init];
+        
+        //UIBarButtonItem *plusBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus49.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addTrip)];
+        //[navButtons addObject:plusBtn];
+        //[self.navigationItem setRightBarButtonItems:navButtons animated:NO];
+        
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                                  initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTrip)];
+
+        //[_backButton addTarget: self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        
         
         UIEdgeInsets inset = UIEdgeInsetsMake(60, 0, 0, 0);
         _tableView.contentInset = inset;
@@ -58,6 +72,12 @@
     [_tableView triggerPullToRefresh];
     //[self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
   
+}
+
+-(void)addTrip
+{
+    AddTripViewController *addTripController = [[AddTripViewController alloc] init];
+    [self.navigationController pushViewController:addTripController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,8 +134,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary* trip = _tripsData[indexPath.row];
     TripViewController *vc = [[TripViewController alloc] initWithData:trip];
-    
-    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
