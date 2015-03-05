@@ -14,7 +14,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.contentView.backgroundColor = [UIColor greenColor];
         // configure control(s)
         _profView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 30, 30)];
         [self.contentView addSubview:_profView];

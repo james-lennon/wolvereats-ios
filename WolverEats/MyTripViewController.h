@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.h
+//  MyTripViewController.h
 //  WolverEats
 //
 //  Created by Cameron Cohen on 3/2/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileViewController : UIViewController
+@interface MyTripViewController : UIViewController
 
 @end

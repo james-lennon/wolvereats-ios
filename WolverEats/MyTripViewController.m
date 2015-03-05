@@ -1,18 +1,18 @@
 //
-//  OrderViewController.m
+//  MyTripViewController.m
 //  WolverEats
 //
 //  Created by Cameron Cohen on 3/2/15.
 //  Copyright (c) 2015 James Lennon. All rights reserved.
 //
 
-#import "OrderViewController.h"
+#import "MyTripViewController.h"
 
-@interface OrderViewController ()
+@interface MyTripViewController ()
 
 @end
 
-@implementation OrderViewController
+@implementation MyTripViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

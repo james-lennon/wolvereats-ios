@@ -10,6 +10,8 @@
 #import "LoadingViewController.h"
 #import "TripsListViewController.h"
 #import "ProfileViewController.h"
+#import "MyTripsListViewController.h"
+#import "OrdersListViewController.h"
 
 @interface AppDelegate ()
 
@@ -32,8 +34,9 @@
     
     UINavigationController *tripsNav = [[UINavigationController alloc] initWithRootViewController:[[TripsListViewController alloc] init]];
     UINavigationController *profileNav = [[UINavigationController alloc] initWithRootViewController:[[ProfileViewController alloc] init]];
-    loadingController.viewControllers = @[tripsNav, profileNav];
-
+     UINavigationController *ordersNav = [[UINavigationController alloc] initWithRootViewController:[[OrdersListViewController alloc] init]];
+    UINavigationController *myTripsNav = [[UINavigationController alloc] initWithRootViewController:[[MyTripsListViewController alloc] init]];
+    loadingController.viewControllers = @[tripsNav, myTripsNav, ordersNav, profileNav];
 
     return YES;
 }

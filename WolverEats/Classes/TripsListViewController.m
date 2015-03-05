@@ -24,6 +24,7 @@
     if ((self = [super init])) {
         
         self.title = @"Trips";
+        self.tabBarItem.image = [UIImage imageNamed:@"TripsTab.png"];
 
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
 

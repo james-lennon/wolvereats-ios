@@ -9,7 +9,7 @@
 #import "TripViewController.h"
 #import "TripsListViewController.h"
 #import "Backend.h"
-#import "OrderViewController.h"
+#import "PlaceOrderViewController.h"
 
 @interface TripViewController ()
 
@@ -97,11 +97,11 @@
 }
 
 - (void)placeOrder {
-    OrderViewController *orderController = [[OrderViewController alloc] init];
-    orderController.tripData = _tripData;
-    orderController.userData = _userData;
+    PlaceOrderViewController *placeOrderController = [[PlaceOrderViewController alloc] init];
+    placeOrderController.tripData = _tripData;
+    placeOrderController.userData = _userData;
     
-    [self.navigationController pushViewController:orderController animated:YES];
+    [self.navigationController pushViewController:placeOrderController animated:YES];
    
 }
 

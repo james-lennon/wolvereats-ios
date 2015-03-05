@@ -8,10 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		6675CDBB6054EBAA2D3A0F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F536F9F2A527E03A449678 /* libPods.a */; };
-		7E500DA81AA0E429008899FE /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E500DA71AA0E429008899FE /* OrderViewController.m */; };
+		7E500DA81AA0E429008899FE /* PlaceOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */; };
 		7E513D4E1A8BD46F004D0505 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */; };
+		7E5305AB1AA63451007E1C23 /* OrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5305AA1AA63451007E1C23 /* OrderListTableViewCell.m */; };
 		7E66CB191A9BABE3001D122D /* TripsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E66CB181A9BABE3001D122D /* TripsListTableViewCell.m */; };
-		7EF4A20A1A97B2AF008A96F0 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF4A2091A97B2AF008A96F0 /* ProfileViewController.m */; };
+		7E6AD7001AA4E94400891AB6 /* OrdersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD6FF1AA4E94400891AB6 /* OrdersListViewController.m */; };
+		7E6AD7031AA4E94E00891AB6 /* OrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD7021AA4E94E00891AB6 /* OrderViewController.m */; };
+		7E6AD7061AA4E98000891AB6 /* MyTripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD7051AA4E98000891AB6 /* MyTripsListViewController.m */; };
+		7E6AD7091AA4E98A00891AB6 /* MyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */; };
+		7E6AD70C1AA4E99600891AB6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */; };
 		9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3495371A8336E2007485BD /* TripsListViewController.m */; };
 		9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D34953A1A833EBD007485BD /* WelcomeViewController.m */; };
 		9D43B39E1A81D9A8006B418C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B39D1A81D9A8006B418C /* main.m */; };
@@ -41,14 +46,24 @@
 		04F536F9F2A527E03A449678 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		7E500DA61AA0E429008899FE /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
-		7E500DA71AA0E429008899FE /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		7E500DA61AA0E429008899FE /* PlaceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceOrderViewController.h; sourceTree = "<group>"; };
+		7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceOrderViewController.m; sourceTree = "<group>"; };
 		7E513D4C1A8BD46F004D0505 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		7E5305A91AA63451007E1C23 /* OrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableViewCell.h; sourceTree = "<group>"; };
+		7E5305AA1AA63451007E1C23 /* OrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableViewCell.m; sourceTree = "<group>"; };
 		7E66CB171A9BABE3001D122D /* TripsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsListTableViewCell.h; sourceTree = "<group>"; };
 		7E66CB181A9BABE3001D122D /* TripsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsListTableViewCell.m; sourceTree = "<group>"; };
-		7EF4A2081A97B2AF008A96F0 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		7EF4A2091A97B2AF008A96F0 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		7E6AD6FE1AA4E94400891AB6 /* OrdersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersListViewController.h; sourceTree = "<group>"; };
+		7E6AD6FF1AA4E94400891AB6 /* OrdersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersListViewController.m; sourceTree = "<group>"; };
+		7E6AD7011AA4E94E00891AB6 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
+		7E6AD7021AA4E94E00891AB6 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
+		7E6AD7041AA4E98000891AB6 /* MyTripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTripsListViewController.h; sourceTree = "<group>"; };
+		7E6AD7051AA4E98000891AB6 /* MyTripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripsListViewController.m; sourceTree = "<group>"; };
+		7E6AD7071AA4E98A00891AB6 /* MyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTripViewController.h; sourceTree = "<group>"; };
+		7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripViewController.m; sourceTree = "<group>"; };
+		7E6AD70A1AA4E99600891AB6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		9D3495361A8336E2007485BD /* TripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripsListViewController.h; path = Classes/TripsListViewController.h; sourceTree = "<group>"; };
 		9D3495371A8336E2007485BD /* TripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripsListViewController.m; path = Classes/TripsListViewController.m; sourceTree = "<group>"; };
 		9D3495391A833EBD007485BD /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
@@ -202,12 +217,22 @@
 				9D99C4721A840F8F00431941 /* TripViewController.m */,
 				9D4FEABB1A8535DF0071F1BB /* NoConnectionViewController.h */,
 				9D4FEABC1A8535DF0071F1BB /* NoConnectionViewController.m */,
-				7EF4A2081A97B2AF008A96F0 /* ProfileViewController.h */,
-				7EF4A2091A97B2AF008A96F0 /* ProfileViewController.m */,
 				7E66CB171A9BABE3001D122D /* TripsListTableViewCell.h */,
 				7E66CB181A9BABE3001D122D /* TripsListTableViewCell.m */,
-				7E500DA61AA0E429008899FE /* OrderViewController.h */,
-				7E500DA71AA0E429008899FE /* OrderViewController.m */,
+				7E500DA61AA0E429008899FE /* PlaceOrderViewController.h */,
+				7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */,
+				7E6AD6FE1AA4E94400891AB6 /* OrdersListViewController.h */,
+				7E6AD6FF1AA4E94400891AB6 /* OrdersListViewController.m */,
+				7E5305A91AA63451007E1C23 /* OrderListTableViewCell.h */,
+				7E5305AA1AA63451007E1C23 /* OrderListTableViewCell.m */,
+				7E6AD7011AA4E94E00891AB6 /* OrderViewController.h */,
+				7E6AD7021AA4E94E00891AB6 /* OrderViewController.m */,
+				7E6AD7041AA4E98000891AB6 /* MyTripsListViewController.h */,
+				7E6AD7051AA4E98000891AB6 /* MyTripsListViewController.m */,
+				7E6AD7071AA4E98A00891AB6 /* MyTripViewController.h */,
+				7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */,
+				7E6AD70A1AA4E99600891AB6 /* ProfileViewController.h */,
+				7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -357,15 +382,20 @@
 				9D581EC51A81DFB20013038E /* Backend.m in Sources */,
 				9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */,
 				9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */,
+				7E6AD7061AA4E98000891AB6 /* MyTripsListViewController.m in Sources */,
 				9D99C4731A840F8F00431941 /* TripViewController.m in Sources */,
-				7EF4A20A1A97B2AF008A96F0 /* ProfileViewController.m in Sources */,
 				9D43B3A11A81D9A8006B418C /* AppDelegate.m in Sources */,
 				7E513D4E1A8BD46F004D0505 /* NSDate+Helper.m in Sources */,
+				7E6AD7001AA4E94400891AB6 /* OrdersListViewController.m in Sources */,
 				9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */,
 				9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */,
-				7E500DA81AA0E429008899FE /* OrderViewController.m in Sources */,
+				7E6AD70C1AA4E99600891AB6 /* ProfileViewController.m in Sources */,
+				7E500DA81AA0E429008899FE /* PlaceOrderViewController.m in Sources */,
+				7E6AD7031AA4E94E00891AB6 /* OrderViewController.m in Sources */,
+				7E5305AB1AA63451007E1C23 /* OrderListTableViewCell.m in Sources */,
 				9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */,
 				7E66CB191A9BABE3001D122D /* TripsListTableViewCell.m in Sources */,
+				7E6AD7091AA4E98A00891AB6 /* MyTripViewController.m in Sources */,
 				9D43B39E1A81D9A8006B418C /* main.m in Sources */,
 				9D4FEABD1A8535DF0071F1BB /* NoConnectionViewController.m in Sources */,
 			);

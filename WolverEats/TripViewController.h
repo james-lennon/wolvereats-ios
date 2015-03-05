@@ -18,7 +18,7 @@
 @property UILabel* etaLabel;
 @property UIButton *orderButton;
 
-- (IBAction)placeOrder:(id)sender;
+- (void)placeOrder;
 - (id)initWithData:(NSDictionary *)tripData;
 
 

@@ -1,18 +1,28 @@
 //
-//  OrderViewController.m
+//  MyTripsListViewController.m
 //  WolverEats
 //
 //  Created by Cameron Cohen on 3/2/15.
 //  Copyright (c) 2015 James Lennon. All rights reserved.
 //
 
-#import "OrderViewController.h"
+#import "MyTripsListViewController.h"
 
-@interface OrderViewController ()
+@interface MyTripsListViewController ()
 
 @end
 
-@implementation OrderViewController
+@implementation MyTripsListViewController
+
+- (id) init {
+    if ((self = [super init])) {
+        
+        self.title = @"My Trips";
+        self.tabBarItem.image = [UIImage imageNamed:@"MyTripsTab.png"];
+
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

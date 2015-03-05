@@ -2,12 +2,11 @@
 //  ProfileViewController.m
 //  WolverEats
 //
-//  Created by Cameron Cohen on 2/20/15.
+//  Created by Cameron Cohen on 3/2/15.
 //  Copyright (c) 2015 James Lennon. All rights reserved.
 //
 
 #import "ProfileViewController.h"
-#import "WelcomeViewController.h"
 
 @interface ProfileViewController ()
 
@@ -15,24 +14,15 @@
 
 @implementation ProfileViewController
 
+
 - (id) init {
     if ((self = [super init])) {
         
         self.title = @"Profile";
+        self.tabBarItem.image = [UIImage imageNamed:@"ProfileTab.png"];
 
-        
-        int w = self.view.bounds.size.width;
-        int h = self.view.bounds.size.height;
-        
-        UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,77,21)];
-        loadingLabel.center = CGPointMake(w/2, h/2);
-        loadingLabel.text = @"Loading...";
-        loadingLabel.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:loadingLabel];
-            }
-    
+    }
     return self;
-    
 }
 
 

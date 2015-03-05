@@ -32,17 +32,6 @@
         WelcomeViewController *welcomeController = [[WelcomeViewController alloc] init];
         [self presentViewController:welcomeController animated:NO completion:nil];
     }
-    
-    
-    int w = self.view.bounds.size.width;
-    int h = self.view.bounds.size.height;
-    
-    UILabel *loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,77,21)];
-    loadingLabel.center = CGPointMake(w/2, h/2);
-    loadingLabel.text = @"Loading...";
-    loadingLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:loadingLabel];
-
 }
 
 - (id) init {
