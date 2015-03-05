@@ -17,6 +17,7 @@
 		7E6AD7061AA4E98000891AB6 /* MyTripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD7051AA4E98000891AB6 /* MyTripsListViewController.m */; };
 		7E6AD7091AA4E98A00891AB6 /* MyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */; };
 		7E6AD70C1AA4E99600891AB6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */; };
+		7E7403251AA8CE96009E3ED5 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7403241AA8CE96009E3ED5 /* AddTripViewController.m */; };
 		9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3495371A8336E2007485BD /* TripsListViewController.m */; };
 		9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D34953A1A833EBD007485BD /* WelcomeViewController.m */; };
 		9D43B39E1A81D9A8006B418C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B39D1A81D9A8006B418C /* main.m */; };
@@ -64,6 +65,8 @@
 		7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripViewController.m; sourceTree = "<group>"; };
 		7E6AD70A1AA4E99600891AB6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		7E7403231AA8CE96009E3ED5 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
+		7E7403241AA8CE96009E3ED5 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
 		9D3495361A8336E2007485BD /* TripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripsListViewController.h; path = Classes/TripsListViewController.h; sourceTree = "<group>"; };
 		9D3495371A8336E2007485BD /* TripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripsListViewController.m; path = Classes/TripsListViewController.m; sourceTree = "<group>"; };
 		9D3495391A833EBD007485BD /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 		9D581EC61A81EBB00013038E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				7E7403231AA8CE96009E3ED5 /* AddTripViewController.h */,
+				7E7403241AA8CE96009E3ED5 /* AddTripViewController.m */,
 				9D581EC91A81EC020013038E /* LoadingViewController.h */,
 				9D581ECA1A81EC020013038E /* LoadingViewController.m */,
 				9D581ECC1A81ECE10013038E /* LoginViewController.h */,
@@ -380,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D581EC51A81DFB20013038E /* Backend.m in Sources */,
+				7E7403251AA8CE96009E3ED5 /* AddTripViewController.m in Sources */,
 				9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */,
 				9D581ECB1A81EC020013038E /* LoadingViewController.m in Sources */,
 				7E6AD7061AA4E98000891AB6 /* MyTripsListViewController.m in Sources */,

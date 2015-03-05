@@ -22,4 +22,5 @@
 - (id)initWithData:(NSDictionary *)tripData;
 
 
+
 @end
