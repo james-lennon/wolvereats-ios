@@ -25,6 +25,8 @@
     
     int w = self.view.bounds.size.width;
     int h = self.view.bounds.size.height;
+        
+        self.view.backgroundColor = [UIColor whiteColor]; 
     
     _tripLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5, w, 100)];
     _tripLabel.text = _tripData[@"restaurant_name"];

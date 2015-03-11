@@ -11,6 +11,7 @@
 @interface TripsListTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *restaurantLabel;
+@property (nonatomic, strong) UILabel *driverName;
 @property (nonatomic, strong) UILabel *etaLabel;
 @property (nonatomic, strong) UIImageView *profView;
 

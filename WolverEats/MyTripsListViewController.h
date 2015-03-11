@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyTripsListViewController : UIViewController
+@interface MyTripsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) NSArray* tripsData;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end

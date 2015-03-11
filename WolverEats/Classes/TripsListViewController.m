@@ -88,12 +88,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView
 estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
 heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 60;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -114,6 +114,18 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
     NSString *etaString = [NSDate stringFromDate:etaDate withFormat:@"hh:mm"];
     cell.etaLabel.text = etaString;
+    
+    NSString *driverID = trip[@"driver_id"];
+    
+    NSDictionary *userDic = @{@"user_id" : driverID};
+    [Backend sendRequestWithURL:@"users/get" Parameters:userDic Callback:^(NSDictionary * data) {
+        NSDictionary* userData = data[@"user"];
+        NSString* firstName = userData[@"first_name"];
+        NSString* lastName = userData[@"last_name"];
+        
+        cell.driverName.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    }];
+    
     
     //change when James writes prof URL code in server
     NSURL *profURL = [NSURL URLWithString:@"http://placehold.it/30x30"];

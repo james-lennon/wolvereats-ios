@@ -38,6 +38,9 @@
     UINavigationController *myTripsNav = [[UINavigationController alloc] initWithRootViewController:[[MyTripsListViewController alloc] init]];
     loadingController.viewControllers = @[tripsNav, myTripsNav, ordersNav, profileNav];
 
+    
+
+    
     return YES;
 }
 

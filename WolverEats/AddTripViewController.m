@@ -26,6 +26,8 @@
         int w = self.view.bounds.size.width;
         int h = self.view.bounds.size.height;
         
+        self.view.backgroundColor = [UIColor whiteColor];
+        
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                        initWithTarget:self
@@ -79,8 +81,6 @@
         [self.view addSubview:_etaButton];
         
         
-        
-        
         _addTripButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _addTripButton.frame = CGRectMake(0, 3*h/5 + 50, w, 100);
         [_addTripButton setTitle:@"Add Trip" forState:UIControlStateNormal];
@@ -97,17 +97,6 @@
 }
 
 - (void)etaPop{
-    /*
-     NSInteger minuteInterval = 5;
-     //clamp date
-     NSInteger referenceTimeInterval = (NSInteger)[self.selectedTime timeIntervalSinceReferenceDate];
-     NSInteger remainingSeconds = referenceTimeInterval % (minuteInterval *60);
-     NSInteger timeRoundedTo5Minutes = referenceTimeInterval - remainingSeconds;
-     if(remainingSeconds>((minuteInterval*60)/2)) {/// round up
-     timeRoundedTo5Minutes = referenceTimeInterval +((minuteInterval*60)-remainingSeconds);
-     }
-     
-     */
     
     NSDate *date = [NSDate date];
     
@@ -127,17 +116,6 @@
 }
 
 - (void)expPop{
-    /*
-     NSInteger minuteInterval = 5;
-     //clamp date
-     NSInteger referenceTimeInterval = (NSInteger)[self.selectedTime timeIntervalSinceReferenceDate];
-     NSInteger remainingSeconds = referenceTimeInterval % (minuteInterval *60);
-     NSInteger timeRoundedTo5Minutes = referenceTimeInterval - remainingSeconds;
-     if(remainingSeconds>((minuteInterval*60)/2)) {/// round up
-     timeRoundedTo5Minutes = referenceTimeInterval +((minuteInterval*60)-remainingSeconds);
-     }
-     
-     */
     
     NSDate *date = [NSDate date];
 
@@ -168,7 +146,7 @@
     if(!(restaurant && etaNum && expNum)){
         NSLog(@"invalid login");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Trip"
-                                                        message:@"You left out some information"
+                                                        message:@"You left out some information."
                                                        delegate:self
                                               cancelButtonTitle:@"Okay"
                                               otherButtonTitles:nil];
@@ -176,10 +154,10 @@
         [alert show];
     }
 #warning make it check if exp num is greater than etanum
-    if(!(restaurant && etaNum && expNum)){
+    else if(! (etaNum > expNum)){
         NSLog(@"invalid login");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Trip"
-                                                        message:@"You left out some information"
+                                                        message:@"Your ETA has to be after your expiration!"
                                                        delegate:self
                                               cancelButtonTitle:@"Okay"
                                               otherButtonTitles:nil];
@@ -188,7 +166,8 @@
     }
 
 
-
+    else
+    {
     
     [Backend sendRequestWithURL:@"trips/add_trip" Parameters:@{@"restaurant":restaurant, @"eta": etaNum, @"expiration":expNum} Callback:^(NSDictionary * data){
         
@@ -213,8 +192,10 @@
             alert.tag = 3;
             [alert show];
         }
-        
+    
+     
     }];
+}
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
