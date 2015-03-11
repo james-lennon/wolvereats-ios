@@ -8,18 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddTripViewController : UIViewController <UIActionSheetDelegate>
-@property (strong, nonatomic)UILabel* addLabel;
-@property (strong, nonatomic)UIButton* addTripButton;
+@interface AddTripViewController : UIViewController <UIActionSheetDelegate, UIAlertViewDelegate>
+@property (strong, nonatomic) UILabel* addLabel;
+@property (strong, nonatomic) UIButton* addTripButton;
+@property (strong,nonatomic)  UILabel* restLabel;
 @property (strong, nonatomic) UITextField* restaurantText;
 @property (strong,nonatomic) UILabel* etaText;
-@property (strong, nonatomic) UIButton* etaButton; 
+@property (strong, nonatomic) UIButton* etaButton;
+@property (strong, nonatomic) UIButton* expButton;
+@property (strong, nonatomic) UILabel* expLabel;
+@property long etaStamp;
+@property long expStamp;
+
 
 
 @property UIActionSheet *pickerViewPopup;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
-- (void)doneClicked;
-- (void)setDateClicked; 
+- (void)addTrip;
 
 @end

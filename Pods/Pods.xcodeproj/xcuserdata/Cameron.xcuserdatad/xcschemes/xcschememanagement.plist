@@ -6,43 +6,53 @@
 	<dict>
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ActionSheetPicker-3.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-MBProgressHUD.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-SVPullToRefresh.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>02A5971C34017F07D70BDC25</key>
+		<key>456F39C37EF88385DD1E0235</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7D63DBF747D44C58993212C3</key>
+		<key>6371AA7A7FB8E824E8BA2048</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B3EF50B0B63EA91AC73BAE8</key>
+		<key>6553E7030359636F0894387A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AB0520E3B929CC0DC023768B</key>
+		<key>D26101596636D9393D9DCD84</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E77CA54A3297E89EF883B4FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

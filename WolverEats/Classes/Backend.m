@@ -28,7 +28,7 @@ static NSDictionary* credentials;
     }else{
         [dataToSend addEntriesFromDictionary:credentials];
     }
-    
+    NSLog(@"dataToSend: %@", dataToSend);
     [manager POST:[NSString stringWithFormat:@"%@%@", BASE_URL, url] parameters:dataToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
         callback(responseObject);

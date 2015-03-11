@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (1.5.0)
   - AFNetworking (2.5.0):
     - AFNetworking/NSURLConnection (= 2.5.0)
     - AFNetworking/NSURLSession (= 2.5.0)
@@ -24,11 +25,13 @@ PODS:
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0 (~> 1.5.0)
   - AFNetworking (~> 2.0)
   - MBProgressHUD (~> 0.8)
   - SVPullToRefresh
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: 30565e92a38b23f06f4a3fce113bd92f0e44dd4d
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
