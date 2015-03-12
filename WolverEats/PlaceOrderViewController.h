@@ -11,6 +11,7 @@
 @interface PlaceOrderViewController : UIViewController
 @property NSDictionary* tripData;
 @property NSDictionary* userData;
+@property (strong, nonatomic) UILabel* orderLabel; 
 @property UITextView* orderText;
 @property UIButton* doneButton;
 

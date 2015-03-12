@@ -11,6 +11,7 @@
 @interface MyTripsListTableViewCell : UITableViewCell
 @property (nonatomic, strong) UILabel *restaurantLabel;
 @property (nonatomic, strong) UILabel *etaLabel;
+@property(nonatomic, strong) UILabel *numOrdersLabel; 
 
 
 @end

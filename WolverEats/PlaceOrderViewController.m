@@ -30,9 +30,19 @@
         int w = self.view.bounds.size.width;
         int h = self.view.bounds.size.height;
         
-        _orderText = [[UITextView alloc]initWithFrame: CGRectMake(w/5, h/4, 3*w/5, 200)];
+        _orderLabel = [[UILabel alloc]initWithFrame:CGRectMake(w/5, h/4 -20, 3*w/5, 50)];
+        _orderLabel.textColor = [UIColor blackColor];
+        _orderLabel.textAlignment = NSTextAlignmentCenter;
+        _orderLabel.text = @"Please provide a detailed description of your order.";
+        _orderLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _orderLabel.numberOfLines = 0;
+        [self.view addSubview:_orderLabel];
+        
+        
+        _orderText = [[UITextView alloc]initWithFrame: CGRectMake(w/5, h/4 + 45, 3*w/5, 200)];
         _orderText.backgroundColor = [UIColor whiteColor];
         _orderText.textColor = [UIColor blackColor];
+        //_orderText.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
         _orderText.textAlignment = NSTextAlignmentLeft;
         _orderText.returnKeyType = UIReturnKeyGo;
         [_orderText.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
