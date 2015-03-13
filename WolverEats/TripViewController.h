@@ -17,6 +17,7 @@
 @property UILabel* expLabel;
 @property UILabel* etaLabel;
 @property UIButton *orderButton;
+@property UIImageView *profView;
 
 - (void)placeOrder;
 - (id)initWithData:(NSDictionary *)tripData;

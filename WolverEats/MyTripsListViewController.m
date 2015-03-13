@@ -12,6 +12,7 @@
 #import <UIScrollView+SVPullToRefresh.h>
 #import "NSDate+Helper.h"
 #import "TripViewController.h"
+#import "EmptyTripViewController.h"
 
 @interface MyTripsListViewController ()
 
@@ -39,7 +40,17 @@
         
         [self.view addSubview:_tableView];
         
+        [Backend sendRequestWithURL:@"trips/get_user_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+            _activeTripsData = [data objectForKey:@"trips"];
+            NSLog(@"active trips: %@", _activeTripsData);
+        }];
         
+        [Backend sendRequestWithURL:@"trips/get_user_inactive_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+            _oldTripsData = [data objectForKey:@"trips"];
+        }];
+        
+    
+    
         [_tableView addPullToRefreshWithActionHandler:^{
             // prepend data to dataSource, insert cells at top of table view
             // call [tableView.pullToRefreshView stopAnimating] when done
@@ -95,24 +106,53 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_activeTripsData count];
+    
+    if (section == 0)
+        return [_activeTripsData count];
+    else {
+        return [_oldTripsData count];
+    }
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MyTripsListTableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
     //[cell setNeedsUpdateConstraints];
+   
+    NSArray* arr;
+    switch (indexPath.section) {
+        case 0:
+            //First section
+            arr = _activeTripsData;
+            break;
+        case 1:
+            //2nd section
+            arr = _oldTripsData;
+            break;
+    }
     
-    NSDictionary* trip = _activeTripsData[indexPath.row];
+    NSDictionary* trip = arr[indexPath.row];
     
     NSString *restaurantString = trip[@"restaurant_name"];
     cell.restaurantLabel.text = restaurantString;
     
-    int eta = [trip[@"eta"] intValue];
+    if (indexPath.section == 0)
+    {
+    int eta = [trip[@"expiration"] intValue];
     NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
-    NSString *etaS = [NSDate stringFromDate:etaDate withFormat:@"hh:mm"];
-    NSString *etaString = @"Arriving at ";
-    cell.etaLabel.text = [NSString stringWithFormat:@"%@%@", etaString,etaS];
+    NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
+    NSString *etaString = @"Arrives at ";
+    cell.etaLabel.text = [NSString stringWithFormat:@"%@%@", etaString,etaText];
+    }
+    else
+
+    {
+        int eta = [trip[@"eta"] intValue];
+        NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
+        NSString *etaS = [NSDate stringFromDate:etaDate withFormat:@"MM-dd-yyyy"];
+        NSString *etaString = @"";
+        cell.etaLabel.text = [NSString stringWithFormat:@"%@%@", etaString,etaS];
+    }
     
 
    NSString* tripId = trip[@"trip_id"];
@@ -123,15 +163,32 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         if ([_orders count] == 0)
         {
             cell.numOrdersLabel.text = @"0";
-            cell.numOrdersLabel.backgroundColor =[UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
-            //cell.numOrdersLabel.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
+            //grey
+            if (indexPath.section == 1)
+            {
+            //red
+            cell.numOrdersLabel.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
+            }
+            else
+            {
+                cell.numOrdersLabel.backgroundColor =[UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+            }
         }
         else{
             
             NSInteger* size = [_orders count];
             cell.numOrdersLabel.text = [NSString stringWithFormat:@"%li", size];
+            
+
+            if (indexPath.section == 1)
+            {
             cell.numOrdersLabel.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
-        }
+            }
+            else
+            {
+                cell.numOrdersLabel.backgroundColor = [UIColor colorWithRed:180.0f/255.0f green:209.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
+            }
+            }
         }];
     
   
@@ -139,9 +196,34 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1)
+    {
+        NSDictionary* trip = _oldTripsData[indexPath.row];
+        NSString* tripId = trip[@"trip_id"];
+        [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id":tripId} Callback:^(NSDictionary * data) {
+            _orders = data;
+            
+            if ([_orders count] == 0){
+                EmptyTripViewController *vc = [[EmptyTripViewController alloc]initWithData:trip];
+                [self.navigationController pushViewController:vc animated:YES];
+                
+            }
+            else
+            {
+                TripViewController *vc = [[TripViewController alloc]initWithData:trip];
+                [self.navigationController pushViewController:vc animated:YES];
+
+            }
+        
+        }];
+    }
+    else
+    {
     NSDictionary* trip = _activeTripsData[indexPath.row];
-    TripViewController *vc = [[TripViewController alloc] initWithData:trip];
-    [self.navigationController pushViewController:vc animated:YES];
+    TripViewController *vc = [[TripViewController alloc]initWithData:trip];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 

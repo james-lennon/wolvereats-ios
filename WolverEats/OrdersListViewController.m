@@ -29,7 +29,7 @@
 - (id) init {
     if ((self = [super init])) {
         
-        self.title = @"Orders";
+        self.title = @"My Orders";
         self.tabBarItem.image = [UIImage imageNamed:@"OrderTab.png"];
         
         /*

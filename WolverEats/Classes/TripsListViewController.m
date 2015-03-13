@@ -57,7 +57,7 @@
         [_tableView addPullToRefreshWithActionHandler:^{
             // prepend data to dataSource, insert cells at top of table view
             // call [tableView.pullToRefreshView stopAnimating] when done
-            [Backend sendRequestWithURL:@"trips/get_all_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+            [Backend sendRequestWithURL:@"trips/get_all_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
                 _tripsData = [data objectForKey:@"trips"];
                 [_tableView.pullToRefreshView stopAnimating];
                 [_tableView reloadData];
@@ -112,7 +112,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     int eta = [trip[@"eta"] intValue];
     NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
-    NSString *etaString = [NSDate stringFromDate:etaDate withFormat:@"hh:mm"];
+    NSString *etaString = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
+    //NSString *etaString = [NSDate stringFromDate:etaDate withFormat:@"hh:mm"];
     cell.etaLabel.text = etaString;
     
     NSString *driverID = trip[@"driver_id"];
@@ -128,7 +129,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     //change when James writes prof URL code in server
-    NSURL *profURL = [NSURL URLWithString:@"http://placehold.it/30x30"];
+    NSURL *profURL = [NSURL URLWithString:@"http://placehold.it/40x40"];
 
     dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(concurrentQueue, ^{

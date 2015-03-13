@@ -33,11 +33,11 @@
         [self.contentView addSubview:_etaLabel];
         
         
-        _numOrdersLabel = [[UILabel alloc]initWithFrame:CGRectMake(300, 20, 50, 30)];
+        _numOrdersLabel = [[UILabel alloc]initWithFrame:CGRectMake(320, 20, 40, 30)];
         _numOrdersLabel.textColor = [UIColor blackColor];
         
         _numOrdersLabel.textAlignment = NSTextAlignmentCenter;
-        _numOrdersLabel.layer.cornerRadius = 5;
+        _numOrdersLabel.layer.cornerRadius = 8;
         _numOrdersLabel.layer.masksToBounds = YES;
         //[_numOrdersLabel setText:@"0"];
         [self.contentView addSubview:_numOrdersLabel];

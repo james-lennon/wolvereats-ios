@@ -10,6 +10,7 @@
 #import "TripsListViewController.h"
 #import "Backend.h"
 #import "PlaceOrderViewController.h"
+#import "NSDate+Helper.h"
 
 @interface TripViewController ()
 
@@ -18,7 +19,8 @@
 @implementation TripViewController
 
 - (id)initWithData:(NSDictionary *)tripData {
-    if ((self = [super init])) {
+    if ((self = [super init]))
+    {
         
     self.title = _tripData[@"restuarant_name"]; 
     _tripData = tripData;
@@ -27,7 +29,14 @@
     int h = self.view.bounds.size.height;
         
         self.view.backgroundColor = [UIColor whiteColor]; 
-    
+
+    _profView = [[UIImageView alloc] initWithFrame:CGRectMake(w/2 -35 , h/5 -60, 75, 75)];
+    _profView.layer.cornerRadius = _profView.frame.size.width / 2;
+    _profView.clipsToBounds = YES;
+    _profView.backgroundColor = [UIColor redColor];
+    //[self.view addSubview:_profView];
+ 
+        
     _tripLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5, w, 100)];
     _tripLabel.text = _tripData[@"restaurant_name"];
     _tripLabel.textAlignment = NSTextAlignmentCenter;
@@ -43,27 +52,25 @@
     
     _expLabel = [[UILabel alloc]initWithFrame:CGRectMake(w/4, h/2, w/2, 50)];
     int expiration = [_tripData[@"expiration"] intValue];
-    int hours1 = (expiration % (24*3600))/(3600);
-    int minutes1 = (expiration % (3600))/(60);
+    NSDate *expDate = [NSDate dateWithTimeIntervalSince1970:expiration];
+    NSString *expText = [NSDate stringForDisplayFromDate:expDate prefixed:NO alwaysDisplayTime:NO];
     NSString *expString = @"Order By: ";
+    _expLabel.text = [NSString stringWithFormat:@"%@%@", expString,expText];
     _expLabel.font = [UIFont systemFontOfSize:20];
-    _expLabel.text = [NSString stringWithFormat:@"%@ %d:%02d", expString, hours1, minutes1];
     _expLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:_expLabel];
         
     _etaLabel = [[UILabel alloc]initWithFrame:CGRectMake(w/4, h/2 +50, w/2, 50)];
     int eta = [_tripData[@"eta"] intValue];
-    int hours = (eta % (24*3600))/(3600);
-    int minutes = (eta % (3600))/(60);
+    NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
+    NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
+    NSString *etaString = @"Arrive By: ";
+    _etaLabel.text = [NSString stringWithFormat:@"%@%@", etaString,etaText];
     _etaLabel.textAlignment = NSTextAlignmentCenter;
     _etaLabel.font = [UIFont systemFontOfSize:20];
-    NSString *etaString = @"Arrive By: ";
-    _etaLabel.text = [NSString stringWithFormat:@"%@ %d:%02d",etaString, hours, minutes];
+
+    
     [self.view addSubview:_etaLabel];
-    
-    
-   
-    
     
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5+110 , w, 50)];
     _nameLabel.textAlignment = NSTextAlignmentCenter;

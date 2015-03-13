@@ -25,6 +25,8 @@
                                        action:@selector(dismissKeyboard)];
         
         [self.view addGestureRecognizer:tap];
+        
+        self.view.backgroundColor = [UIColor whiteColor];
 
         
         int w = self.view.bounds.size.width;
