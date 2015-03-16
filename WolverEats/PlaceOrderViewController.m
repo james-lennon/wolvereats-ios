@@ -77,7 +77,7 @@
 
 - (void)placeOrder {
     NSString* order = _orderText.text;
-    NSInteger* fee1 = 3;
+    NSInteger fee1 = 3;
     NSNumber* fee2 = [NSNumber numberWithInteger:fee1];
     NSString *tripID = _tripData[@"trip_id"];
     [Backend sendRequestWithURL:@"orders/place_order" Parameters:@{@"order_text":order, @"fee":fee2, @"trip_id":tripID} Callback:^(NSDictionary * data){
@@ -85,13 +85,26 @@
     }];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Great!"
                                                     message:@"We've processed your order and will let you know when your driver accepts it!"
-                                                   delegate:nil
+                                                   delegate:self
                                           cancelButtonTitle:@"Okay"
                                           otherButtonTitles:nil];
+        alert.tag = 0;
     [alert show];
     
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == [alertView cancelButtonIndex]){
+        //cancel clicked ...do your action
+        if (alertView.tag == 0) {
+            NSLog(@"hello");
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }
+    else {
+        //reset clicked
+    }
+}
 
 
 /*

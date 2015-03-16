@@ -176,7 +176,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         }
         else{
             
-            NSInteger* size = [_orders count];
+            NSInteger size = [_orders count];
             cell.numOrdersLabel.text = [NSString stringWithFormat:@"%li", size];
             
 

@@ -21,7 +21,7 @@
     BOOL success = [Backend loadCredentials];
     if(success){
         [Backend sendRequestWithURL:@"users/login" Parameters:@{} Callback:^(NSDictionary * resp) {
-            int user_id = [resp[@"user_id"] intValue];
+            //int user_id = [resp[@"user_id"] intValue];
             
         } Failure:^{
             NoConnectionViewController *noConnectionController = [[NoConnectionViewController alloc] init];

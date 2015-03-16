@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlaceOrderViewController : UIViewController
+@interface PlaceOrderViewController : UIViewController <UIAlertViewDelegate>
 @property NSDictionary* tripData;
 @property NSDictionary* userData;
 @property (strong, nonatomic) UILabel* orderLabel; 

@@ -33,7 +33,7 @@
                                                   otherButtonTitles:nil];
             [alert show];
         }else{
-            int user_id = [data[@"user_id"] intValue];
+            //int user_id = [data[@"user_id"] intValue];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
