@@ -153,7 +153,6 @@
         alert.tag = 2;
         [alert show];
     }
-#warning make it check if exp num is greater than etanum
     else if(! (etaNum > expNum)){
         NSLog(@"invalid login");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Trip"

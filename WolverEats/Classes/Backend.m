@@ -33,7 +33,7 @@ static NSDictionary* credentials;
         //NSLog(@"JSON: %@", responseObject);
         callback(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", [operation responseString]);
+        //NSLog(@"Error: %@", [operation responseString]);
         failure();
         //Show offline
 //        [[UIApplication sharedApplication] keyWindow]

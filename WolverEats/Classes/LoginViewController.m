@@ -33,7 +33,6 @@
                                                   otherButtonTitles:nil];
             [alert show];
         }else{
-            int user_id = [data[@"user_id"] intValue];
             [self dismissViewControllerAnimated:YES completion:nil];
         }
     }];
@@ -75,13 +74,13 @@
         
         
         _loginButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        _loginButton.frame = CGRectMake(0, 3*h/5, w, 100);
+        _loginButton.frame = CGRectMake(0, 3*h/5, w, 50);
         [_loginButton setTitle:@"Login" forState:UIControlStateNormal];
         [_loginButton addTarget:self action:@selector(login) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_loginButton];
         
         _backButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        _backButton.frame = CGRectMake(0, 3*h/5 + 50, w, 100);
+        _backButton.frame = CGRectMake(0, 3*h/5 + 100, w, 100);
         [_backButton setTitle:@"Back" forState:UIControlStateNormal];
         [_backButton addTarget: self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_backButton]; 
