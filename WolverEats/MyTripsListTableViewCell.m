@@ -8,6 +8,7 @@
 
 #import "MyTripsListTableViewCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "NSDate+Helper.h"
 
 @interface MyTripsListTableViewCell ()
 
@@ -42,21 +43,65 @@
         //[_numOrdersLabel setText:@"0"];
         [self.contentView addSubview:_numOrdersLabel];
         
-       
+        
     }
     return self;
 }
 
 
+- (void)setEta:(int)eta {
+    
+    if ([self.tripStatus isEqualToString:@"active"]) {
+        NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
+        NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
+        self.etaLabel.text = [NSString stringWithFormat:@"Arrives at %@", etaText];
+    }
+    
+    else {
+        NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
+        NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
+        //NSString *etaText = [NSDate stringFromDate:etaDate withFormat:@"MM-dd-yyyy"];
+        self.etaLabel.text = etaText;
+    }
+}
+- (void)setRestaurant:(NSString *)restaurant {
+    self.restaurantLabel.text = restaurant;
+}
+- (void)setNumOrders:(int)numOrders {
+    if (numOrders == 0) {
+        self.numOrdersLabel.text = @"0";
+        if ([self.tripStatus isEqualToString:@"active"]) {
+            //red
+            self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
+        }
+        else {
+            //grey
+            self.numOrdersLabel.backgroundColor =[UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+        }
+    }
+    
+    else {
+        self.numOrdersLabel.text = [NSString stringWithFormat:@"%i", numOrders];
+        if ([self.tripStatus isEqualToString:@"active"]) {
+            self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
+        }
+        else {
+            self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:180.0f/255.0f green:209.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
+        }
+    }
+}
+
+
+
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

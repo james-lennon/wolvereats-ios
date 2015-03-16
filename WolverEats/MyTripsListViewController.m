@@ -40,6 +40,7 @@
         
         [self.view addSubview:_tableView];
         
+        /*
         [Backend sendRequestWithURL:@"trips/get_user_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
             _activeTripsData = [data objectForKey:@"trips"];
             NSLog(@"active trips: %@", _activeTripsData);
@@ -48,14 +49,18 @@
         [Backend sendRequestWithURL:@"trips/get_user_inactive_trips" Parameters:@{} Callback:^(NSDictionary * data) {
             _oldTripsData = [data objectForKey:@"trips"];
         }];
+         
+         */
         
     
     
         [_tableView addPullToRefreshWithActionHandler:^{
             // prepend data to dataSource, insert cells at top of table view
             // call [tableView.pullToRefreshView stopAnimating] when done
-            [Backend sendRequestWithURL:@"trips/get_user_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-                _activeTripsData = [data objectForKey:@"trips"];
+            [Backend sendRequestWithURL:@"trips/get_user_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+                _activeTripsData = data[@"active_trips"];
+                _inactiveTripsData = data[@"inactive_trips"];
+
                 
                 [_tableView.pullToRefreshView stopAnimating];
                 [_tableView reloadData];
@@ -110,7 +115,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (section == 0)
         return [_activeTripsData count];
     else {
-        return [_oldTripsData count];
+        return [_inactiveTripsData count];
     }
 }
 
@@ -119,18 +124,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyTripsListTableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
     //[cell setNeedsUpdateConstraints];
    
-    NSArray* arr;
-    switch (indexPath.section) {
-        case 0:
-            //First section
-            arr = _activeTripsData;
-            break;
-        case 1:
-            //2nd section
-            arr = _oldTripsData;
-            break;
-    }
-    
+    NSArray *arr = indexPath.section == 0 ? _activeTripsData : _inactiveTripsData;
     NSDictionary* trip = arr[indexPath.row];
     
     NSString *restaurantString = trip[@"restaurant_name"];
@@ -190,7 +184,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             }
             }
         }];
+
+    cell.restaurant = trip[@"restaurant_name"];
+    cell.tripStatus = indexPath.section == 0 ? @"active" : @"inactive";
+    cell.eta = [trip[@"expiration"] intValue];
+    cell.numOrders = [trip[@"order_count"] intValue];
+
     
+                
   
     return cell;
 }
@@ -198,7 +199,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1)
     {
-        NSDictionary* trip = _oldTripsData[indexPath.row];
+        NSDictionary* trip = _inactiveTripsData[indexPath.row];
         NSString* tripId = trip[@"trip_id"];
         [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id":tripId} Callback:^(NSDictionary * data) {
             _orders = data;
