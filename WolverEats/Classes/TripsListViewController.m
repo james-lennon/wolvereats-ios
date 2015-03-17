@@ -32,17 +32,8 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
-        
-        //NSMutableArray *navButtons = [[NSMutableArray alloc] init];
-        
-        //UIBarButtonItem *plusBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus49.png"] style:UIBarButtonItemStylePlain target:self action:@selector(addTrip)];
-        //[navButtons addObject:plusBtn];
-        //[self.navigationItem setRightBarButtonItems:navButtons animated:NO];
-        
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTrip)];
-
-        //[_backButton addTarget: self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         
         
         UIEdgeInsets inset = UIEdgeInsetsMake(60, 0, 0, 0);
@@ -106,27 +97,12 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [cell setNeedsUpdateConstraints];
     
     NSDictionary* trip = _tripsData[indexPath.row];
+    cell.restaurant = trip[@"restaurant_name"];
+    cell.eta = [trip[@"eta"] intValue];
     
-    NSString *restaurantString = trip[@"restaurant_name"];
-    cell.restaurantLabel.text = restaurantString;
-    
-    int eta = [trip[@"eta"] intValue];
-    NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
-    NSString *etaString = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
-    //NSString *etaString = [NSDate stringFromDate:etaDate withFormat:@"hh:mm"];
-    cell.etaLabel.text = etaString;
-    
-    NSString *driverID = trip[@"driver_id"];
-    
-    NSDictionary *userDic = @{@"user_id" : driverID};
-    [Backend sendRequestWithURL:@"users/get" Parameters:userDic Callback:^(NSDictionary * data) {
-        NSDictionary* userData = data[@"user"];
-        NSString* firstName = userData[@"first_name"];
-        NSString* lastName = userData[@"last_name"];
-        
-        cell.driverName.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-    }];
-    
+    NSString* firstName = trip[@"first_name"];
+    NSString* lastName = trip[@"last_name"];
+    cell.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
     //change when James writes prof URL code in server
     NSURL *profURL = [NSURL URLWithString:@"http://placehold.it/40x40"];

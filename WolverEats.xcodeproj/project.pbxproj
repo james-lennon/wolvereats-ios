@@ -10,6 +10,7 @@
 		6675CDBB6054EBAA2D3A0F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F536F9F2A527E03A449678 /* libPods.a */; };
 		7E500DA81AA0E429008899FE /* PlaceOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */; };
 		7E513D4E1A8BD46F004D0505 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */; };
+		7E520F0D1AB74CCB00377298 /* MyTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E520F0C1AB74CCB00377298 /* MyTripTableViewCell.m */; };
 		7E5305AB1AA63451007E1C23 /* OrderListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5305AA1AA63451007E1C23 /* OrderListTableViewCell.m */; };
 		7E66CB191A9BABE3001D122D /* TripsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E66CB181A9BABE3001D122D /* TripsListTableViewCell.m */; };
 		7E6AD7001AA4E94400891AB6 /* OrdersListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD6FF1AA4E94400891AB6 /* OrdersListViewController.m */; };
@@ -53,6 +54,8 @@
 		7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceOrderViewController.m; sourceTree = "<group>"; };
 		7E513D4C1A8BD46F004D0505 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
+		7E520F0B1AB74CCB00377298 /* MyTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTripTableViewCell.h; sourceTree = "<group>"; };
+		7E520F0C1AB74CCB00377298 /* MyTripTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripTableViewCell.m; sourceTree = "<group>"; };
 		7E5305A91AA63451007E1C23 /* OrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableViewCell.h; sourceTree = "<group>"; };
 		7E5305AA1AA63451007E1C23 /* OrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableViewCell.m; sourceTree = "<group>"; };
 		7E66CB171A9BABE3001D122D /* TripsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsListTableViewCell.h; sourceTree = "<group>"; };
@@ -137,10 +140,10 @@
 				7E7403241AA8CE96009E3ED5 /* AddTripViewController.m */,
 				9D3495361A8336E2007485BD /* TripsListViewController.h */,
 				9D3495371A8336E2007485BD /* TripsListViewController.m */,
-				9D99C4711A840F8F00431941 /* TripViewController.h */,
-				9D99C4721A840F8F00431941 /* TripViewController.m */,
 				7E66CB171A9BABE3001D122D /* TripsListTableViewCell.h */,
 				7E66CB181A9BABE3001D122D /* TripsListTableViewCell.m */,
+				9D99C4711A840F8F00431941 /* TripViewController.h */,
+				9D99C4721A840F8F00431941 /* TripViewController.m */,
 				7E500DA61AA0E429008899FE /* PlaceOrderViewController.h */,
 				7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */,
 				7EA56FC31AB3536300D76077 /* EmptyTripViewController.h */,
@@ -154,10 +157,12 @@
 			children = (
 				7E6AD7041AA4E98000891AB6 /* MyTripsListViewController.h */,
 				7E6AD7051AA4E98000891AB6 /* MyTripsListViewController.m */,
-				7E6AD7071AA4E98A00891AB6 /* MyTripViewController.h */,
-				7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */,
 				7EA56FC61AB3537300D76077 /* MyTripsListTableViewCell.h */,
 				7EA56FC71AB3537300D76077 /* MyTripsListTableViewCell.m */,
+				7E6AD7071AA4E98A00891AB6 /* MyTripViewController.h */,
+				7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */,
+				7E520F0B1AB74CCB00377298 /* MyTripTableViewCell.h */,
+				7E520F0C1AB74CCB00377298 /* MyTripTableViewCell.m */,
 			);
 			name = "My Trips";
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				7E66CB191A9BABE3001D122D /* TripsListTableViewCell.m in Sources */,
 				7EA56FC81AB3537300D76077 /* MyTripsListTableViewCell.m in Sources */,
 				7E6AD7091AA4E98A00891AB6 /* MyTripViewController.m in Sources */,
+				7E520F0D1AB74CCB00377298 /* MyTripTableViewCell.m in Sources */,
 				9D43B39E1A81D9A8006B418C /* main.m in Sources */,
 				9D4FEABD1A8535DF0071F1BB /* NoConnectionViewController.m in Sources */,
 			);

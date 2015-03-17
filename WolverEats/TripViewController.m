@@ -75,16 +75,10 @@
     _nameLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, h/5+110 , w, 50)];
     _nameLabel.textAlignment = NSTextAlignmentCenter;
     _nameLabel.font = [UIFont systemFontOfSize:30];
-    NSString *driverID = _tripData[@"driver_id"];
-
-    NSDictionary *userDic = @{@"user_id" : driverID};
-    [Backend sendRequestWithURL:@"users/get" Parameters:userDic Callback:^(NSDictionary * data) {
-        _userData = data[@"user"];
-        NSString* firstName = _userData[@"first_name"];
-        NSString* lastName = _userData[@"last_name"];
         
-        _nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-    }];
+    NSString* firstName = tripData[@"first_name"];
+    NSString* lastName = tripData[@"last_name"];
+    _nameLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     [self.view addSubview:_nameLabel];
     
     
@@ -93,8 +87,7 @@
     [_orderButton setTitle:@"Place Order" forState:UIControlStateNormal];
     [_orderButton addTarget: self action:@selector(placeOrder) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_orderButton];
-
-    
+        
     }
     
     return self;

@@ -7,6 +7,7 @@
 //
 
 #import "TripsListTableViewCell.h"
+#import "NSDate+Helper.h"
 
 @implementation TripsListTableViewCell
 
@@ -39,6 +40,20 @@
         [self.contentView addSubview:_etaLabel];
     }
     return self;
+}
+
+- (void)setEta:(int)eta {
+    NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
+    NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
+    self.etaLabel.text = etaText;
+}
+
+- (void)setRestaurant:(NSString *)restaurant {
+    self.restaurantLabel.text = restaurant;
+}
+
+- (void)setProfImage:(UIImage *)profImage {
+    self.profView.image = profImage;
 }
 
 - (void)awakeFromNib {
