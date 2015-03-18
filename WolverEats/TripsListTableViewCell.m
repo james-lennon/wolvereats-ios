@@ -23,12 +23,12 @@
         
         _restaurantLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 250, 30)];
         _restaurantLabel.textColor = [UIColor blackColor];
-        _restaurantLabel.font = [UIFont fontWithName:@"Calibri" size:12.0f];
+        _restaurantLabel.font = [UIFont systemFontOfSize:17];
         [self.contentView addSubview:_restaurantLabel];
         
         _driverName = [[UILabel alloc]initWithFrame:CGRectMake(60, 35, 250, 20)];
         _driverName.textColor = [UIColor blackColor];
-        _driverName.font = [UIFont systemFontOfSize:12];
+        _driverName.font = [UIFont systemFontOfSize:11];
         [self.contentView addSubview:_driverName];
         
         
