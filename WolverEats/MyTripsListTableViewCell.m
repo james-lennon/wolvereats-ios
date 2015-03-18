@@ -23,13 +23,13 @@
         // configure control(s)
         _restaurantLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 250, 30)];
         _restaurantLabel.textColor = [UIColor blackColor];
-        _restaurantLabel.font = [UIFont fontWithName:@"Calibri" size:12.0f];
+        _restaurantLabel.font = [UIFont systemFontOfSize:17];
         [self.contentView addSubview:_restaurantLabel];
         
         _etaLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 35, 250, 20)];
         _etaLabel.textColor = [UIColor blackColor];
         _etaLabel.textAlignment = NSTextAlignmentLeft;
-        _etaLabel.font = [UIFont systemFontOfSize:10];
+        _etaLabel.font = [UIFont systemFontOfSize:11];
         
         [self.contentView addSubview:_etaLabel];
         
@@ -71,22 +71,24 @@
     if (numOrders == 0) {
         self.numOrdersLabel.text = @"0";
         if ([self.tripStatus isEqualToString:@"active"]) {
+            //grey
+             self.numOrdersLabel.backgroundColor =[UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+                   }
+        else {
             //red
             self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
-        }
-        else {
-            //grey
-            self.numOrdersLabel.backgroundColor =[UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+
         }
     }
     
     else {
         self.numOrdersLabel.text = [NSString stringWithFormat:@"%i", numOrders];
         if ([self.tripStatus isEqualToString:@"active"]) {
-            self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
-        }
-        else {
             self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:180.0f/255.0f green:209.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
+                    }
+        else {
+            self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
+
         }
     }
 }

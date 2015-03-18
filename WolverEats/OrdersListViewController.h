@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) NSArray* tripsData;
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSArray* activeOrdersData;
+@property (strong,nonatomic) NSArray* inactiveOrdersData;
 
 @end
