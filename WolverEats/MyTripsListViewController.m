@@ -27,53 +27,30 @@
         self.tabBarItem.image = [UIImage imageNamed:@"MyTripsTab.png"];
 
     
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
+        [self.tableView registerClass:[MyTripsListTableViewCell class] forCellReuseIdentifier:@"MyTripCell"];
         
-        UIEdgeInsets inset = UIEdgeInsetsMake(60, 0, 0, 0);
-        _tableView.contentInset = inset;
-        _tableView.scrollIndicatorInsets = inset;
-        
-        [_tableView registerClass:[MyTripsListTableViewCell class] forCellReuseIdentifier:@"MyTripCell"];
-        
-        [self.view addSubview:_tableView];
-        
-        /*
-        [Backend sendRequestWithURL:@"trips/get_user_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-            _activeTripsData = [data objectForKey:@"trips"];
-            NSLog(@"active trips: %@", _activeTripsData);
-        }];
-        
-        [Backend sendRequestWithURL:@"trips/get_user_inactive_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-            _oldTripsData = [data objectForKey:@"trips"];
-        }];
-         
-         */
-        
-    
-    
-        [_tableView addPullToRefreshWithActionHandler:^{
-            // prepend data to dataSource, insert cells at top of table view
-            // call [tableView.pullToRefreshView stopAnimating] when done
-            [Backend sendRequestWithURL:@"trips/get_user_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-                _activeTripsData = data[@"active_trips"];
-                _inactiveTripsData = data[@"inactive_trips"];
-
-                
-                [_tableView.pullToRefreshView stopAnimating];
-                [_tableView reloadData];
-            }];
-        }];
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self
+                                action:@selector(refresh)
+                      forControlEvents:UIControlEventValueChanged];
     }
     return self;
+    
+}
+- (void)refresh {
+    __weak MyTripsListViewController *weakself = self;
+        [Backend sendRequestWithURL:@"trips/get_user_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+            weakself.activeTripsData = data[@"active_trips"];
+            weakself.inactiveTripsData = data[@"inactive_trips"];
+            [weakself.refreshControl endRefreshing];
+            [weakself.tableView reloadData];
+    }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_tableView triggerPullToRefresh];
-    //[self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
-    
+    [self refresh];
 }
 
 - (void)viewDidLoad {
@@ -121,7 +98,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MyTripsListTableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
+    MyTripsListTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
    
     NSArray *arr = indexPath.section == 0 ? _activeTripsData : _inactiveTripsData;
     NSDictionary* trip = arr[indexPath.row];
@@ -135,6 +112,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     if (indexPath.section == 1)
     {
         NSDictionary* trip = _inactiveTripsData[indexPath.row];

@@ -56,6 +56,10 @@
     self.profView.image = profImage;
 }
 
+- (void)setName:(NSString *)name {
+    self.driverName.text = name;
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }
