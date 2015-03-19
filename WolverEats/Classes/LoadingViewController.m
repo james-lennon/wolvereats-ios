@@ -18,6 +18,8 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     
+    [super viewDidAppear:animated];
+    
     BOOL success = [Backend loadCredentials];
     if(success){
         [Backend sendRequestWithURL:@"users/login" Parameters:@{} Callback:^(NSDictionary * resp) {

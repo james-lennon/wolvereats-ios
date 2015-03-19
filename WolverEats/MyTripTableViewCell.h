@@ -10,21 +10,13 @@
 
 @interface MyTripTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UILabel *restaurantLabel;
-@property (nonatomic, strong) UILabel *etaLabel;
-@property(nonatomic, strong) UILabel *numOrdersLabel;
-
-@property(nonatomic ) int eta;
-@property(nonatomic, strong) NSString *restaurant;
-@property(nonatomic) int numOrders;
-@property (nonatomic, strong) NSString *tripStatus;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *orderLabel;
+@property(nonatomic, strong) UIButton *acceptButton;
+@property(nonatomic, strong) UIButton *declineButton;
 
 
-- (void)setEta:(int)eta;
-- (void)setRestaurant:(NSString *)restaurant;
-- (void)setNumOrders:(int)numOrders;
-
-
-
+@property(nonatomic ) NSString *name;
+@property(nonatomic, strong) NSString *order;
 
 @end

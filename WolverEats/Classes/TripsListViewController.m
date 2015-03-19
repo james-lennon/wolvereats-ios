@@ -27,43 +27,39 @@
         self.title = @"Trips";
         self.tabBarItem.image = [UIImage imageNamed:@"TripsTab.png"];
 
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
 
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTrip)];
         
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self
+                                action:@selector(refresh)
+                      forControlEvents:UIControlEventValueChanged];
         
-        UIEdgeInsets inset = UIEdgeInsetsMake(60, 0, 0, 0);
-        _tableView.contentInset = inset;
-        _tableView.scrollIndicatorInsets = inset;
+        [self.tableView registerClass:[TripsListTableViewCell class] forCellReuseIdentifier:@"TripCell"];
         
-        [_tableView registerClass:[TripsListTableViewCell class] forCellReuseIdentifier:@"TripCell"];
-        
-        [self.view addSubview:_tableView];
-        
-        
-        [_tableView addPullToRefreshWithActionHandler:^{
-            // prepend data to dataSource, insert cells at top of table view
-            // call [tableView.pullToRefreshView stopAnimating] when done
-            [Backend sendRequestWithURL:@"trips/get_all_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-                _tripsData = [data objectForKey:@"trips"];
-                [_tableView.pullToRefreshView stopAnimating];
-                [_tableView reloadData];
-            }];
-        }];
-
     }
     
     return self;
 }
 
+- (void)refresh {
+    __weak TripsListViewController *weakself = self;
+    [Backend sendRequestWithURL:@"trips/get_all_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+            weakself.tripsData = [data objectForKey:@"trips"];
+        [weakself.refreshControl endRefreshing];
+        [weakself.tableView reloadData];
+    }];
+}
+
+
+
 - (void)viewWillAppear:(BOOL)animated {
-    [_tableView triggerPullToRefresh];
-    //[self.tableView setContentOffset:CGPointMake(0, -self.refreshControl.frame.size.height) animated:YES];
-  
+    [self refresh];
 }
 
 -(void)addTrip
@@ -93,7 +89,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    TripsListTableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:@"TripCell"];
+    TripsListTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"TripCell"];
     [cell setNeedsUpdateConstraints];
     
     NSDictionary* trip = _tripsData[indexPath.row];
@@ -125,6 +121,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary* trip = _tripsData[indexPath.row];
     TripViewController *vc = [[TripViewController alloc] initWithData:trip];
     [self.navigationController pushViewController:vc animated:YES];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TripsListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface TripsListViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray* tripsData;
-@property (strong, nonatomic) UITableView *tableView;
 
 @end

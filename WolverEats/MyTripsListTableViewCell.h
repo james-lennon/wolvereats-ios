@@ -19,9 +19,4 @@
 @property (nonatomic, strong) NSString *tripStatus;
 
 
-- (void)setEta:(int)eta;
-- (void)setRestaurant:(NSString *)restaurant;
-- (void)setNumOrders:(int)numOrders;
-
-
 @end

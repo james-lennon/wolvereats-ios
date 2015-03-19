@@ -20,32 +20,41 @@
 - (id)initWithData:(NSDictionary *)tripData {
     if ((self = [super init])) {
         
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
+        self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        self.tripData = tripData;
         
-        UIEdgeInsets inset = UIEdgeInsetsMake(60, 0, 0, 0);
-        _tableView.contentInset = inset;
-        _tableView.scrollIndicatorInsets = inset;
-        [_tableView registerClass:[MyTripTableViewCell class] forCellReuseIdentifier:@"MyTripCell"];
         
-        [self.view addSubview:_tableView];
+        [self.tableView registerClass:[MyTripTableViewCell class] forCellReuseIdentifier:@"MyTripCell"];
         
-        NSString *tripID = tripData[@"trip_id"];
-        
-        [_tableView addPullToRefreshWithActionHandler:^{
-            // prepend data to dataSource, insert cells at top of table view
-            // call [tableView.pullToRefreshView stopAnimating] when done
-            [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id" : tripID} Callback:^(NSDictionary * data) {
-                _tripOrderData = data;
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self
+                                action:@selector(refresh)
+                      forControlEvents:UIControlEventValueChanged];
                 
-                [_tableView.pullToRefreshView stopAnimating];
-                [_tableView reloadData];
-            }];
-        }];
     }
     return self;
 }
+
+- (void)refresh {
+    
+    __weak MyTripViewController *weakself = self;
+    NSString *tripID = _tripData[@"trip_id"];
+    
+    [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id" : tripID} Callback:^(NSDictionary * data) {
+        _tripOrderData = data[@"orders"];
+        [weakself.refreshControl endRefreshing];
+        [weakself.tableView reloadData];
+
+    }];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self refresh];
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -54,7 +63,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"orders";
+    return @"Orders";
 }
 
 
@@ -67,27 +76,23 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    return 1;
+    return _tripOrderData.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    MyTripTableViewCell* cell = [_tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
+    MyTripTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
     NSDictionary* order = _tripOrderData[indexPath.row];
     
-    /*cell.restaurant = trip[@"restaurant_name"];
-    cell.tripStatus = indexPath.section == 0 ? @"active" : @"inactive";
-    cell.eta = [trip[@"expiration"] intValue];
-    cell.numOrders = [trip[@"order_count"] intValue];
-    */
+    NSString* firstName = order[@"first_name"];
+    NSString* lastName = order[@"last_name"];
+    cell.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
-
-
 
 
 - (void)viewDidLoad {

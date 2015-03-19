@@ -23,10 +23,4 @@
 @property (nonatomic, strong) UIImage *profImage;
 
 
-- (void)setEta:(int)eta;
-- (void)setRestaurant:(NSString *)restaurant;
-- (void)setName:(NSString *)name;
-- (void)setImage:(UIImage *)image;
-
-
 @end

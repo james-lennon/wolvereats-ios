@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyTripViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MyTripViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 
 @property (nonatomic, strong) NSDictionary *tripData;
 @property (nonatomic, strong) NSArray *tripOrderData;
-@property (nonatomic, strong) UITableView *tableView;
 
 - (id)initWithData:(NSDictionary *)tripData;
 
