@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OrdersListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface OrdersListViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray* tripsData;
-@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray* activeOrdersData;
 @property (strong,nonatomic) NSArray* inactiveOrdersData;
 

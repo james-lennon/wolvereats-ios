@@ -97,7 +97,6 @@
     if (buttonIndex == [alertView cancelButtonIndex]){
         //cancel clicked ...do your action
         if (alertView.tag == 0) {
-            NSLog(@"hello");
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }

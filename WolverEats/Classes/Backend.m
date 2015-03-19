@@ -28,12 +28,12 @@ static NSDictionary* credentials;
     }else{
         [dataToSend addEntriesFromDictionary:credentials];
     }
-    NSLog(@"dataToSend: %@", dataToSend);
+    //NSLog(@"dataToSend: %@", dataToSend);
     [manager POST:[NSString stringWithFormat:@"%@%@", BASE_URL, url] parameters:dataToSend success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+        //NSLog(@"JSON: %@", responseObject);
         callback(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", [operation responseString]);
+        //NSLog(@"Error: %@", [operation responseString]);
         failure();
         //Show offline
 //        [[UIApplication sharedApplication] keyWindow]

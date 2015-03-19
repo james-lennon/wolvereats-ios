@@ -27,6 +27,8 @@
         
         
         [self.tableView registerClass:[MyTripTableViewCell class] forCellReuseIdentifier:@"MyTripCell"];
+        self.clearsSelectionOnViewWillAppear = YES;
+
         
         self.refreshControl = [[UIRefreshControl alloc] init];
         [self.refreshControl addTarget:self
@@ -87,6 +89,9 @@
     NSString* firstName = order[@"first_name"];
     NSString* lastName = order[@"last_name"];
     cell.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+    
+    NSString *orderText = order[@"order_text"];
+    cell.order = orderText;
     
     return cell;
 }

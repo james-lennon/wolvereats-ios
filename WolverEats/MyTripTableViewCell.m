@@ -21,15 +21,18 @@
         _nameLabel.font = [UIFont fontWithName:@"Calibri" size:12.0f];
         [self.contentView addSubview:_nameLabel];
         
-        /*_etaLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 35, 250, 20)];
-        _etaLabel.textColor = [UIColor blackColor];
-        _etaLabel.textAlignment = NSTextAlignmentLeft;
-        _etaLabel.font = [UIFont systemFontOfSize:10];
-        
-        [self.contentView addSubview:_etaLabel];
-         */
+        _orderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 35, 250, 20)];
+        _orderLabel.textColor = [UIColor blackColor];
+        _orderLabel.textAlignment = NSTextAlignmentLeft;
+        _orderLabel.font = [UIFont systemFontOfSize:11];
+        [self.contentView addSubview:_orderLabel];
     }
     return self;
+}
+
+-(void)setOrder:(NSString *)order
+{
+    self.orderLabel.text = order;
 }
 
 - (void)setName:(NSString *)name {

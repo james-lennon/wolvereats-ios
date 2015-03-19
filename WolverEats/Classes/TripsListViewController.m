@@ -31,6 +31,8 @@
 
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
+        self.clearsSelectionOnViewWillAppear = YES;
+
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addTrip)];

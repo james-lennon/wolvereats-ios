@@ -34,6 +34,9 @@
         [self.refreshControl addTarget:self
                                 action:@selector(refresh)
                       forControlEvents:UIControlEventValueChanged];
+        
+        self.clearsSelectionOnViewWillAppear = YES;
+
     }
     return self;
     
@@ -112,9 +115,6 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-
     if (indexPath.section == 1)
     {
         NSDictionary* trip = _inactiveTripsData[indexPath.row];
@@ -142,6 +142,9 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyTripViewController *vc = [[MyTripViewController alloc] initWithData:trip];
     [self.navigationController pushViewController:vc animated:YES];
     }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     
 }
 
