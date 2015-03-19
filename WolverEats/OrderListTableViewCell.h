@@ -12,6 +12,7 @@
 @property (nonatomic, strong) UILabel *restaurantLabel;
 @property (nonatomic, strong) UILabel *orderLabel;
 @property(nonatomic, strong) UIImageView *orderStatus;
+@property(nonatomic,strong)  UIImageView *colorStatus;
 
 @property(nonatomic) int eta;
 @property(nonatomic, strong) NSString *restaurant;
