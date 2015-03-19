@@ -26,23 +26,20 @@
         _orderLabel.font = [UIFont systemFontOfSize:11];
         [self.contentView addSubview:_orderLabel];
         
-        _orderStatus = [[UIImageView alloc]initWithFrame:CGRectMake(335, 20, 20, 20)];
+        _colorStatus = [[UIImageView alloc]initWithFrame:CGRectMake(320, 10, 40, 40)];
+        _colorStatus.layer.cornerRadius = 20;
+        _colorStatus.layer.masksToBounds = YES;
+        [self.contentView addSubview:_colorStatus];
+       
+        _orderStatus = [[UIImageView alloc]initWithFrame:CGRectMake(330, 20, 20, 20)];
         [self.contentView addSubview:_orderStatus];
-        //_exclamation.layer.cornerRadius = _exclamation.frame.size.width / 2;
-        //_exclamation.clipsToBounds = YES;
-        //_exclamation.backgroundColor = [UIColor whiteColor];
+        
+
         
 
  
         
-        /*
-        _numOrdersLabel.textColor = [UIColor blackColor];
-        _numOrdersLabel.textAlignment = NSTextAlignmentCenter;
-        _numOrdersLabel.layer.cornerRadius = 8;
-        _numOrdersLabel.layer.masksToBounds = YES;
-        //[_numOrdersLabel setText:@"0"];
      
-        */
         
     }
     return self;
@@ -60,13 +57,24 @@
 
 -(void)setOrderState:(int)orderState
 {
-    if (orderState == 1) {
-        
-    self.orderStatus.image = [UIImage imageNamed:@"check.png"];
-    }
     if (orderState == 0)
     {
-    self.orderStatus.image = [UIImage imageNamed:@"x.png"];
+        self.orderStatus.image = [UIImage imageNamed:@"pending.png"];
+        //grey
+        self.colorStatus.backgroundColor = [UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+    }
+    else if (orderState == 1) {
+        
+        self.orderStatus.image = [UIImage imageNamed:@"check.png"];
+        //green
+        self.colorStatus.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
+    }
+    else
+     
+    {
+       self.orderStatus.image = [UIImage imageNamed:@"x.png"];
+       //red
+        self.colorStatus.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
     }
     
 }

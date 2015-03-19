@@ -34,11 +34,11 @@
         [self.contentView addSubview:_etaLabel];
         
         
-        _numOrdersLabel = [[UILabel alloc]initWithFrame:CGRectMake(320, 20, 40, 30)];
+        _numOrdersLabel = [[UILabel alloc]initWithFrame:CGRectMake(320, 10, 40, 40)];
         _numOrdersLabel.textColor = [UIColor blackColor];
         
         _numOrdersLabel.textAlignment = NSTextAlignmentCenter;
-        _numOrdersLabel.layer.cornerRadius = 8;
+        _numOrdersLabel.layer.cornerRadius = 20;
         _numOrdersLabel.layer.masksToBounds = YES;
         //[_numOrdersLabel setText:@"0"];
         [self.contentView addSubview:_numOrdersLabel];
@@ -84,6 +84,7 @@
     else {
         self.numOrdersLabel.text = [NSString stringWithFormat:@"%i", numOrders];
         if ([self.tripStatus isEqualToString:@"active"]) {
+            //blue
             self.numOrdersLabel.backgroundColor = [UIColor colorWithRed:180.0f/255.0f green:209.0f/255.0f blue:250.0f/255.0f alpha:1.0f];
                     }
         else {
