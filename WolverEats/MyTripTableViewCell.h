@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MyTripTableViewCellDelegate <NSObject>
+- (void)didClickOnAcceptOrder:(NSInteger)cellIndex;
+-(void)didClickOnDeclineOrder:(NSInteger)cellIndex;
+@end
+
 @interface MyTripTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -18,5 +23,9 @@
 
 @property(nonatomic ) NSString *name;
 @property(nonatomic, strong) NSString *order;
+@property(nonatomic) int orderID;
+
+@property (weak, nonatomic) id<MyTripTableViewCellDelegate>delegate;
+@property (assign, nonatomic)   NSInteger cellIndex; 
 
 @end

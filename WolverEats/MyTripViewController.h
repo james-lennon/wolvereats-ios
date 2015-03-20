@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol MyTripTableViewCellDelegate <NSObject>
+- (void)didClickOnAcceptOrder:(NSInteger)cellIndex withData:(id)data;
+@end
+
 @interface MyTripViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 

@@ -84,6 +84,9 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MyTripTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
+    cell.delegate = self;
+    cell.cellIndex = indexPath.row;
+    
     NSDictionary* order = _tripOrderData[indexPath.row];
     
     NSString* firstName = order[@"first_name"];
@@ -92,11 +95,44 @@
     
     NSString *orderText = order[@"order_text"];
     cell.order = orderText;
+    cell.orderID = [order[@"order_id"] intValue];
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+}
+
+- (void)didClickOnAcceptOrder:(NSInteger)cellIndex
+{
+    /*
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Are you sure?"
+                                                   message:@"Once you accept the order, you can't change your mind."
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                         otherButtonTitles:@"Okay", nil];
+    alert.tag = 0;
+    [alert show];
+     */
+    
+    NSDictionary* order = _tripOrderData[cellIndex];
+    int orderInt = [order[@"order_id"] intValue];
+    NSNumber* orderID = [NSNumber numberWithInt:orderInt];
+    [Backend sendRequestWithURL:@"orders/accept_order"Parameters:@{@"order_id":orderID} Callback:^(NSDictionary * data){
+    }];
+    
+    
+}
+
+
+-(void)didClickOnDeclineOrder:(NSInteger)cellIndex
+{
+    NSDictionary* order = _tripOrderData[cellIndex];
+    int orderInt = [order[@"order_id"] intValue];
+    NSNumber* orderID = [NSNumber numberWithInt:orderInt];
+    [Backend sendRequestWithURL:@"orders/reject_order" Parameters:@{@"order_id":orderID} Callback:^(NSDictionary * data) {
+     }];
+
 }
 
 

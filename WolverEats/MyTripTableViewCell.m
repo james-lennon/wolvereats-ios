@@ -7,6 +7,7 @@
 //
 
 #import "MyTripTableViewCell.h"
+#import "Backend.h"
 
 @implementation MyTripTableViewCell
 
@@ -26,7 +27,40 @@
         _orderLabel.textAlignment = NSTextAlignmentLeft;
         _orderLabel.font = [UIFont systemFontOfSize:11];
         [self.contentView addSubview:_orderLabel];
+        
+        _declineButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _declineButton.frame = CGRectMake(320, 10, 40, 40);
+        _declineButton.layer.cornerRadius = 20;
+        _declineButton.layer.masksToBounds = YES;
+        [_declineButton addTarget:self action:@selector(declineButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        _declineButton.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
+        [self.contentView addSubview:_declineButton];
+        
+        UIImageView *decline = [[UIImageView alloc]initWithFrame:CGRectMake(330, 20, 20, 20)];
+        decline.image = [UIImage imageNamed:@"x.png"];
+        [self.contentView addSubview:decline];
+        
+        /*
+         UIImage *declineImage = [UIImage imageNamed:@"x.png"];
+         _declineButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+         _declineButton.imageView.bounds = CGRectMake(0, 0, 20, 20);
+         [_declineButton setImage:declineImage forState:UIControlStateNormal];
+         */
+        
+        _acceptButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _acceptButton.frame = CGRectMake(270, 10, 40, 40);
+        [_acceptButton addTarget:self action:@selector(acceptButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+        _acceptButton.layer.cornerRadius = 20;
+        _acceptButton.layer.masksToBounds = YES;
+        _acceptButton.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
+        [self.contentView addSubview:_acceptButton];
+        
+        UIImageView *accept = [[UIImageView alloc]initWithFrame:CGRectMake(280, 20, 20, 20)];
+        accept.image = [UIImage imageNamed:@"check.png"];
+        [self.contentView addSubview:accept];
+    
     }
+    
     return self;
 }
 
@@ -39,6 +73,32 @@
     _nameLabel.text = name;
 }
 
+-(void)setOrderID:(int)orderID{
+    _orderID = orderID;
+}
+
+-(void)acceptButtonClicked{
+    
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didClickOnAcceptOrder:)]){
+        [self.delegate didClickOnAcceptOrder:_cellIndex];
+    }
+    
+}
+
+-(void)declineButtonClicked{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didClickOnDeclineOrder:)])
+    {
+        [self.delegate didClickOnDeclineOrder:_cellIndex]; 
+    }
+}
+
+/*-(void)acceptOrder{
+    
+   
+    
+}*/
+
 
 - (void)awakeFromNib {
     // Initialization code
@@ -49,5 +109,7 @@
 
     // Configure the view for the selected state
 }
+
+
 
 @end
