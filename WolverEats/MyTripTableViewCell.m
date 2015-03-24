@@ -36,9 +36,9 @@
         _declineButton.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
         [self.contentView addSubview:_declineButton];
         
-        UIImageView *decline = [[UIImageView alloc]initWithFrame:CGRectMake(330, 20, 20, 20)];
-        decline.image = [UIImage imageNamed:@"x.png"];
-        [self.contentView addSubview:decline];
+        _decline = [[UIImageView alloc]initWithFrame:CGRectMake(330, 20, 20, 20)];
+        _decline.image = [UIImage imageNamed:@"x.png"];
+        [self.contentView addSubview:_decline];
         
         /*
          UIImage *declineImage = [UIImage imageNamed:@"x.png"];
@@ -55,9 +55,9 @@
         _acceptButton.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
         [self.contentView addSubview:_acceptButton];
         
-        UIImageView *accept = [[UIImageView alloc]initWithFrame:CGRectMake(280, 20, 20, 20)];
-        accept.image = [UIImage imageNamed:@"check.png"];
-        [self.contentView addSubview:accept];
+        _accept = [[UIImageView alloc]initWithFrame:CGRectMake(280, 20, 20, 20)];
+        _accept.image = [UIImage imageNamed:@"check.png"];
+        [self.contentView addSubview:_accept];
     
     }
     
@@ -77,10 +77,39 @@
     _orderID = orderID;
 }
 
+-(void)setState:(int)state
+{
+    NSLog(@"hello");
+    if (state == 1)
+    {
+ 
+        _acceptButton.enabled = NO;
+        _declineButton.enabled = NO;
+        _declineButton.hidden = YES;
+        _decline.hidden = YES;
+        _acceptButton.hidden = NO;
+        _accept.hidden = NO;
+        _acceptButton.frame = CGRectMake(320, 10, 40, 40);
+        _accept.frame = CGRectMake(330, 20, 20, 20); 
+    }
+    
+    else if (state == 2)
+    {
+        _acceptButton.hidden = YES;
+        _accept.hidden = YES;
+        _acceptButton.enabled = NO;
+        _declineButton.hidden = NO;
+        _decline.hidden = NO; 
+        _declineButton.enabled = NO; 
+    }
+    
+}
+
 -(void)acceptButtonClicked{
     
     
-    if(self.delegate && [self.delegate respondsToSelector:@selector(didClickOnAcceptOrder:)]){
+    if(self.delegate && [self.delegate respondsToSelector:@selector(didClickOnAcceptOrder:)])
+    {
         [self.delegate didClickOnAcceptOrder:_cellIndex];
     }
     

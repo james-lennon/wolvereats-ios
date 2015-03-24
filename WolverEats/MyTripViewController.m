@@ -45,7 +45,9 @@
     NSString *tripID = _tripData[@"trip_id"];
     
     [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id" : tripID} Callback:^(NSDictionary * data) {
-        _tripOrderData = data[@"orders"];
+        _pendingOrderData = data[@"pending"];
+        _acceptedOrderData = data[@"accepted"];
+        _rejectedOrderData = data[@"rejected"];
         [weakself.refreshControl endRefreshing];
         [weakself.tableView reloadData];
 
@@ -59,15 +61,40 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 3;
 }
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Orders";
+    if (section == 0)
+    {
+        return @"Pending Orders";
+    }
+    else if (section == 1)
+    {
+        return @"Accepted Orders";
+    }
+    else
+    {
+        return @"Rejected Orders";
+    }
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0)
+    {
+        return [_pendingOrderData count];
+    }
+    else if (section == 1)
+    {
+        return [_acceptedOrderData count];
+    }
+    else
+    {
+        return [_rejectedOrderData count];
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
@@ -77,18 +104,25 @@
     return 60;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _tripOrderData.count;
-}
+
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MyTripTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
     cell.delegate = self;
     cell.cellIndex = indexPath.row;
-    
-    NSDictionary* order = _tripOrderData[indexPath.row];
-    
+    NSDictionary* order;
+    if (indexPath.section == 0)
+    {
+    order = _pendingOrderData[indexPath.row];
+    }
+    else if (indexPath.section == 1) {
+        order = _acceptedOrderData[indexPath.row];
+    }
+    else
+    {
+        order = _rejectedOrderData[indexPath.row];
+    }
     NSString* firstName = order[@"first_name"];
     NSString* lastName = order[@"last_name"];
     cell.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
@@ -96,6 +130,7 @@
     NSString *orderText = order[@"order_text"];
     cell.order = orderText;
     cell.orderID = [order[@"order_id"] intValue];
+    cell.state = [order[@"state"] intValue]; 
     
     return cell;
 }
@@ -115,24 +150,51 @@
     [alert show];
      */
     
-    NSDictionary* order = _tripOrderData[cellIndex];
+    NSDictionary* order = _pendingOrderData[cellIndex];
     int orderInt = [order[@"order_id"] intValue];
     NSNumber* orderID = [NSNumber numberWithInt:orderInt];
     [Backend sendRequestWithURL:@"orders/accept_order"Parameters:@{@"order_id":orderID} Callback:^(NSDictionary * data){
+    
+        if([data objectForKey:@"error"]){
+            NSLog(@"invalid login");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request Failed"
+                                                            message:@"Your request did not process, please try again later."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Okay"
+                                                  otherButtonTitles:nil];
+            alert.tag = 2;
+            [alert show];
+        }
+
+    
     }];
     
+    [self refresh];
     
 }
 
 
 -(void)didClickOnDeclineOrder:(NSInteger)cellIndex
 {
-    NSDictionary* order = _tripOrderData[cellIndex];
+    NSDictionary* order = _pendingOrderData[cellIndex];
     int orderInt = [order[@"order_id"] intValue];
     NSNumber* orderID = [NSNumber numberWithInt:orderInt];
     [Backend sendRequestWithURL:@"orders/reject_order" Parameters:@{@"order_id":orderID} Callback:^(NSDictionary * data) {
-     }];
+     
+        if([data objectForKey:@"error"]){
+            NSLog(@"invalid login");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request Failed"
+                                                            message:@"Your request did not process, please try again later."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Okay"
+                                                  otherButtonTitles:nil];
+            alert.tag = 2;
+            [alert show];
+        }
+    
+    }];
 
+    [self refresh]; 
 }
 
 
