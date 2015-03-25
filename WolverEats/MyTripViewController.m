@@ -74,7 +74,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+
+    NSDictionary* order = _tripOrderData[indexPath.row];
+    NSString *orderText = order[@"order_text"];
+    CGSize constraint = CGSizeMake(320 - (10 * 2), 2000);
+    CGRect textRect = [orderText boundingRectWithSize:constraint
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}
+                                         context:nil];
+    CGFloat height = MAX(ceil(textRect.size.height), 44.0f);
+    return height + (16 * 2);
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
