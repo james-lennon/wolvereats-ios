@@ -19,4 +19,5 @@
 @property(nonatomic) int orderState;
 @property(nonatomic, strong) NSString *orderText; 
 
++ (CGFloat)cellHeightForOrder:(NSString *)order;
 @end

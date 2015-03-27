@@ -20,29 +20,30 @@
         _restaurantLabel.font = [UIFont systemFontOfSize:17];
         [self.contentView addSubview:_restaurantLabel];
         
-        _orderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 35, 250, 20)];
-        _orderLabel.textColor = [UIColor blackColor];
+        _orderLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _orderLabel.textColor = [UIColor colorWithRed:(30/255.0f) green:(30/255.0f) blue:(30/255.0f) alpha:1];
         _orderLabel.textAlignment = NSTextAlignmentLeft;
         _orderLabel.font = [UIFont systemFontOfSize:11];
+        _orderLabel.numberOfLines = 0;
         [self.contentView addSubview:_orderLabel];
         
         _colorStatus = [[UIImageView alloc]initWithFrame:CGRectMake(320, 10, 40, 40)];
-        _colorStatus.layer.cornerRadius = 20;
-        _colorStatus.layer.masksToBounds = YES;
         [self.contentView addSubview:_colorStatus];
        
         _orderStatus = [[UIImageView alloc]initWithFrame:CGRectMake(330, 20, 20, 20)];
         [self.contentView addSubview:_orderStatus];
-        
-
-        
-
- 
-        
-     
-        
     }
     return self;
+}
+
++ (CGFloat)cellHeightForOrder:(NSString *)order {
+    CGSize constraint = CGSizeMake(320 - (10 * 2), 800);
+    CGRect textRect = [order boundingRectWithSize:constraint
+                                          options:NSStringDrawingUsesLineFragmentOrigin
+                                       attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}
+                                          context:nil];
+    CGFloat height = MAX(ceil(textRect.size.height), 60.0f);
+    return height;
 }
 
 
@@ -52,31 +53,28 @@
 
 -(void)setOrderText:(NSString *)orderText
 {
-    self.orderLabel.text = orderText; 
+    self.orderLabel.text = orderText;
+    CGRect orderLabelRect = CGRectMake(22, 38, 260, [OrderListTableViewCell cellHeightForOrder:orderText] - 45);
+    _orderLabel.frame = orderLabelRect;
+
 }
 
 -(void)setOrderState:(int)orderState
 {
     if (orderState == 0)
     {
-        self.orderStatus.image = [UIImage imageNamed:@"pending.png"];
-        //grey
-        self.colorStatus.backgroundColor = [UIColor colorWithRed:228.0f/255.0f green:228.0f/255.0f blue:228.0f/255.0f alpha:1.0f];
+        self.orderStatus.image = [[UIImage imageNamed:@"pending.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.orderStatus.tintColor = [UIColor blackColor];
     }
     else if (orderState == 1) {
-        
-        self.orderStatus.image = [UIImage imageNamed:@"check.png"];
-        //green
-        self.colorStatus.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
+        self.orderStatus.image = [[UIImage imageNamed:@"check.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        _orderStatus.tintColor = [UIColor colorWithRed:0 green:(153/255.0f) blue:0 alpha:1];
     }
     else
-     
     {
-       self.orderStatus.image = [UIImage imageNamed:@"x.png"];
-       //red
-        self.colorStatus.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
+       self.orderStatus.image = [[UIImage imageNamed:@"x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        self.orderStatus.tintColor = [UIColor redColor];
     }
-    
 }
 
 

@@ -78,8 +78,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
-    
+    NSArray *arr = indexPath.section == 0 ? _activeOrdersData : _inactiveOrdersData;
+    NSDictionary* order = arr[indexPath.row];
+    NSString *orderText = order[@"order_text"];
+
+    return [OrderListTableViewCell cellHeightForOrder:orderText];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

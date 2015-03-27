@@ -153,7 +153,7 @@
         alert.tag = 2;
         [alert show];
     }
-    else if(! (etaNum > expNum)){
+    else if(!(etaNum > expNum)){
         NSLog(@"invalid login");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid Trip"
                                                         message:@"Your ETA has to be after your expiration!"

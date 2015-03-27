@@ -45,11 +45,16 @@
     NSString *tripID = _tripData[@"trip_id"];
     
     [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id" : tripID} Callback:^(NSDictionary * data) {
-        _tripOrderData = data[@"orders"];
-        [weakself.refreshControl endRefreshing];
-        [weakself.tableView reloadData];
-
+        _pendingOrderData = data[@"pending"];
+        _acceptedOrderData = data[@"accepted"];
+        _rejectedOrderData = data[@"rejected"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakself.refreshControl endRefreshing];
+            [weakself.tableView reloadData];
+        });
     }];
+    
+    
     
 }
 
@@ -59,15 +64,40 @@
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 3;
 }
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return @"Orders";
+    if (section == 0)
+    {
+        return @"Pending Orders";
+    }
+    else if (section == 1)
+    {
+        return @"Accepted Orders";
+    }
+    else
+    {
+        return @"Rejected Orders";
+    }
 }
 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if (section == 0)
+    {
+        return [_pendingOrderData count];
+    }
+    else if (section == 1)
+    {
+        return [_acceptedOrderData count];
+    }
+    else
+    {
+        return [_rejectedOrderData count];
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
@@ -75,37 +105,113 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSDictionary* order = _tripOrderData[indexPath.row];
+    NSDictionary* order;
+    if (indexPath.section == 0)
+    {
+        order = _pendingOrderData[indexPath.row];
+    }
+    else if (indexPath.section == 1) {
+        order = _acceptedOrderData[indexPath.row];
+    }
+    else
+    {
+        order = _rejectedOrderData[indexPath.row];
+    }
+    
     NSString *orderText = order[@"order_text"];
-    CGSize constraint = CGSizeMake(320 - (10 * 2), 2000);
-    CGRect textRect = [orderText boundingRectWithSize:constraint
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}
-                                         context:nil];
-    CGFloat height = MAX(ceil(textRect.size.height), 44.0f);
-    return height + (16 * 2);
+    return [MyTripTableViewCell cellHeightForOrder:orderText];
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _tripOrderData.count;
-}
+
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     MyTripTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyTripCell"];
-    NSDictionary* order = _tripOrderData[indexPath.row];
-    
+    cell.delegate = self;
+    cell.cellIndex = indexPath.row;
+    NSDictionary* order;
+    if (indexPath.section == 0)
+    {
+    order = _pendingOrderData[indexPath.row];
+    }
+    else if (indexPath.section == 1) {
+        order = _acceptedOrderData[indexPath.row];
+    }
+    else
+    {
+        order = _rejectedOrderData[indexPath.row];
+    }
     NSString* firstName = order[@"first_name"];
     NSString* lastName = order[@"last_name"];
     cell.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
     NSString *orderText = order[@"order_text"];
     cell.order = orderText;
+    cell.orderID = [order[@"order_id"] intValue];
+    cell.state = [order[@"state"] intValue];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)didClickOnAcceptOrder:(NSInteger)cellIndex
+{
+    /*
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Are you sure?"
+                                                   message:@"Once you accept the order, you can't change your mind."
+                                                  delegate:self
+                                         cancelButtonTitle:@"Cancel"
+                                         otherButtonTitles:@"Okay", nil];
+    alert.tag = 0;
+    [alert show];
+     */
+    
+    NSDictionary* order = _pendingOrderData[cellIndex];
+    int orderInt = [order[@"order_id"] intValue];
+    NSNumber* orderID = [NSNumber numberWithInt:orderInt];
+    [Backend sendRequestWithURL:@"orders/accept_order"Parameters:@{@"order_id":orderID} Callback:^(NSDictionary * data){
+    
+        if([data objectForKey:@"error"]){
+            NSLog(@"invalid login");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request Failed"
+                                                            message:@"Your request did not process, please try again later."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Okay"
+                                                  otherButtonTitles:nil];
+            alert.tag = 2;
+            [alert show];
+        }
+
+    
+    }];
+    
+    [self refresh];
+    
+}
+
+
+-(void)didClickOnDeclineOrder:(NSInteger)cellIndex
+{
+    NSDictionary* order = _pendingOrderData[cellIndex];
+    int orderInt = [order[@"order_id"] intValue];
+    NSNumber* orderID = [NSNumber numberWithInt:orderInt];
+    [Backend sendRequestWithURL:@"orders/reject_order" Parameters:@{@"order_id":orderID} Callback:^(NSDictionary * data) {
+     
+        if([data objectForKey:@"error"]){
+            NSLog(@"invalid login");
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Request Failed"
+                                                            message:@"Your request did not process, please try again later."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Okay"
+                                                  otherButtonTitles:nil];
+            alert.tag = 2;
+            [alert show];
+        }
+    
+    }];
+
+    [self refresh]; 
 }
 
 

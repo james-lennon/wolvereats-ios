@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+//@protocol MyTripTableViewCellDelegate <NSObject>
+//- (void)didClickOnAcceptOrder:(NSInteger)cellIndex withData:(id)data;
+//@end
+
 @interface MyTripViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 
 @property (nonatomic, strong) NSDictionary *tripData;
-@property (nonatomic, strong) NSArray *tripOrderData;
+@property (nonatomic, strong) NSArray *pendingOrderData;
+@property (nonatomic, strong) NSArray *acceptedOrderData;
+@property (nonatomic, strong) NSArray *rejectedOrderData;
 
 - (id)initWithData:(NSDictionary *)tripData;
+- (void)didClickOnAcceptOrder:(NSInteger)cellIndex withData:(id)data;
 
 @end
