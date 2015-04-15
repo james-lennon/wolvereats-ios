@@ -7,6 +7,10 @@
 //
 
 #import "OldTripOrdersTableViewController.h"
+#import <UIScrollView+SVInfiniteScrolling.h>
+#import "Backend.h"
+#import "OldTripOrderTableViewCell.h"
+
 
 @interface OldTripOrdersTableViewController ()
 
@@ -14,44 +18,115 @@
 
 @implementation OldTripOrdersTableViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (id)initWithData:(id)tripData{
+    if ((self = [super init])){
+        
+        self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        self.tripData = tripData;
+        self.title = _tripData[@"restaurant_name"];
+        
+        [self.tableView registerClass: [OldTripOrderTableViewCell class] forCellReuseIdentifier:@"MyOldTripCell" ];
+        self.clearsSelectionOnViewWillAppear = YES;
+        
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self
+                                action:@selector(refresh)
+                      forControlEvents:UIControlEventValueChanged];
+    }
+    return self;
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+-(void)refresh{
+    __weak OldTripOrdersTableViewController *weakself = self;
+    NSString *tripID = _tripData[@"trip_id"];
+    
+    [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id" : tripID} Callback:^(NSDictionary * data) {
+        _acceptedOrderData = data[@"accepted"];
+        _rejectedOrderData = data[@"rejected"];
+        [weakself.refreshControl endRefreshing];
+        [weakself.tableView reloadData];
+        
+    }];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [self refresh];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+  if (section == 0)
+  {
+      return [_acceptedOrderData count];
+  }
+    else
+  {
+      return [_rejectedOrderData count];
+  }
 }
 
-/*
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+
+    if (section == 0)
+    {
+        return @"Accepted Orders";
+    }
+    else
+    {
+        return @"Rejected Orders";
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    OldTripOrderTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyOldTripCell" forIndexPath:indexPath];
+    //cell.delegate = self;
+    NSDictionary* order;
+    if (indexPath.section == 0)
+    {
+        order = _acceptedOrderData[indexPath.row];
+    }
+    else
+    {
+        order = _rejectedOrderData[indexPath.row];
+    }
+    NSString* firstName = order[@"first_name"];
+    NSString* lastName = order[@"last_name"];
+    cell.name = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
     
-    // Configure the cell...
+    NSString *orderText = order[@"order_text"];
+    cell.order = orderText;
+    cell.orderID = [order[@"order_id"] intValue];
+    cell.state = [order[@"state"] intValue];
+    
     
     return cell;
 }
-*/
 
 /*
 // Override to support conditional editing of the table view.

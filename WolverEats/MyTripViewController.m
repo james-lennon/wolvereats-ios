@@ -10,6 +10,7 @@
 #import "MyTripTableViewCell.h"
 #import <UIScrollView+SVPullToRefresh.h>
 #import "Backend.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface MyTripViewController ()
 
@@ -24,6 +25,7 @@
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tripData = tripData;
+        self.title = _tripData[@"restaurant_name"]; 
         
         
         [self.tableView registerClass:[MyTripTableViewCell class] forCellReuseIdentifier:@"MyTripCell"];
@@ -165,11 +167,24 @@
             alert.tag = 2;
             [alert show];
         }
+        
+        NSDictionary *order = _pendingOrderData[cellIndex];
+        NSMutableArray *newarray = [NSMutableArray arrayWithArray:_acceptedOrderData];
+        [newarray insertObject:order atIndex:0];
+        _acceptedOrderData = newarray;
 
-    
+        NSMutableArray *newparray = [NSMutableArray arrayWithArray:_pendingOrderData];
+        [newparray removeObjectAtIndex:cellIndex];
+        _pendingOrderData = newparray;
+        
+        MyTripTableViewCell *cell = (MyTripTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:cellIndex inSection:0]];
+        cell.state = 1;
+        
+        [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:cellIndex inSection:0] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+        
     }];
     
-    [self refresh];
+    
     
 }
 
@@ -191,10 +206,25 @@
             alert.tag = 2;
             [alert show];
         }
+        
+        NSDictionary *order = _pendingOrderData[cellIndex];
+        NSMutableArray *rejected = [NSMutableArray arrayWithArray:_rejectedOrderData];
+        [rejected insertObject:order atIndex:0];
+        _rejectedOrderData = rejected;
+        
+        NSMutableArray *pending = [NSMutableArray arrayWithArray:_pendingOrderData];
+        [pending removeObjectAtIndex:cellIndex];
+        _pendingOrderData = pending;
+        
+        MyTripTableViewCell *cell = (MyTripTableViewCell*)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:cellIndex inSection:0]];
+        cell.state = 2;
+        
+        [self.tableView moveRowAtIndexPath:[NSIndexPath indexPathForRow:cellIndex inSection:0] toIndexPath:[NSIndexPath indexPathForRow:0 inSection:2]];
+
     
     }];
 
-    [self refresh]; 
+    
 }
 
 

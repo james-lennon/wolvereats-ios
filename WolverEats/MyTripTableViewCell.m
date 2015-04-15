@@ -8,6 +8,8 @@
 
 #import "MyTripTableViewCell.h"
 #import "Backend.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @implementation MyTripTableViewCell
 
@@ -79,8 +81,23 @@
 
 -(void)setState:(int)state
 {
-    NSLog(@"hello");
-    if (state == 1)
+    if (state == 0)
+    {
+        _acceptButton.enabled = YES;
+        _declineButton.enabled = YES;
+        _acceptButton.hidden = NO;
+        _declineButton.hidden = NO;
+        _accept.hidden = NO;
+        _decline.hidden = NO;
+        _acceptButton.frame = CGRectMake(270, 10, 40, 40);
+        _accept.frame = CGRectMake(280, 20, 20, 20);
+        _declineButton.frame =  CGRectMake(320, 10, 40, 40);
+        _decline.frame = CGRectMake(330, 20, 20, 20);
+    
+        
+    }
+    
+    else if (state == 1)
     {
  
         _acceptButton.enabled = NO;
@@ -93,14 +110,17 @@
         _accept.frame = CGRectMake(330, 20, 20, 20); 
     }
     
-    else if (state == 2)
+    else
     {
         _acceptButton.hidden = YES;
         _accept.hidden = YES;
         _acceptButton.enabled = NO;
         _declineButton.hidden = NO;
         _decline.hidden = NO; 
-        _declineButton.enabled = NO; 
+        _declineButton.enabled = NO;
+        _declineButton.frame =  CGRectMake(320, 10, 40, 40);
+        _decline.frame = CGRectMake(330, 20, 20, 20);
+
     }
     
 }
@@ -121,12 +141,6 @@
         [self.delegate didClickOnDeclineOrder:_cellIndex]; 
     }
 }
-
-/*-(void)acceptOrder{
-    
-   
-    
-}*/
 
 
 - (void)awakeFromNib {

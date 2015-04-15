@@ -10,4 +10,16 @@
 
 @interface OldTripOrderTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *orderLabel;
+@property(nonatomic, strong) UIButton *acceptButton;
+@property(nonatomic, strong) UIButton *declineButton;
+@property(nonatomic, strong)UIImageView *accept;
+@property(nonatomic, strong)UIImageView *decline;
+
+@property(nonatomic ) NSString *name;
+@property(nonatomic, strong) NSString *order;
+@property(nonatomic) int orderID;
+@property(nonatomic) int state;
+
 @end

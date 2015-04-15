@@ -10,4 +10,9 @@
 
 @interface ProfileViewController : UIViewController
 
+@property (strong, nonatomic) UIImageView* profView;
+@property (strong, nonatomic)UILabel *nameLabel;
+@property(strong,nonatomic) NSDictionary *userInfo;
+
+
 @end

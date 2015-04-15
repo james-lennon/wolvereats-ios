@@ -10,4 +10,10 @@
 
 @interface OldTripOrdersTableViewController : UITableViewController
 
+@property (nonatomic,strong) NSDictionary *tripData;
+@property (nonatomic,strong) NSArray *acceptedOrderData;
+@property (nonatomic,strong) NSArray *rejectedOrderData;
+
+
+-(id)initWithData:(NSDictionary *)tripData;
 @end

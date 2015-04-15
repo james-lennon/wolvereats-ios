@@ -13,6 +13,7 @@
 #import "TripViewController.h"
 #import "EmptyTripViewController.h"
 #import "MyTripViewController.h"
+#import "OldTripOrdersTableViewController.h"
 
 @interface MyTripsListViewController ()
 
@@ -108,17 +109,17 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     cell.restaurant = trip[@"restaurant_name"];
     cell.tripStatus = indexPath.section == 0 ? @"active" : @"inactive";
-    cell.eta = [trip[@"expiration"] intValue];
+    cell.eta = [trip[@"eta"] intValue];
     cell.numOrders = [trip[@"order_count"] intValue];
 
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1)
+    if (indexPath.section == 0)
     {
-        NSDictionary* trip = _inactiveTripsData[indexPath.row];
-        NSString* tripId = trip[@"trip_id"];
+        NSDictionary* trip = _activeTripsData[indexPath.row];
+       /* NSString* tripId = trip[@"trip_id"];
         [Backend sendRequestWithURL:@"orders/get_trip_orders" Parameters:@{@"trip_id":tripId} Callback:^(NSDictionary * data) {
             _orders = data;
             
@@ -128,18 +129,19 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
                 
             }
             else
-            {
-                TripViewController *vc = [[TripViewController alloc]initWithData:trip];
-                [self.navigationController pushViewController:vc animated:YES];
-
-            }
+            { */
         
-        }];
+        MyTripViewController *vc = [[MyTripViewController alloc]initWithData:trip];
+        [self.navigationController pushViewController:vc animated:YES];
+
+        
+        
+        //}];
     }
     else
     {
-    NSDictionary* trip = _activeTripsData[indexPath.row];
-    MyTripViewController *vc = [[MyTripViewController alloc] initWithData:trip];
+    NSDictionary* trip = _inactiveTripsData[indexPath.row];
+    OldTripOrdersTableViewController *vc = [[OldTripOrdersTableViewController alloc] initWithData:trip];
     [self.navigationController pushViewController:vc animated:YES];
     }
     
