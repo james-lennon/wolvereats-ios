@@ -24,12 +24,15 @@
         _nameLabel.font = [UIFont fontWithName:@"Calibri" size:12.0f];
         [self.contentView addSubview:_nameLabel];
         
-        _orderLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 35, 250, 20)];
-        _orderLabel.textColor = [UIColor blackColor];
+        
+        _orderLabel = [[UILabel alloc] initWithFrame:CGRectZero]; // CGRectMake(20, 35, 300, (self.contentView.frame.size.height - 10))];
+        _orderLabel.textColor = [UIColor colorWithRed:(30/255.0f) green:(30/255.0f) blue:(30/255.0f) alpha:1];
         _orderLabel.textAlignment = NSTextAlignmentLeft;
         _orderLabel.font = [UIFont systemFontOfSize:11];
-        [self.contentView addSubview:_orderLabel];
+        _orderLabel.numberOfLines = 0;
         
+        [self.contentView addSubview:_orderLabel];
+
         _declineButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _declineButton.frame = CGRectMake(320, 10, 40, 40);
         _declineButton.layer.cornerRadius = 20;
@@ -38,16 +41,10 @@
         _declineButton.backgroundColor = [UIColor colorWithRed:249.0f/255.0f green:199.0f/255.0f blue:199.0f/255.0f alpha:1.0f];
         [self.contentView addSubview:_declineButton];
         
-        _decline = [[UIImageView alloc]initWithFrame:CGRectMake(330, 20, 20, 20)];
-        _decline.image = [UIImage imageNamed:@"x.png"];
-        [self.contentView addSubview:_decline];
+        _declineImageView = [[UIImageView alloc]initWithFrame:CGRectMake(330, 20, 20, 20)];
+        _declineImageView.image = [[UIImage imageNamed:@"x.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.contentView addSubview:_declineImageView];
         
-        /*
-         UIImage *declineImage = [UIImage imageNamed:@"x.png"];
-         _declineButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-         _declineButton.imageView.bounds = CGRectMake(0, 0, 20, 20);
-         [_declineButton setImage:declineImage forState:UIControlStateNormal];
-         */
         
         _acceptButton = [UIButton buttonWithType:UIButtonTypeSystem];
         _acceptButton.frame = CGRectMake(270, 10, 40, 40);
@@ -57,18 +54,31 @@
         _acceptButton.backgroundColor = [UIColor colorWithRed:188.0f/255.0f green:239.0f/255.0f blue:214.0f/255.0f alpha:1.0f];
         [self.contentView addSubview:_acceptButton];
         
-        _accept = [[UIImageView alloc]initWithFrame:CGRectMake(280, 20, 20, 20)];
-        _accept.image = [UIImage imageNamed:@"check.png"];
-        [self.contentView addSubview:_accept];
+        _acceptImageView = [[UIImageView alloc]initWithFrame:CGRectMake(280, 20, 20, 20)];
+        _acceptImageView.image = [[UIImage imageNamed:@"check.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.contentView addSubview:_acceptImageView];
     
     }
     
     return self;
 }
 
+
++ (CGFloat)cellHeightForOrder:(NSString *)order {
+    CGSize constraint = CGSizeMake(320 - (10 * 2), 800);
+    CGRect textRect = [order boundingRectWithSize:constraint
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}
+                                              context:nil];
+    CGFloat height = MAX(ceil(textRect.size.height), 60.0f);
+    return height;
+}
+
 -(void)setOrder:(NSString *)order
 {
     self.orderLabel.text = order;
+    CGRect orderLabelRect = CGRectMake(22, 38, 238, [MyTripTableViewCell cellHeightForOrder:order] - 45);
+    _orderLabel.frame = orderLabelRect;
 }
 
 - (void)setName:(NSString *)name {
@@ -81,46 +91,35 @@
 
 -(void)setState:(int)state
 {
-    if (state == 0)
-    {
-        _acceptButton.enabled = YES;
-        _declineButton.enabled = YES;
-        _acceptButton.hidden = NO;
+
+    if (state == 0) {
+        _declineImageView.hidden = NO;
         _declineButton.hidden = NO;
-        _accept.hidden = NO;
-        _decline.hidden = NO;
-        _acceptButton.frame = CGRectMake(270, 10, 40, 40);
-        _accept.frame = CGRectMake(280, 20, 20, 20);
-        _declineButton.frame =  CGRectMake(320, 10, 40, 40);
-        _decline.frame = CGRectMake(330, 20, 20, 20);
-    
-        
+        _acceptButton.hidden = NO;
+        _acceptImageView.hidden = NO;
+        _declineImageView.frame = CGRectMake(330, 20, 20, 20);
+        _declineImageView.tintColor = [UIColor blackColor];
+        _acceptImageView.frame = CGRectMake(280, 20, 20, 20);
+        _acceptImageView.tintColor = [UIColor blackColor];
     }
-    
-    else if (state == 1)
+    if (state == 1)
     {
  
-        _acceptButton.enabled = NO;
-        _declineButton.enabled = NO;
         _declineButton.hidden = YES;
-        _decline.hidden = YES;
-        _acceptButton.hidden = NO;
-        _accept.hidden = NO;
-        _acceptButton.frame = CGRectMake(320, 10, 40, 40);
-        _accept.frame = CGRectMake(330, 20, 20, 20); 
+        _acceptButton.hidden = YES;
+        _declineImageView.hidden = YES;
+        _acceptImageView.hidden = NO;
+        _acceptImageView.frame = CGRectMake(330, 20, 20, 20);
+        _acceptImageView.tintColor = [UIColor colorWithRed:0 green:(153/255.0f) blue:0 alpha:1];
     }
     
-    else
+    else if (state==2)
     {
         _acceptButton.hidden = YES;
-        _accept.hidden = YES;
-        _acceptButton.enabled = NO;
-        _declineButton.hidden = NO;
-        _decline.hidden = NO; 
-        _declineButton.enabled = NO;
-        _declineButton.frame =  CGRectMake(320, 10, 40, 40);
-        _decline.frame = CGRectMake(330, 20, 20, 20);
-
+        _acceptImageView.hidden = YES;
+        _declineButton.hidden = YES;
+        _declineImageView.hidden = NO;
+        _declineImageView.tintColor = [UIColor redColor];
     }
     
 }

@@ -50,10 +50,13 @@
         _pendingOrderData = data[@"pending"];
         _acceptedOrderData = data[@"accepted"];
         _rejectedOrderData = data[@"rejected"];
-        [weakself.refreshControl endRefreshing];
-        [weakself.tableView reloadData];
-
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakself.refreshControl endRefreshing];
+            [weakself.tableView reloadData];
+        });
     }];
+    
+    
     
 }
 
@@ -103,7 +106,22 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+
+    NSDictionary* order;
+    if (indexPath.section == 0)
+    {
+        order = _pendingOrderData[indexPath.row];
+    }
+    else if (indexPath.section == 1) {
+        order = _acceptedOrderData[indexPath.row];
+    }
+    else
+    {
+        order = _rejectedOrderData[indexPath.row];
+    }
+    
+    NSString *orderText = order[@"order_text"];
+    return [MyTripTableViewCell cellHeightForOrder:orderText];
 }
 
 
@@ -132,12 +150,11 @@
     NSString *orderText = order[@"order_text"];
     cell.order = orderText;
     cell.orderID = [order[@"order_id"] intValue];
-    cell.state = [order[@"state"] intValue]; 
+    cell.state = [order[@"state"] intValue];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 }
 
 - (void)didClickOnAcceptOrder:(NSInteger)cellIndex

@@ -52,9 +52,11 @@
 - (void)refresh {
     __weak TripsListViewController *weakself = self;
     [Backend sendRequestWithURL:@"trips/get_all_active_trips" Parameters:@{} Callback:^(NSDictionary * data) {
-            weakself.tripsData = [data objectForKey:@"trips"];
-        [weakself.refreshControl endRefreshing];
-        [weakself.tableView reloadData];
+        weakself.tripsData = [data objectForKey:@"trips"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [weakself.refreshControl endRefreshing];
+            [weakself.tableView reloadData];
+        });
     }];
 }
 

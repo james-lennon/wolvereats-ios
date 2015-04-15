@@ -24,7 +24,6 @@
 
 @property UIActionSheet *pickerViewPopup;
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;
 - (void)addTrip;
 
 @end

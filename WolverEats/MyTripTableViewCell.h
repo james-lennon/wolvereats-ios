@@ -19,8 +19,8 @@
 @property (nonatomic, strong) UILabel *orderLabel;
 @property(nonatomic, strong) UIButton *acceptButton;
 @property(nonatomic, strong) UIButton *declineButton;
-@property(nonatomic, strong)UIImageView *accept;
-@property(nonatomic, strong)UIImageView *decline;
+@property(nonatomic, strong)UIImageView *acceptImageView;
+@property(nonatomic, strong)UIImageView *declineImageView;
 
 @property(nonatomic ) NSString *name;
 @property(nonatomic, strong) NSString *order;
@@ -28,6 +28,9 @@
 @property(nonatomic) int state; 
 
 @property (weak, nonatomic) id<MyTripTableViewCellDelegate> delegate;
-@property (assign, nonatomic)   NSInteger cellIndex; 
+@property (assign, nonatomic)   NSInteger cellIndex;
+
++ (CGFloat)cellHeightForOrder:(NSString *)order;
+
 
 @end

@@ -47,8 +47,9 @@
 
 - (void)refresh {
     [Backend sendRequestWithURL:@"orders/get_all_customer_orders" Parameters:@{} Callback:^(NSDictionary * data) {
-        _activeOrdersData = data[@"active_orders"];
-        _inactiveOrdersData = data[@"inactive_orders"];
+        _acceptedOrdersData = data[@"active_orders"];
+        _pendingOrdersData = data[@"inactive_orders"];
+        _completedOrdersData = data[@"completed_orders"];
         
         [self.refreshControl endRefreshing];
         [self.tableView reloadData];
@@ -61,32 +62,50 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if(section == 0)
-        return @"Active Orders";
-    else{
-        return @"Old Orders";
-    }
+        return @"Pending Orders";
+    else if(section==1)
+        return @"Accepted Orders";
+    else
+        return @"Completed Orders";
 }
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    NSArray *arr;
+    if(indexPath.section == 0) {
+        arr = _pendingOrdersData;
+    }
+    else if(indexPath.section==1) {
+        arr = _acceptedOrdersData;
+    }
+    else {
+        arr = _completedOrdersData;
+    }
     
+    NSDictionary* order = arr[indexPath.row];
+    NSString *orderText = order[@"order_text"];
+
+    return [OrderListTableViewCell cellHeightForOrder:orderText];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0)
-        return [_activeOrdersData count];
+    if (section == 0) {
+        return [_pendingOrdersData count];
+    }
+    else if (section == 1) {
+        return [_acceptedOrdersData count];
+    }
     else {
-        return [_inactiveOrdersData count];
+        return [_completedOrdersData count];
     }
 }
 
@@ -94,7 +113,17 @@
     
     OrderListTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"MyOrderCell"];
     
-    NSArray *arr = indexPath.section == 0 ? _activeOrdersData : _inactiveOrdersData;
+    NSArray *arr;
+    if(indexPath.section == 0) {
+        arr = _pendingOrdersData;
+    }
+    else if(indexPath.section==1) {
+        arr = _acceptedOrdersData;
+    }
+    else {
+        arr = _completedOrdersData;
+    }
+    
     NSDictionary* order = arr[indexPath.row];
     
     cell.restaurant = order[@"restaurant_name"];

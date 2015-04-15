@@ -11,7 +11,9 @@
 @interface OrdersListViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray* tripsData;
-@property (strong, nonatomic) NSArray* activeOrdersData;
-@property (strong,nonatomic) NSArray* inactiveOrdersData;
+@property (strong, nonatomic) NSArray* acceptedOrdersData;
+@property (strong,nonatomic) NSArray* pendingOrdersData;
+@property (strong,nonatomic) NSArray* completedOrdersData;
+
 
 @end
