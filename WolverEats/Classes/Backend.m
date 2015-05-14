@@ -24,7 +24,12 @@ static NSDictionary* credentials;
     [dataToSend addEntriesFromDictionary:params];
     
     if(credentials == nil){
-        NSLog(@"Credentials are nil in request to %@", url);
+        [self loadCredentials];
+        if (credentials == nil) {
+            NSLog(@"Credentials are nil in request to %@", url);
+        } else {
+            [dataToSend addEntriesFromDictionary:credentials];
+        }
     }else{
         [dataToSend addEntriesFromDictionary:credentials];
     }
@@ -34,6 +39,8 @@ static NSDictionary* credentials;
         callback(responseObject);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         //NSLog(@"Error: %@", [operation responseString]);
+        NSString *f = [[NSString alloc] initWithData:operation.responseData encoding:NSUTF8StringEncoding];
+        NSLog(@"error in backend request: %@ %@", error, f);
         failure();
         //Show offline
 //        [[UIApplication sharedApplication] keyWindow]
