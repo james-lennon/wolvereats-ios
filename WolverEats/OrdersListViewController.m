@@ -47,8 +47,8 @@
 
 - (void)refresh {
     [Backend sendRequestWithURL:@"orders/get_all_customer_orders" Parameters:@{} Callback:^(NSDictionary * data) {
-        _acceptedOrdersData = data[@"active_orders"];
-        _pendingOrdersData = data[@"inactive_orders"];
+        _acceptedOrdersData = data[@"accepted_orders"];
+        _pendingOrdersData = data[@"pending_orders"];
         _completedOrdersData = data[@"completed_orders"];
         
         [self.refreshControl endRefreshing];

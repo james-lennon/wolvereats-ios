@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6675CDBB6054EBAA2D3A0F0C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F536F9F2A527E03A449678 /* libPods.a */; };
+		7E07CD441ADEDE3C0011151A /* OldTripOrdersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E07CD411ADEDE3C0011151A /* OldTripOrdersTableViewController.m */; };
+		7E07CD451ADEDE3C0011151A /* OldTripOrderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E07CD431ADEDE3C0011151A /* OldTripOrderTableViewCell.m */; };
 		7E500DA81AA0E429008899FE /* PlaceOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */; };
 		7E513D4E1A8BD46F004D0505 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */; };
 		7E520F0D1AB74CCB00377298 /* MyTripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E520F0C1AB74CCB00377298 /* MyTripTableViewCell.m */; };
@@ -50,6 +52,10 @@
 		04F536F9F2A527E03A449678 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7E07CD401ADEDE3C0011151A /* OldTripOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldTripOrdersTableViewController.h; sourceTree = "<group>"; };
+		7E07CD411ADEDE3C0011151A /* OldTripOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldTripOrdersTableViewController.m; sourceTree = "<group>"; };
+		7E07CD421ADEDE3C0011151A /* OldTripOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldTripOrderTableViewCell.h; sourceTree = "<group>"; };
+		7E07CD431ADEDE3C0011151A /* OldTripOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldTripOrderTableViewCell.m; sourceTree = "<group>"; };
 		7E500DA61AA0E429008899FE /* PlaceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceOrderViewController.h; sourceTree = "<group>"; };
 		7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceOrderViewController.m; sourceTree = "<group>"; };
 		7E513D4C1A8BD46F004D0505 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
@@ -163,6 +169,10 @@
 				7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */,
 				7E520F0B1AB74CCB00377298 /* MyTripTableViewCell.h */,
 				7E520F0C1AB74CCB00377298 /* MyTripTableViewCell.m */,
+				7E07CD401ADEDE3C0011151A /* OldTripOrdersTableViewController.h */,
+				7E07CD411ADEDE3C0011151A /* OldTripOrdersTableViewController.m */,
+				7E07CD421ADEDE3C0011151A /* OldTripOrderTableViewCell.h */,
+				7E07CD431ADEDE3C0011151A /* OldTripOrderTableViewCell.m */,
 			);
 			name = "My Trips";
 			sourceTree = "<group>";
@@ -450,8 +460,10 @@
 				7E513D4E1A8BD46F004D0505 /* NSDate+Helper.m in Sources */,
 				7E6AD7001AA4E94400891AB6 /* OrdersListViewController.m in Sources */,
 				9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */,
+				7E07CD451ADEDE3C0011151A /* OldTripOrderTableViewCell.m in Sources */,
 				9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */,
 				7E6AD70C1AA4E99600891AB6 /* ProfileViewController.m in Sources */,
+				7E07CD441ADEDE3C0011151A /* OldTripOrdersTableViewController.m in Sources */,
 				7E500DA81AA0E429008899FE /* PlaceOrderViewController.m in Sources */,
 				7E6AD7031AA4E94E00891AB6 /* OrderViewController.m in Sources */,
 				7E5305AB1AA63451007E1C23 /* OrderListTableViewCell.m in Sources */,
