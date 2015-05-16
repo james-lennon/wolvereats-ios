@@ -3,7 +3,7 @@
 //  WolverEats
 //
 //  Created by Miller on 4/14/15.
-//  Copyright (c) 2015 James Lennon. All rights reserved.
+//  Copyright (c) 2015 Cameron Cohen and Amelia Miller. All rights reserved.
 //
 
 #import "OldTripOrderTableViewCell.h"

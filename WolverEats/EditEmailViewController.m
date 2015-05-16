@@ -3,7 +3,7 @@
 //  WolverEats
 //
 //  Created by Miller on 5/14/15.
-//  Copyright (c) 2015 James Lennon. All rights reserved.
+//  Copyright (c) 2015 Cameron Cohen and Amelia Miller. All rights reserved.
 //
 
 #import "EditEmailViewController.h"
@@ -81,16 +81,46 @@
 {
     NSString* email = _email.text;
     NSString* confirm = _confirm.text;
+    
+    if (!([email isEqualToString:confirm])) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Invalid Update!"
+                                                       message:@"Your emails do not match. Please check and correct them."
+                                                      delegate:self
+                                             cancelButtonTitle:@"Okay"
+                                             otherButtonTitles: nil];
+        [alert show];
+    }
+    else if (![self NSStringIsValidEmail:email]) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Invalid Update!"
+                                                       message:@"Your email address is invalid."
+                                                      delegate:self
+                                             cancelButtonTitle:@"Okay"
+                                             otherButtonTitles: nil];
+        [alert show];
+    }
+    else {
+        
     [Backend sendRequestWithURL:@"users/set_email" Parameters:@{@"new_email":email} Callback:^(NSDictionary * data) {
         [Backend updateEmail:email];
-    }];
-    
+        [self.navigationController popToRootViewControllerAnimated:YES];
 
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+
+    }
+}
+
+- (BOOL)NSStringIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = NO; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
 }
 
 -(void)dismissKeyboard {
-    [_emailq resignFirstResponder];
+    [_email resignFirstResponder];
     [_confirm resignFirstResponder];
     
     

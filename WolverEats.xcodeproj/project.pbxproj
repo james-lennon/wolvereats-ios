@@ -21,6 +21,9 @@
 		7E6AD7091AA4E98A00891AB6 /* MyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */; };
 		7E6AD70C1AA4E99600891AB6 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */; };
 		7E7403251AA8CE96009E3ED5 /* AddTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E7403241AA8CE96009E3ED5 /* AddTripViewController.m */; };
+		7EA3ECD41B06F88700EB9FAF /* EditEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3ECCF1B06F88700EB9FAF /* EditEmailViewController.m */; };
+		7EA3ECD51B06F88700EB9FAF /* EditPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3ECD11B06F88700EB9FAF /* EditPasswordViewController.m */; };
+		7EA3ECD61B06F88700EB9FAF /* EditPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3ECD31B06F88700EB9FAF /* EditPhoneViewController.m */; };
 		7EA56FC51AB3536300D76077 /* EmptyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA56FC41AB3536300D76077 /* EmptyTripViewController.m */; };
 		7EA56FC81AB3537300D76077 /* MyTripsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA56FC71AB3537300D76077 /* MyTripsListTableViewCell.m */; };
 		9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3495371A8336E2007485BD /* TripsListViewController.m */; };
@@ -52,62 +55,68 @@
 		04F536F9F2A527E03A449678 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		7E07CD401ADEDE3C0011151A /* OldTripOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldTripOrdersTableViewController.h; sourceTree = "<group>"; };
-		7E07CD411ADEDE3C0011151A /* OldTripOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldTripOrdersTableViewController.m; sourceTree = "<group>"; };
+		7E07CD401ADEDE3C0011151A /* OldTripOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OldTripOrdersTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E07CD411ADEDE3C0011151A /* OldTripOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OldTripOrdersTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7E07CD421ADEDE3C0011151A /* OldTripOrderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldTripOrderTableViewCell.h; sourceTree = "<group>"; };
-		7E07CD431ADEDE3C0011151A /* OldTripOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldTripOrderTableViewCell.m; sourceTree = "<group>"; };
-		7E500DA61AA0E429008899FE /* PlaceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceOrderViewController.h; sourceTree = "<group>"; };
-		7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceOrderViewController.m; sourceTree = "<group>"; };
+		7E07CD431ADEDE3C0011151A /* OldTripOrderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OldTripOrderTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7E500DA61AA0E429008899FE /* PlaceOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PlaceOrderViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E500DA71AA0E429008899FE /* PlaceOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PlaceOrderViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7E513D4C1A8BD46F004D0505 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
 		7E513D4D1A8BD46F004D0505 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		7E520F0B1AB74CCB00377298 /* MyTripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTripTableViewCell.h; sourceTree = "<group>"; };
 		7E520F0C1AB74CCB00377298 /* MyTripTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripTableViewCell.m; sourceTree = "<group>"; };
-		7E5305A91AA63451007E1C23 /* OrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableViewCell.h; sourceTree = "<group>"; };
-		7E5305AA1AA63451007E1C23 /* OrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableViewCell.m; sourceTree = "<group>"; };
-		7E66CB171A9BABE3001D122D /* TripsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripsListTableViewCell.h; sourceTree = "<group>"; };
-		7E66CB181A9BABE3001D122D /* TripsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripsListTableViewCell.m; sourceTree = "<group>"; };
-		7E6AD6FE1AA4E94400891AB6 /* OrdersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersListViewController.h; sourceTree = "<group>"; };
-		7E6AD6FF1AA4E94400891AB6 /* OrdersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersListViewController.m; sourceTree = "<group>"; };
-		7E6AD7011AA4E94E00891AB6 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderViewController.h; sourceTree = "<group>"; };
-		7E6AD7021AA4E94E00891AB6 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderViewController.m; sourceTree = "<group>"; };
-		7E6AD7041AA4E98000891AB6 /* MyTripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTripsListViewController.h; sourceTree = "<group>"; };
+		7E5305A91AA63451007E1C23 /* OrderListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OrderListTableViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E5305AA1AA63451007E1C23 /* OrderListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OrderListTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7E66CB171A9BABE3001D122D /* TripsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TripsListTableViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E66CB181A9BABE3001D122D /* TripsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TripsListTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7E6AD6FE1AA4E94400891AB6 /* OrdersListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OrdersListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E6AD6FF1AA4E94400891AB6 /* OrdersListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OrdersListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7E6AD7011AA4E94E00891AB6 /* OrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OrderViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E6AD7021AA4E94E00891AB6 /* OrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OrderViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7E6AD7041AA4E98000891AB6 /* MyTripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MyTripsListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7E6AD7051AA4E98000891AB6 /* MyTripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripsListViewController.m; sourceTree = "<group>"; };
 		7E6AD7071AA4E98A00891AB6 /* MyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTripViewController.h; sourceTree = "<group>"; };
 		7E6AD7081AA4E98A00891AB6 /* MyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripViewController.m; sourceTree = "<group>"; };
-		7E6AD70A1AA4E99600891AB6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		7E7403231AA8CE96009E3ED5 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTripViewController.h; sourceTree = "<group>"; };
-		7E7403241AA8CE96009E3ED5 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTripViewController.m; sourceTree = "<group>"; };
-		7EA56FC31AB3536300D76077 /* EmptyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyTripViewController.h; sourceTree = "<group>"; };
-		7EA56FC41AB3536300D76077 /* EmptyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyTripViewController.m; sourceTree = "<group>"; };
-		7EA56FC61AB3537300D76077 /* MyTripsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTripsListTableViewCell.h; sourceTree = "<group>"; };
-		7EA56FC71AB3537300D76077 /* MyTripsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTripsListTableViewCell.m; sourceTree = "<group>"; };
-		9D3495361A8336E2007485BD /* TripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TripsListViewController.h; path = Classes/TripsListViewController.h; sourceTree = "<group>"; };
-		9D3495371A8336E2007485BD /* TripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TripsListViewController.m; path = Classes/TripsListViewController.m; sourceTree = "<group>"; };
+		7E6AD70A1AA4E99600891AB6 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProfileViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7E7403231AA8CE96009E3ED5 /* AddTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AddTripViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7E7403241AA8CE96009E3ED5 /* AddTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AddTripViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7EA3ECCE1B06F88700EB9FAF /* EditEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EditEmailViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7EA3ECCF1B06F88700EB9FAF /* EditEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EditEmailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7EA3ECD01B06F88700EB9FAF /* EditPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EditPasswordViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7EA3ECD11B06F88700EB9FAF /* EditPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EditPasswordViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7EA3ECD21B06F88700EB9FAF /* EditPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EditPhoneViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7EA3ECD31B06F88700EB9FAF /* EditPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EditPhoneViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7EA56FC31AB3536300D76077 /* EmptyTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = EmptyTripViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7EA56FC41AB3536300D76077 /* EmptyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EmptyTripViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7EA56FC61AB3537300D76077 /* MyTripsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MyTripsListTableViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		7EA56FC71AB3537300D76077 /* MyTripsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MyTripsListTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9D3495361A8336E2007485BD /* TripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TripsListViewController.h; path = Classes/TripsListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		9D3495371A8336E2007485BD /* TripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = TripsListViewController.m; path = Classes/TripsListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9D3495391A833EBD007485BD /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		9D34953A1A833EBD007485BD /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		9D43B3981A81D9A8006B418C /* WolverEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WolverEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D43B39C1A81D9A8006B418C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D43B39D1A81D9A8006B418C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9D43B39F1A81D9A8006B418C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9D43B3A01A81D9A8006B418C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9D43B39D1A81D9A8006B418C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9D43B39F1A81D9A8006B418C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AppDelegate.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		9D43B3A01A81D9A8006B418C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9D43B3AB1A81D9A8006B418C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D43B3AE1A81D9A8006B418C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D43B3B41A81D9A8006B418C /* WolverEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WolverEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D43B3B91A81D9A8006B418C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D43B3BA1A81D9A8006B418C /* WolverEatsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WolverEatsTests.m; sourceTree = "<group>"; };
 		9D4FEABB1A8535DF0071F1BB /* NoConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoConnectionViewController.h; path = Classes/NoConnectionViewController.h; sourceTree = "<group>"; };
-		9D4FEABC1A8535DF0071F1BB /* NoConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoConnectionViewController.m; path = Classes/NoConnectionViewController.m; sourceTree = "<group>"; };
-		9D581EC31A81DFB20013038E /* Backend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Backend.h; path = Classes/Backend.h; sourceTree = "<group>"; };
-		9D581EC41A81DFB20013038E /* Backend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Backend.m; path = Classes/Backend.m; sourceTree = "<group>"; };
-		9D581EC91A81EC020013038E /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingViewController.h; path = Classes/LoadingViewController.h; sourceTree = "<group>"; };
-		9D581ECA1A81EC020013038E /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadingViewController.m; path = Classes/LoadingViewController.m; sourceTree = "<group>"; };
+		9D4FEABC1A8535DF0071F1BB /* NoConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = NoConnectionViewController.m; path = Classes/NoConnectionViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9D581EC31A81DFB20013038E /* Backend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Backend.h; path = Classes/Backend.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		9D581EC41A81DFB20013038E /* Backend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = Backend.m; path = Classes/Backend.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9D581EC91A81EC020013038E /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = LoadingViewController.h; path = Classes/LoadingViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		9D581ECA1A81EC020013038E /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = LoadingViewController.m; path = Classes/LoadingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9D581ECC1A81ECE10013038E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Classes/LoginViewController.h; sourceTree = "<group>"; };
-		9D581ECD1A81ECE10013038E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Classes/LoginViewController.m; sourceTree = "<group>"; };
-		9D581ECF1A81ECFA0013038E /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = Classes/SignUpViewController.h; sourceTree = "<group>"; };
-		9D581ED01A81ECFA0013038E /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = Classes/SignUpViewController.m; sourceTree = "<group>"; };
-		9D99C4711A840F8F00431941 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripViewController.h; sourceTree = "<group>"; };
-		9D99C4721A840F8F00431941 /* TripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripViewController.m; sourceTree = "<group>"; };
+		9D581ECD1A81ECE10013038E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = LoginViewController.m; path = Classes/LoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9D581ECF1A81ECFA0013038E /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SignUpViewController.h; path = Classes/SignUpViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		9D581ED01A81ECFA0013038E /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SignUpViewController.m; path = Classes/SignUpViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9D99C4711A840F8F00431941 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TripViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		9D99C4721A840F8F00431941 /* TripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TripViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +204,12 @@
 			children = (
 				7E6AD70A1AA4E99600891AB6 /* ProfileViewController.h */,
 				7E6AD70B1AA4E99600891AB6 /* ProfileViewController.m */,
+				7EA3ECCE1B06F88700EB9FAF /* EditEmailViewController.h */,
+				7EA3ECCF1B06F88700EB9FAF /* EditEmailViewController.m */,
+				7EA3ECD01B06F88700EB9FAF /* EditPasswordViewController.h */,
+				7EA3ECD11B06F88700EB9FAF /* EditPasswordViewController.m */,
+				7EA3ECD21B06F88700EB9FAF /* EditPhoneViewController.h */,
+				7EA3ECD31B06F88700EB9FAF /* EditPhoneViewController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -362,10 +377,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "James Lennon";
+				ORGANIZATIONNAME = "Cameron Cohen and Amelia Miller";
 				TargetAttributes = {
 					9D43B3971A81D9A8006B418C = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = KNCM929FJ7;
 					};
 					9D43B3B31A81D9A8006B418C = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -450,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D581EC51A81DFB20013038E /* Backend.m in Sources */,
+				7EA3ECD51B06F88700EB9FAF /* EditPasswordViewController.m in Sources */,
 				7EA56FC51AB3536300D76077 /* EmptyTripViewController.m in Sources */,
 				7E7403251AA8CE96009E3ED5 /* AddTripViewController.m in Sources */,
 				9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */,
@@ -467,6 +484,7 @@
 				7E500DA81AA0E429008899FE /* PlaceOrderViewController.m in Sources */,
 				7E6AD7031AA4E94E00891AB6 /* OrderViewController.m in Sources */,
 				7E5305AB1AA63451007E1C23 /* OrderListTableViewCell.m in Sources */,
+				7EA3ECD61B06F88700EB9FAF /* EditPhoneViewController.m in Sources */,
 				9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */,
 				7E66CB191A9BABE3001D122D /* TripsListTableViewCell.m in Sources */,
 				7EA56FC81AB3537300D76077 /* MyTripsListTableViewCell.m in Sources */,
@@ -474,6 +492,7 @@
 				7E520F0D1AB74CCB00377298 /* MyTripTableViewCell.m in Sources */,
 				9D43B39E1A81D9A8006B418C /* main.m in Sources */,
 				9D4FEABD1A8535DF0071F1BB /* NoConnectionViewController.m in Sources */,
+				7EA3ECD41B06F88700EB9FAF /* EditEmailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,9 +609,12 @@
 			baseConfigurationReference = 0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WolverEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -601,9 +623,12 @@
 			baseConfigurationReference = 652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WolverEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

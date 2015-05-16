@@ -3,7 +3,7 @@
 //  WolverEats
 //
 //  Created by Cameron Cohen on 3/2/15.
-//  Copyright (c) 2015 James Lennon. All rights reserved.
+//  Copyright (c) 2015 Cameron Cohen and Amelia Miller. All rights reserved.
 //
 
 #import "ProfileViewController.h"
@@ -38,17 +38,8 @@
         
         
         NSURL *profURL = [NSURL URLWithString:@"http://placehold.it/75x75"];
-        
-        dispatch_queue_t concurrentQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(concurrentQueue, ^{
-            NSData *image = [[NSData alloc] initWithContentsOfURL:profURL];
-            
-            
-            //this will set the image when loading is finished
-            dispatch_async(dispatch_get_main_queue(), ^{
-               _profView.image = [UIImage imageWithData:image];
-            });
-        });
+        NSData *image = [[NSData alloc] initWithContentsOfURL:profURL];
+        _profView.image = [UIImage imageWithData:image];
         
         [self.view addSubview:_profView];
         

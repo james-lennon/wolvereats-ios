@@ -3,7 +3,7 @@
 //  WolverEats
 //
 //  Created by James Lennon on 2/3/15.
-//  Copyright (c) 2015 James Lennon. All rights reserved.
+//  Copyright (c) 2015 Cameron Cohen and Amelia Miller. All rights reserved.
 //
 
 #import "Backend.h"
@@ -70,6 +70,7 @@ static NSDictionary* credentials;
     NSMutableDictionary *mutCredentials = [NSMutableDictionary dictionaryWithDictionary:[NSKeyedUnarchiver unarchiveObjectWithFile:filePath]];
     [mutCredentials setObject:email forKey:@"email"];
     [NSKeyedArchiver archiveRootObject:mutCredentials toFile:filePath];
+    credentials = mutCredentials;
 }
 
 +(BOOL)loadCredentials{

@@ -2,8 +2,8 @@
 //  SignUpViewController.m
 //  WolverEats
 //
-//  Created by James Lennon on 2/3/15.
-//  Copyright (c) 2015 James Lennon. All rights reserved.
+//  Created by Cameron Cohen and Amelia Miller on 2/3/15.
+//  Copyright (c) 2015 Cameron Cohen and Amelia Miller. All rights reserved.
 //
 
 #import <MBProgressHUD.h>
