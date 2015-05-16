@@ -102,7 +102,7 @@
     
     [ActionSheetDatePicker showPickerWithTitle:@"Select Arrival Time" datePickerMode:UIDatePickerModeDateAndTime selectedDate:date minimumDate:date maximumDate:nil doneBlock:^(ActionSheetDatePicker * picker, id selectedDate, id origin) {
         _etaStamp = [selectedDate utcTimeStamp];
-        NSString *etaText = [NSDate stringForDisplayFromDate:selectedDate prefixed:NO alwaysDisplayTime:NO];
+        NSString *etaText = [NSDate stringForDisplayFromDate:selectedDate prefixed:YES alwaysDisplayTime:YES];
         
         [_etaButton setTitle:etaText forState:UIControlStateNormal];
         
@@ -121,7 +121,7 @@
 
     [ActionSheetDatePicker showPickerWithTitle:@"Select an Expiration" datePickerMode:UIDatePickerModeDateAndTime selectedDate:date minimumDate:date maximumDate:nil doneBlock:^(ActionSheetDatePicker * picker, id selectedDate, id origin) {
         _expStamp = [selectedDate utcTimeStamp];
-        NSString *expText = [NSDate stringForDisplayFromDate:selectedDate prefixed:NO alwaysDisplayTime:NO];
+        NSString *expText = [NSDate stringForDisplayFromDate:selectedDate prefixed:YES alwaysDisplayTime:YES];
         
         [_expButton setTitle:expText forState:UIControlStateNormal];
         
