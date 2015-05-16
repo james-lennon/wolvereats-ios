@@ -30,14 +30,14 @@
 
 #import "NSDate+Helper.h"
 
-static NSString *kNSDateHelperFormatFullDateWithTime    = @"MMM d, yyyy h:mm a";
+static NSString *kNSDateHelperFormatFullDateWithTime    = @"MMM d, yyyy 'at' h:mm a";
 static NSString *kNSDateHelperFormatFullDate            = @"MMM d, yyyy";
-static NSString *kNSDateHelperFormatShortDateWithTime   = @"MMM d h:mm a";
+static NSString *kNSDateHelperFormatShortDateWithTime   = @"MMM d 'at' h:mm a";
 static NSString *kNSDateHelperFormatShortDate           = @"MMM d";
 static NSString *kNSDateHelperFormatWeekday             = @"EEEE";
-static NSString *kNSDateHelperFormatWeekdayWithTime     = @"EEEE h:mm a";
+static NSString *kNSDateHelperFormatWeekdayWithTime     = @"EEEE 'at' h:mm a";
 static NSString *kNSDateHelperFormatTime                = @"h:mm a";
-static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
+static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'Today at' h:mm a";
 static NSString *kNSDateHelperFormatSQLDate             = @"yyyy-MM-dd";
 static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss";
@@ -161,6 +161,10 @@ static NSDateFormatter *_displayFormatter = nil;
 	return [date string];
 }
 
+//+ (NSString *)formattedStringFromDate:(NSDate *)date {
+//    
+//}
+
 + (NSString *)stringForDisplayFromDate:(NSDate *)date prefixed:(BOOL)prefixed alwaysDisplayTime:(BOOL)displayTime {
     /*
 	 * if the date is in today, display 12-hour time with meridian,
@@ -168,29 +172,53 @@ static NSDateFormatter *_displayFormatter = nil;
 	 * if within the calendar year, display as Jan 23
 	 * else display as Nov 11, 2008
 	 */
+    NSString *displayString = nil;
+
+    
+    
 	NSDate *today = [NSDate date];
     NSDateComponents *offsetComponents = [[self sharedCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
                                                                   fromDate:today];
 	NSDate *midnight = [[self sharedCalendar] dateFromComponents:offsetComponents];
-	NSString *displayString = nil;
+    
+    NSDateComponents *dateComponents = [[self sharedCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay)
+                                                                  fromDate:date];
+    NSDate *formatDate = [[self sharedCalendar] dateFromComponents:dateComponents];
+
+    /*
+
+    NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+    [componentsToSubtract setDay:1];
+    NSDate *yesterdayMidnight = [[self sharedCalendar] dateByAddingComponents:componentsToSubtract toDate:midnight options:0];
+
 	// comparing against midnight
+    NSComparisonResult yesterday_midnight_result = [date compare:yesterdayMidnight];
     NSComparisonResult midnight_result = [date compare:midnight];
-	if (midnight_result == NSOrderedDescending) {
+	if (yesterday_midnight_result == NSOrderedDescending && midnight_result == NSOrderedAscending) {
 		if (prefixed) {
 			[[self sharedDateFormatter] setDateFormat:kNSDateHelperFormatTimeWithPrefix]; // at 11:30 am
 		} else {
 			[[self sharedDateFormatter] setDateFormat:kNSDateHelperFormatTime]; // 11:30 am
 		}
-	} else {
-		// check if date is within last 7 days
-		NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
-		[componentsToSubtract setDay:-7];
-		NSDate *lastweek = [[self sharedCalendar] dateByAddingComponents:componentsToSubtract toDate:today options:0];
-#if !__has_feature(objc_arc)
-		[componentsToSubtract release];
-#endif
-        NSComparisonResult lastweek_result = [date compare:lastweek];
-		if (lastweek_result == NSOrderedDescending) {
+    */
+
+        if([midnight isEqualToDate:formatDate]) {
+            if (prefixed) {
+                [[self sharedDateFormatter] setDateFormat:kNSDateHelperFormatTimeWithPrefix]; // at 11:30 am
+            } else {
+                [[self sharedDateFormatter] setDateFormat:kNSDateHelperFormatTime]; // 11:30 am
+            }
+        }
+        
+	 else {
+		// check if date is within next 7 days
+		NSDateComponents *componentsToAdd = [[NSDateComponents alloc] init];
+		[componentsToAdd setDay:7];
+		NSDate *nextweek = [[self sharedCalendar] dateByAddingComponents:componentsToAdd toDate:today options:0];
+        
+        NSComparisonResult nextweek_result = [date compare:nextweek];
+        NSComparisonResult isfuture_result = [date compare:today];
+		if (nextweek_result == NSOrderedAscending && isfuture_result == NSOrderedDescending) {
             if (displayTime) {
                 [[self sharedDateFormatter] setDateFormat:kNSDateHelperFormatWeekdayWithTime];
             } else {
@@ -221,7 +249,7 @@ static NSDateFormatter *_displayFormatter = nil;
 		if (prefixed) {
 			NSString *dateFormat = [[self sharedDateFormatter] dateFormat];
 			NSString *prefix = @"'on' ";
-			[[self sharedDateFormatter] setDateFormat:[prefix stringByAppendingString:dateFormat]];
+			//[[self sharedDateFormatter] setDateFormat:[prefix stringByAppendingString:dateFormat]];
 		}
 	}
 	// use display formatter to return formatted date string

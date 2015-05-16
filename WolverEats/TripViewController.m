@@ -53,21 +53,23 @@
     _expLabel = [[UILabel alloc]initWithFrame:CGRectMake(w/4, h/2, w/2, 50)];
     int expiration = [_tripData[@"expiration"] intValue];
     NSDate *expDate = [NSDate dateWithTimeIntervalSince1970:expiration];
-    NSString *expText = [NSDate stringForDisplayFromDate:expDate prefixed:NO alwaysDisplayTime:NO];
+    NSString *expText = [NSDate stringForDisplayFromDate:expDate prefixed:YES alwaysDisplayTime:YES];
     NSString *expString = @"Order By: ";
     _expLabel.text = [NSString stringWithFormat:@"%@%@", expString,expText];
-    _expLabel.font = [UIFont systemFontOfSize:20];
     _expLabel.textAlignment = NSTextAlignmentCenter;
+    _expLabel.font = [UIFont systemFontOfSize:20];
+    _expLabel.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:_expLabel];
         
     _etaLabel = [[UILabel alloc]initWithFrame:CGRectMake(w/4, h/2 +50, w/2, 50)];
     int eta = [_tripData[@"eta"] intValue];
     NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
-    NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
+    NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:YES alwaysDisplayTime:YES];
     NSString *etaString = @"Arrive By: ";
     _etaLabel.text = [NSString stringWithFormat:@"%@%@", etaString,etaText];
     _etaLabel.textAlignment = NSTextAlignmentCenter;
     _etaLabel.font = [UIFont systemFontOfSize:20];
+    _etaLabel.adjustsFontSizeToFitWidth = YES;
 
     
     [self.view addSubview:_etaLabel];

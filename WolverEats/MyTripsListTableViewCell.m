@@ -54,13 +54,12 @@
     if ([self.tripStatus isEqualToString:@"active"]) {
         NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
         NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
-        self.etaLabel.text = [NSString stringWithFormat:@"Arrives at %@", etaText];
+        self.etaLabel.text = [NSString stringWithFormat:@"Arrives %@", etaText];
     }
     
     else {
         NSDate *etaDate = [NSDate dateWithTimeIntervalSince1970:eta];
         NSString *etaText = [NSDate stringForDisplayFromDate:etaDate prefixed:NO alwaysDisplayTime:NO];
-        //NSString *etaText = [NSDate stringFromDate:etaDate withFormat:@"MM-dd-yyyy"];
         self.etaLabel.text = etaText;
     }
 }
