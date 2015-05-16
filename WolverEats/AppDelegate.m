@@ -30,6 +30,7 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = loadingController;
+    
     [self.window makeKeyAndVisible];
     
     UINavigationController *tripsNav = [[UINavigationController alloc] initWithRootViewController:[[TripsListViewController alloc] init]];
@@ -38,8 +39,19 @@
     UINavigationController *myTripsNav = [[UINavigationController alloc] initWithRootViewController:[[MyTripsListViewController alloc] init]];
     loadingController.viewControllers = @[tripsNav, myTripsNav, ordersNav, profileNav];
 
-    
+    //[[UINavigationBar appearance]setBarTintColor: [UIColor colorWithRed:(42/255.0f) green:(179/255.0f) blue:(139/255.0f) alpha:1]];
 
+    [[UINavigationBar appearance]setTintColor:[UIColor colorWithRed:(42/255.0f) green:(179/255.0f) blue:(139/255.0f) alpha:1]];
+    //[[UINavigationBar appearance]setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+
+    //[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+
+    [UITabBarItem.appearance setTitleTextAttributes:
+     @{NSForegroundColorAttributeName : [UIColor colorWithRed:(42/255.0f) green:(179/255.0f) blue:(139/255.0f) alpha:1]}
+                                           forState:UIControlStateSelected];
+    
+    [[UITabBar appearance] setTintColor:[UIColor colorWithRed:(42/255.0f) green:(179/255.0f) blue:(139/255.0f) alpha:1]];
     
     return YES;
 }

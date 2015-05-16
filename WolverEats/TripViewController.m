@@ -83,7 +83,10 @@
     
     
     _orderButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    _orderButton.frame = CGRectMake(0, 3*h/5 + 50, w, 100);
+    _orderButton.frame = CGRectMake(w/2 - 60, 3*h/5 + 70, 120, 40);
+    _orderButton.backgroundColor = [UIColor colorWithRed:(42/255.0f) green:(179/255.0f) blue:(139/255.0f) alpha:1];
+    _orderButton.layer.cornerRadius = 15;
+        [_orderButton setTintColor: [UIColor whiteColor]];
     [_orderButton setTitle:@"Place Order" forState:UIControlStateNormal];
     [_orderButton addTarget: self action:@selector(placeOrder) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_orderButton];

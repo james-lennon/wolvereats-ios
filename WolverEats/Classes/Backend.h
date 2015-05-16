@@ -16,5 +16,6 @@ extern NSString *const BASE_URL;
 +(void)sendRequestWithURL:(NSString*)url Parameters:(NSDictionary*)params Callback:(void (^)(NSDictionary*))callback;
 +(void)setCredentialsToEmail:(NSString*)email Password:(NSString*)password;
 +(BOOL)loadCredentials;
++(void)updateEmail:(NSString *)email;
 
 @end

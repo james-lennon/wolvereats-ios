@@ -61,6 +61,17 @@ static NSDictionary* credentials;
     [NSKeyedArchiver archiveRootObject:credentials toFile:filePath];
 }
 
++(void)updateEmail:(NSString *)email
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectoryPath stringByAppendingPathComponent:@"credentialsData"];
+    
+    NSMutableDictionary *mutCredentials = [NSMutableDictionary dictionaryWithDictionary:[NSKeyedUnarchiver unarchiveObjectWithFile:filePath]];
+    [mutCredentials setObject:email forKey:@"email"];
+    [NSKeyedArchiver archiveRootObject:mutCredentials toFile:filePath];
+}
+
 +(BOOL)loadCredentials{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectoryPath = [paths objectAtIndex:0];

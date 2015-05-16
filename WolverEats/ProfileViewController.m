@@ -9,6 +9,9 @@
 #import "ProfileViewController.h"
 #import "Backend.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EditEmailViewController.h"
+#import "EditPasswordViewController.h"
+#import "EditPhoneViewController.h"
 
 @interface ProfileViewController ()
 
@@ -136,8 +139,11 @@
         [self.view addSubview:_hLine2];
         
         _editEmail = [UIButton buttonWithType:UIButtonTypeSystem];
-        _editEmail.frame = CGRectMake(10*w/12, 3*h/5 + 20, w/12, 40);
-       // _editEmail.backgroundColor = [UIColor blackColor];
+        _editEmail.frame = CGRectMake(10*w/12, 3*h/5 + 35, 17, 17);
+        UIImage *btnImage = [UIImage imageNamed:@"edit.png"];
+        [_editEmail setImage:btnImage forState:UIControlStateNormal];
+        [_editEmail setTintColor:[UIColor grayColor]];
+        [_editEmail addTarget:self action:@selector(updateEmail) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_editEmail];
         
         _phoneLabel = [[UILabel alloc]initWithFrame:CGRectMake(w/12, 3*h/5 + 80, w, 20)];
@@ -149,7 +155,7 @@
         
         _phone = [[UILabel alloc]initWithFrame:CGRectMake(w/12, 3*h/5 + 100, w, 20)];
         _phone.textColor = [UIColor blackColor];
-        _phone.text = @"310-804-9275"; // placeholder
+        //_phone.text = @"310-804-9275"; // placeholder
         _phone.textAlignment = NSTextAlignmentLeft;
         _phone.font = [UIFont systemFontOfSize:16];
         
@@ -157,6 +163,12 @@
         _hLine4.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
         [self.view addSubview:_hLine4];
         
+        _editPhone = [UIButton buttonWithType:UIButtonTypeSystem];
+        _editPhone.frame = CGRectMake(10*w/12, 3*h/5 + 95, 17, 17);
+        [_editPhone setImage:btnImage forState:UIControlStateNormal];
+        [_editPhone setTintColor:[UIColor grayColor]];
+        [_editPhone addTarget:self action:@selector(updatePhone) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_editPhone];
         
         _passLabel = [[UILabel alloc]initWithFrame:CGRectMake(w/12, 3*h/5 + 140, w, 20)];
         _passLabel.text = @"Password";
@@ -166,7 +178,7 @@
         [self.view addSubview:_passLabel];
         
         _pass = [[UILabel alloc]initWithFrame:CGRectMake(w/12, 3*h/5 + 160, w, 20)];
-        _pass.text = @"Greenstone007"; //placeholder
+        _pass.text = @"•••••••••"; 
         _pass.textColor = [UIColor blackColor];
         _pass.textAlignment = NSTextAlignmentLeft;
         _pass.font = [UIFont systemFontOfSize:16];
@@ -175,7 +187,12 @@
         _hLine3.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.1];
         [self.view addSubview:_hLine3];
         
-        
+        _editPass = [UIButton buttonWithType:UIButtonTypeSystem];
+        _editPass.frame = CGRectMake(10*w/12, 3*h/5 + 155, 17, 17);
+        [_editPass setImage:btnImage forState:UIControlStateNormal];
+        [_editPass setTintColor:[UIColor grayColor]];
+        [_editPass addTarget:self action:@selector(editPassword) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_editPass];
     
         
         
@@ -185,15 +202,15 @@
             NSString* lName = _userInfo[@"last_name"];
             NSNumber* numTrips = data[@"num_trips"];
             NSNumber* numOrders = data[@"num_orders"];
-            //NSString* pass = _userInfo[@"password"];
             NSString* email = _userInfo[@"email"];
+            NSString* phone = _userInfo[@"phone"];
             
             
             _nameLabel.text = [NSString stringWithFormat:@"%@ %@", fName, lName];
             _numTrips.text = [NSString stringWithFormat:@"%@", numTrips];
             _numOrders.text = [NSString stringWithFormat:@"%@", numOrders];
-            //_pass.text = [NSString stringWithFormat:@"%@", pass];
              _email.text = [NSString stringWithFormat:@"%@", email];
+            _phone.text = [NSString stringWithFormat:@"%@", phone];
             if ([numTrips intValue] == 1)
             {
                 _tripsLabel.text = @"trip";
@@ -218,6 +235,48 @@
     }
     return self;
 }
+-(void) viewWillAppear:(BOOL)animated {
+[super viewWillAppear:animated];
+    
+   // __weak ProfileViewController *weakself = self;
+    [Backend sendRequestWithURL:@"users/get_current_user_content" Parameters:@{} Callback:^(NSDictionary * data) {
+        _userInfo = data[@"user"];
+        NSString* fName = _userInfo[@"first_name"];
+        NSString* lName = _userInfo[@"last_name"];
+        NSNumber* numTrips = data[@"num_trips"];
+        NSNumber* numOrders = data[@"num_orders"];
+        NSString* email = _userInfo[@"email"];
+        NSString* phone = _userInfo[@"phone"];
+        
+        
+        _nameLabel.text = [NSString stringWithFormat:@"%@ %@", fName, lName];
+        _numTrips.text = [NSString stringWithFormat:@"%@", numTrips];
+        _numOrders.text = [NSString stringWithFormat:@"%@", numOrders];
+        _email.text = [NSString stringWithFormat:@"%@", email];
+        _phone.text = [NSString stringWithFormat:@"%@", phone];
+        if ([numTrips intValue] == 1)
+        {
+            _tripsLabel.text = @"trip";
+        }
+        if ([numOrders intValue] == 1)
+        {
+            _ordersLabel.text = @"order";
+        }
+        
+    }];
+    
+    /*
+    [Backend sendRequestWithURL:@"user/get_user_trips" Parameters:@{} Callback:^(NSDictionary * data) {
+        weakself.activeTripsData = data[@"active_trips"];
+        weakself.inactiveTripsData = data[@"inactive_trips"];
+        [weakself.refreshControl endRefreshing];
+        [weakself.tableView reloadData];
+    }]; */
+
+    
+    
+}
+
 
 
 - (void)viewDidLoad {
@@ -230,6 +289,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)updateEmail
+{
+    EditEmailViewController *vc = [[EditEmailViewController alloc]init];
+    [self.navigationController pushViewController: vc animated:YES];
+}
+
+-(void)updatePhone
+{
+    EditPhoneViewController *vc = [[EditPhoneViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+-(void)editPassword
+{
+    EditPasswordViewController *vc = [[EditPasswordViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 /*
 #pragma mark - Navigation
 
