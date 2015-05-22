@@ -8,16 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignUpViewController : UIViewController
+@interface SignUpViewController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic)  UITextField *emailText;
 @property (strong, nonatomic)  UITextField *fNameText;
 @property (strong, nonatomic)  UITextField *lNameText;
 @property (strong, nonatomic)  UITextField *phoneText;
+@property (strong,nonatomic)   UIButton *profImageButton;
 @property (strong, nonatomic)  UIButton *signupButton;
 @property (strong,nonatomic)   UIButton *backButton;
+@property (strong, nonatomic)  UIView *bannerView;
+@property (strong, nonatomic)  UILabel *errorLabel;
 
 -(void)signUp;
--(void)back; 
+-(void)back;
+-(void)setPicture;
 
 @end
