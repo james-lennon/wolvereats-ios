@@ -8,6 +8,7 @@
 
 #import "WelcomeViewController.h"
 #import "LoginViewController.h"
+#import "HWAuthenticationController.h"
 #import "SignUpViewController.h"
 #import "Backend.h"
 
@@ -64,7 +65,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)showLogin {
-    LoginViewController *loginController = [[LoginViewController alloc] init];
+    //LoginViewController *loginController = [[LoginViewController alloc] init];
+    HWAuthenticationController *loginController = [[HWAuthenticationController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginController];
     [self presentViewController:nav animated:YES completion:nil];
 }

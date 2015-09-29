@@ -26,6 +26,10 @@
 		7EA3ECD61B06F88700EB9FAF /* EditPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3ECD31B06F88700EB9FAF /* EditPhoneViewController.m */; };
 		7EA56FC51AB3536300D76077 /* EmptyTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA56FC41AB3536300D76077 /* EmptyTripViewController.m */; };
 		7EA56FC81AB3537300D76077 /* MyTripsListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EA56FC71AB3537300D76077 /* MyTripsListTableViewCell.m */; };
+		7EC004A21B0FA0A300CF0595 /* HWAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC004A11B0FA0A300CF0595 /* HWAuthenticationController.m */; };
+		7EC004A81B0FA0F700CF0595 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC004A51B0FA0F700CF0595 /* HTMLNode.m */; };
+		7EC004A91B0FA0F700CF0595 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC004A71B0FA0F700CF0595 /* HTMLParser.m */; };
+		7EC004AB1B0FA1BE00CF0595 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC004AA1B0FA1BE00CF0595 /* libxml2.dylib */; };
 		9D3495381A8336E2007485BD /* TripsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3495371A8336E2007485BD /* TripsListViewController.m */; };
 		9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D34953A1A833EBD007485BD /* WelcomeViewController.m */; };
 		9D43B39E1A81D9A8006B418C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D43B39D1A81D9A8006B418C /* main.m */; };
@@ -54,6 +58,8 @@
 /* Begin PBXFileReference section */
 		04F536F9F2A527E03A449678 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		15365DB3AC6CF725978EE8D0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		41AA004725813891D3941050 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7E07CD401ADEDE3C0011151A /* OldTripOrdersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OldTripOrdersTableViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7E07CD411ADEDE3C0011151A /* OldTripOrdersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OldTripOrdersTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -91,6 +97,13 @@
 		7EA56FC41AB3536300D76077 /* EmptyTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EmptyTripViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		7EA56FC61AB3537300D76077 /* MyTripsListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MyTripsListTableViewCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		7EA56FC71AB3537300D76077 /* MyTripsListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MyTripsListTableViewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		7EC004A01B0FA0A300CF0595 /* HWAuthenticationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWAuthenticationController.h; sourceTree = "<group>"; };
+		7EC004A11B0FA0A300CF0595 /* HWAuthenticationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWAuthenticationController.m; sourceTree = "<group>"; };
+		7EC004A41B0FA0F700CF0595 /* HTMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		7EC004A51B0FA0F700CF0595 /* HTMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		7EC004A61B0FA0F700CF0595 /* HTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		7EC004A71B0FA0F700CF0595 /* HTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		7EC004AA1B0FA1BE00CF0595 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		9D3495361A8336E2007485BD /* TripsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = TripsListViewController.h; path = Classes/TripsListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		9D3495371A8336E2007485BD /* TripsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = TripsListViewController.m; path = Classes/TripsListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		9D3495391A833EBD007485BD /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
@@ -124,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EC004AB1B0FA1BE00CF0595 /* libxml2.dylib in Frameworks */,
 				6675CDBB6054EBAA2D3A0F0C /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +231,7 @@
 		7E39841E1AB6722C008B7D58 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
+				7EC004A31B0FA0B200CF0595 /* HTML Parser */,
 				9D581EC91A81EC020013038E /* LoadingViewController.h */,
 				9D581ECA1A81EC020013038E /* LoadingViewController.m */,
 				9D581ECC1A81ECE10013038E /* LoginViewController.h */,
@@ -227,6 +242,8 @@
 				9D34953A1A833EBD007485BD /* WelcomeViewController.m */,
 				9D4FEABB1A8535DF0071F1BB /* NoConnectionViewController.h */,
 				9D4FEABC1A8535DF0071F1BB /* NoConnectionViewController.m */,
+				7EC004A01B0FA0A300CF0595 /* HWAuthenticationController.h */,
+				7EC004A11B0FA0A300CF0595 /* HWAuthenticationController.m */,
 			);
 			name = Loading;
 			sourceTree = "<group>";
@@ -240,6 +257,17 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
+		7EC004A31B0FA0B200CF0595 /* HTML Parser */ = {
+			isa = PBXGroup;
+			children = (
+				7EC004A41B0FA0F700CF0595 /* HTMLNode.h */,
+				7EC004A51B0FA0F700CF0595 /* HTMLNode.m */,
+				7EC004A61B0FA0F700CF0595 /* HTMLParser.h */,
+				7EC004A71B0FA0F700CF0595 /* HTMLParser.m */,
+			);
+			name = "HTML Parser";
+			sourceTree = "<group>";
+		};
 		9D43B38F1A81D9A8006B418C = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +275,7 @@
 				9D43B3B71A81D9A8006B418C /* WolverEatsTests */,
 				9D43B3991A81D9A8006B418C /* Products */,
 				B1FABF83039DC021316811A2 /* Frameworks */,
+				EBA4C093DF67E9E1A4760143 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -325,9 +354,19 @@
 		B1FABF83039DC021316811A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7EC004AA1B0FA1BE00CF0595 /* libxml2.dylib */,
 				04F536F9F2A527E03A449678 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBA4C093DF67E9E1A4760143 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15365DB3AC6CF725978EE8D0 /* Pods.debug.xcconfig */,
+				41AA004725813891D3941050 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -479,11 +518,14 @@
 				9D34953B1A833EBD007485BD /* WelcomeViewController.m in Sources */,
 				7E07CD451ADEDE3C0011151A /* OldTripOrderTableViewCell.m in Sources */,
 				9D581ECE1A81ECE10013038E /* LoginViewController.m in Sources */,
+				7EC004A91B0FA0F700CF0595 /* HTMLParser.m in Sources */,
 				7E6AD70C1AA4E99600891AB6 /* ProfileViewController.m in Sources */,
 				7E07CD441ADEDE3C0011151A /* OldTripOrdersTableViewController.m in Sources */,
 				7E500DA81AA0E429008899FE /* PlaceOrderViewController.m in Sources */,
 				7E6AD7031AA4E94E00891AB6 /* OrderViewController.m in Sources */,
 				7E5305AB1AA63451007E1C23 /* OrderListTableViewCell.m in Sources */,
+				7EC004A21B0FA0A300CF0595 /* HWAuthenticationController.m in Sources */,
+				7EC004A81B0FA0F700CF0595 /* HTMLNode.m in Sources */,
 				7EA3ECD61B06F88700EB9FAF /* EditPhoneViewController.m in Sources */,
 				9D581ED11A81ECFA0013038E /* SignUpViewController.m in Sources */,
 				7E66CB191A9BABE3001D122D /* TripsListTableViewCell.m in Sources */,
@@ -606,11 +648,20 @@
 		};
 		9D43B3BF1A81D9A8006B418C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F8FAF5AADD157CC60B24D4B /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 15365DB3AC6CF725978EE8D0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/ActionSheetPicker-3.0\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SVPullToRefresh\"",
+					/usr/include/libxml2,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = WolverEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -620,11 +671,20 @@
 		};
 		9D43B3C01A81D9A8006B418C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 652AE12EE088D4AD6105D138 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 41AA004725813891D3941050 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/ActionSheetPicker-3.0\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/SVPullToRefresh\"",
+					/usr/include/libxml2,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = WolverEats/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

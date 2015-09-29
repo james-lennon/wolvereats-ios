@@ -6,30 +6,36 @@
 //  Copyright (c) 2014 James Lennon. All rights reserved.
 //
 
-#import "StudentInfoDownloadViewController.h"
+#import "HWAuthenticationController.h"
 #import "HTMLParser.h"
-#import "UserData.h"
-#import "SignInViewController.h"
+#import "MBProgressHUD.h"
+//#import "UserData.h"
+//#import "SignInViewController.h"
 
-@implementation StudentInfoDownloadViewController{
+@implementation HWAuthenticationController{
     BOOL alreadyLoaded;
     NSMutableDictionary *info;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.view.backgroundColor = RED_COLOR;
+-(id)init {
+    if ((self = [super init])){
+        
+    _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    _webView.delegate = self;
+    _webView.keyboardDisplayRequiresUserAction = NO;
+    [self.view addSubview: _webView];
+
     
     info = [NSMutableDictionary dictionary];
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
         [storage deleteCookie:cookie];
     }
-    self.webView.delegate = self;
-    self.webView.keyboardDisplayRequiresUserAction = NO;
-    //https://www.hw.com/students/Login?returnurl=/students/SchoolResources/MyScheduleEvents.aspx
-    [self.webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.hw.com/students/Login?returnurl=/students/SchoolResources/MyScheduleEvents.aspx"]]];
+       //https://www.hw.com/students/Login?returnurl=/students/SchoolResources/MyScheduleEvents.aspx
+    [_webView loadRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.hw.com/students/Login?returnurl=/students/SchoolResources/MyScheduleEvents.aspx"]]];
+    }
+    
+    return self;
 }
 
 //- (void)viewWillAppear:(BOOL)animated {
@@ -119,7 +125,8 @@
     if (!([info valueForKey:@"name"]!=nil && [info valueForKey:@"school_id"]!=nil)) {
         [self showError];
     }
-    [self showSignIn];
+    
+    //[self showSignIn];
     
 //    if (shouldShowWarning) {
 //        //Show a warning if the schedule was a preliminary schedule
@@ -136,13 +143,6 @@
 -(NSString*)cleanName:(NSString*)name{
     NSArray* parts = [name componentsSeparatedByString:@" "];
     return [parts[0] capitalizedString];
-}
-
--(void)showSignIn{
-    SignInViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    vc.userInfo = info;
-    [self presentViewController:nav animated:YES completion:nil];
 }
 
 -(void)showError{

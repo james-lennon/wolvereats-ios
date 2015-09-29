@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StudentInfoDownloadViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate, UIAlertViewDelegate>
+@interface HWAuthenticationController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate, UIAlertViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) NSMutableData *resultData;
 
 @end
